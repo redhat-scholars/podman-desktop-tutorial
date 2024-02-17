@@ -1,20 +1,22 @@
-= Welcome to Template Tutorial
+= Welcome to the Podman Desktop Tutorial
 :page-layout: home
 :!sectids:
 
-[.text-center.strong]
-== Publish Services to Kubernetes
+image::podman-desktop-feature.png[Podman Desktop Logo, 600]
 
-A Kubernetes tutorial to show how you can deploy a Java service to a Kubernetes cluster as it was a child game.
+Explore the features and benefits of https://podman-desktop.io[Podman Desktop] for streamlining your container workflows. Build, manage, and even deploy to Kubernetes-like environments – all from your desktop.
+
+[.text-center.strong]
+== What is Podman Desktop?
+
+Podman Desktop is a powerful open-source tool designed to simplify container management on Windows, macOS, and Linux. Key strengths include:
+
+* **Security:**  Rootless design and https://blog.podman.io/2023/12/interaction-between-user-namespaces-and-capabilities/[strong isolation] for safer containerized applications.
+* **Emphasis on Pods** for https://podman.io/features[simplified grouping and resource sharing] of containers.
+* **Multi-Engine Support:** Manage not only containers with Podman, but https://podman-desktop.io/extend[Docker, OpenShift, and Kind environments as well].
+* **Docker Compatibility:** Leverage https://podman-desktop.io/blog/5-things-to-know-for-a-docker-user[familiar Docker concepts] and commands for easy transitions.
 
 [.tiles.browse]
-== Browse modules
+== Tutorial Steps
 
-[.tile]
-.xref:01-setup.adoc[Get Started]
-* xref:01-setup.adoc#minikube[Minikube]
-
-[.tile]
-.xref:02-deploy.adoc[Deploying]
-* xref:02-deploy.adoc#package[Package the Application]
-* xref:02-deploy.adoc#deploy[Deploy the Application]
+include::../nav.adoc[]

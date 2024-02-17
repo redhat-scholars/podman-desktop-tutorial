@@ -1,7 +1,20 @@
-* xref:01-setup.adoc[1. Setup]
-** xref:01-setup.adoc#prerequisite[Prerequisites]
-** xref:01-setup.adoc#minikube[Setup Minikube]
+* Requirements
+** xref:setup.adoc[Podman Desktop Setup]
 
-* xref:02-deploy.adoc[2. Deploy Service]
-** xref:02-deploy.adoc#package[Build Service]
-** xref:02-deploy.adoc#deploy[Deploy Dervice]
+* I. Podman Desktop Fundamentals
+** xref:intro.adoc[Introduction to Containers]
+** xref:podman-basics.adoc[Podman Desktop Interface & Essentials] 
+** xref:building-images.adoc[Building Images in Podman Desktop]
+** xref:running-containers.adoc[Running and Managing Containers]
+
+* II. Container Orchestration with Pods
+** xref:pods.adoc[Pods: The Next Level]
+** xref:pod-networking.adoc[Networking Within Pods] 
+
+* III. Kubernetes Integration
+** xref:kubernetes-overview.adoc[Kubernetes: Orchestration Power]
+** xref:podman-kubernetes.adoc[Podman Desktop & Kubernetes Development]
+** xref:monitoring.adoc[Monitoring Kubernetes with Podman Desktop]
+
+* Resources
+** xref:resources.adoc[Additional Resources & Documentation] 
