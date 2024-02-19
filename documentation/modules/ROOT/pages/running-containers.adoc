@@ -1,0 +1,85 @@
+= Exercise: Running and Managing Containers
+include::_attributes.adoc[]
+
+In the previous step, we built a container image for our Python web server and pulled a Redis image for our cache. Now it's time to bring those images to life as running containers and experience the power of Podman Desktop in action.
+
+== Starting the Redis container
+
+First, let's start the Redis container. We'll go from the *Images* (or *Containers*) section in Podman Desktop, where we can see the Redis image we pulled earlier. Let's hit the *▶* button to start a new container from the image.
+
+image::podman-desktop-start-redis-container.png[Podman Desktop Start Container, 600]
+
+We'll be presented with a form to configure the container. We only need to give it a name, `redis`, and hit the *Start* button.
+
+image::podman-desktop-start-redis-container-options.png[Podman Desktop Start Container, 600]
+
+TIP: There's settings for the container's volumes, environment variables, port mapping, and much more! We'll leave them as they are for now, but feel free to explore them later.
+
+== Managing containers
+
+After a few seconds, the Redis container will be up and running. We'll be brought to the *Container Details* page, where we can see the container's logs, terminal, and other details.
+
+image::podman-desktop-redis-container-details.png[Podman Desktop Container Details, 600]
+
+Let's view some of the details from this container, as we'll need to find the internal IP address for Redis to configure our Python web server as a hostname. Head to the *Inspect* tab and *Ctrl-F* to search for `IPAddress`, which will be under the `NetworkSettings` section and will look something like this:
+
+image::podman-desktop-redis-container-inspect.png[Podman Desktop Container Inspect, 600]
+
+[.console-output]
+[source,bash,subs="+macros,+attributes"]
+----
+"IPAddress": "10.88.0.7"
+----
+
+NOTE: The IP address will be different for your container, but it will be in the same format.
+
+Be sure to copy this somewhere, as we'll be using it in the next step below. Feel free to explore the other options in the *Container Details* page, such as the logs, terminal, and Kubernetes manifests. We'll be using these features later in the workshop.
+
+== Starting the Python web server
+
+Now, let's start the Python web server container. We'll go back to the *Images* (or *Containers*) section in Podman Desktop, where we can see the Python web server image we built/pulled earlier. Let's hit the *▶* button to start a new container from the image.
+
+image::podman-desktop-start-python-container.png[Podman Desktop Start Container, 600]
+
+Here, let's navigate to the *Environment* tab and add a new environment variable with the key `redis` and the value as the IP address we copied from the Redis container earlier. Be sure to also give the container a name, such as `python-app`, and hit the *Start* button.
+
+image::podman-desktop-start-python-container-options.png[Podman Desktop Start Container, 600]
+
+NOTE: This will allow the Python web server to connect to the Redis cache using the logic from the `entrypoint.sh` script in the Python web application source code.
+
+== Testing the multi-container application
+
+With the Python container started, let's test the basic functionality by selecting the *Open Browser* button from the top right corner menu. This will open a new browser window with the Python web server's IP address and port, such as `http://localhost:8080/`.
+
+image::podman-desktop-open-browser-button.png[Podman Desktop Open Browser, 600]
+
+You should see a simple web page with a counter, which is being incremented and stored in the Redis cache, and some handy Podman Desktop links!
+
+image::podman-desktop-python-app-browser.png[Podman Desktop Python App, 600]
+
+Back in the *Container Details* page for the Python web server container, we see the application's output and logs, debug, and some other options we'll explore later in the tutorial.
+
+image::podman-desktop-python-app-container-details.png[Podman Desktop Container Details, 600]
+
+== Authenticating, Tagging, and Pushing the Image
+
+First, be sure to have an account with a free container registry, such as https://quay.io/[Quay.io] or https://hub.docker.com/[Docker Hub], where you can afterwards authenticate from Podman Desktop in *Settings > Registries* to push and share your container image.
+
+image::podman-desktop-registries-settings.png[Podman Desktop Registries Settings, 600]
+
+Now that we've built the container image, we can tag it with a new name for our registry. This is a simple process in Podman Desktop, where we can select the image and click the *Edit Image* button from the top right corner menu.
+
+image::podman-desktop-tag-image-button.png[Podman Desktop Tag, 600]
+
+This will open up a new window where we can specify the new image name. Let's tag the `python-app` image as `quay.io/<your username>/python-app`, using the Quay.io registry, or as `docker.io/<your username>/python-app`, using the Docker Hub registry.
+
+image::podman-desktop-tag-image-window.png[Podman Desktop Tag]
+
+TIP: Here, we can also use tagging to specify versioning of images, such as `quay.io/<your username>/python-app:1.0.0`, and is a good practice for production use.
+
+Finally, we can push the image to the registry by selecting the image and clicking the *Push* button from the top right corner menu. This will upload the image to the registry, where it can be shared and used by others, or in remote environments such as Kubernetes & OpenShift.
+
+image::podman-desktop-push-image-button.png[Podman Desktop Push, 600]
+
+== Next Steps
+

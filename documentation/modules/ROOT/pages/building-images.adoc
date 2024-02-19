@@ -1,16 +1,17 @@
 = Exercise: Building Images in Podman Desktop
+include::_attributes.adoc[]
 
-Fantastic, let's start the Podman Desktop tutorial with the most basic step in the inner loop development process: building container images.
+Fantastic, let's start the Podman Desktop tutorial with the most basic step in the inner loop development process: *building container images*. We'll also cover authenticating to registries amd pulling images.
+
+TIP: Feel free to down if you'd just like to xref:building-images#pulling.adoc[pull the container images], without downloading the application source code.
 
 == Demo Application
 
 For this exercise, we'll be using a basic Python web server application, which uses a Redis cache to store the number of times we've visited the webpage. This is a simple microservice, but it's a good example of a multi-container application.
 
-image::podman-desktop-demo-app.png[Podman Desktop Demo App, 600]
+image::podman-desktop-python-app-browser.png[Podman Desktop Python App, 600]
 
 == Getting Started with the Source Code
-
-TIP: Feel free to skip this section if you'd just like to pull the container images directly in the next step, without downloading the application source code.
 
 Let's start off with downloading the source code for the demo application, found https://github.com/redhat-developer/podman-desktop-demo[here on GitHub]. This repository contains a variety of different Podman related demo's you can try later, including Minikube, WASM, Compose, and more!
 
@@ -58,3 +59,55 @@ NOTE: While this isn't a basic Dockerfile, it's a good example of a multi-stage 
 == Building the Container Image
 
 Now that we've taken a look at the source code and Dockerfile, let's build the container image from directly within Podman Desktop. From the *Images* section, click the *Build* button in the top right corner.
+
+image::podman-desktop-build-image-button.png[Podman Desktop Build Image, 600]
+
+This will open up a new window where we can specify the Dockerfile/Containerfile, the build context, and image name. Let's select the `Dockerfile`, the build directory as `primary-podify-demo/front`, and `python-app` for the image name. 
+
+NOTE: The build context is the directory where the source code and Dockerfile are located, and the Dockerfile is the recipe for building the container image. We can use Podman Desktop to easily rename/retag the image later, so don't worry too much about the image name for now.
+
+image::podman-desktop-build-image-window.png[Podman Desktop Build Image Window, 600]
+
+After clicking *Build*, Podman Desktop will start building the container image, and you can see the build logs in the bottom pane. This will take a few minutes, as it's downloading the base image, installing dependencies, copying the source code, etc.
+
+image::podman-desktop-build-image-logs.png[Podman Desktop Build Image Logs, 600]
+
+Once the build is complete, you should see the new `python-app` image in the *Images* section of Podman Desktop. You'll see the default image https://www.redhat.com/sysadmin/container-image-short-names[short name] here, which we'll retag for our registry in another step.
+
+image::podman-desktop-built-image.png[Podman Desktop Built Image, 600]
+
+
+[#pulling]
+== Optional: Pulling the Python App Image
+
+If you'd like to skip the build process from above, you can pull the `quay.io/cclyburn/python-app` image from a public registry. This is the same image we just built, but it's already available for use. Head to the *Images* section, and click the *Pull* button in the top right corner.
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+quay.io/cclyburn/python-app
+----
+
+image::podman-desktop-built-image-layers.png[Podman Desktop Built Image, 600]
+
+TIP: Due to it's popularity, Podman uses the Docker Hub registry to pull images by default. However, you can authenticate other registries in the Podman Desktop *Settings > Registries*, or set defaults via the https://www.redhat.com/sysadmin/manage-container-registries[Podman registry configuration file].
+
+== Pulling the Redis Image
+
+As you may have seen from the Python web application source code, we're using a Redis cache to store the number of times we've visited the webpage. Thus, if you were to start the Python web application without the Redis cache, it would crash.
+
+image::podman-desktop-redis-image-start.png[Podman Desktop Redis Image, 600]
+
+Let's go ahead and pull the Redis image from Docker Hub by clicking the *Pull* button from the top right corner menu. We'll be pulling the official `redis` image, which is a popular choice for caching in containerized applications.
+
+[.console-input][.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+redis
+----
+
+image::podman-desktop-redis-image-layers.png[Podman Desktop Redis Image, 600]
+
+== Next Steps
+
+Fantastic! We've built the container image for the Python web application, and pulled the Redis image for the cache. In the next tutorial, we'll start the containers and test the web application.

@@ -1,4 +1,5 @@
 = Introduction to Containers
+include::_attributes.adoc[]
 
 As https://podman-desktop.io[Podman Desktop] is an open source graphical tool for working with containers, let's quickly overview the concept of containers and their benefits.
 

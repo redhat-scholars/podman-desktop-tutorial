@@ -1,4 +1,5 @@
 = Podman Desktop Interface & Essentials
+include::_attributes.adoc[]
 
 Let's take a look at Podman Desktop and dive into some of the features, tips & tricks, and essentials. We'll start from the top of the UI and work our way down, and don't worry, there's no exercises until the next section.
 
