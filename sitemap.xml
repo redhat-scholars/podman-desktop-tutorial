@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/building-images.html</loc>
+<lastmod>2024-02-19T03:17:44.234Z</lastmod>
+</url>
+<url>
 <loc>https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/index.html</loc>
-<lastmod>2024-02-17T20:17:36.534Z</lastmod>
+<lastmod>2024-02-19T03:17:44.234Z</lastmod>
+</url>
+<url>
+<loc>https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/intro.html</loc>
+<lastmod>2024-02-19T03:17:44.234Z</lastmod>
+</url>
+<url>
+<loc>https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/podman-basics.html</loc>
+<lastmod>2024-02-19T03:17:44.234Z</lastmod>
 </url>
 <url>
 <loc>https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/setup.html</loc>
-<lastmod>2024-02-17T20:17:36.534Z</lastmod>
+<lastmod>2024-02-19T03:17:44.234Z</lastmod>
 </url>
 </urlset>

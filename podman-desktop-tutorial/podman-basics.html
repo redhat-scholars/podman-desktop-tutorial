@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Podman Desktop Interface &amp; Essentials :: Podman Desktop Tutorial</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/podman-basics.html">
+    <link rel="prev" href="intro.html">
+    <link rel="next" href="building-images.html">
+    <meta name="generator" content="Antora 3.0.0">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img src="../_/img/RHDLogo.svg" height="40px" alt="Red Hat Developer Program"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="https://redhat-scholars.github.io/podman-desktop-tutorial">Podman Desktop Tutorial</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://developers.redhat.com/ebooks/" target="_blank">Books</a>
+        <a class="navbar-item" href="https://developers.redhat.com/cheatsheets/" target="_blank">Cheat Sheets</a>
+        <a class="navbar-item" href="https://developers.redhat.com/events/" target="_blank">Upcoming Events</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">More Tutorials</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/kubernetes-tutorial/" target="_blank">Kubernetes</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/istio-tutorial/" target="_blank">Istio</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/quarkus-tutorial/" target="_blank">Quarkus</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/knative-tutorial/" target="_blank">Knative</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/tekton-tutorial/" target="_blank">Tekton</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="podman-desktop-tutorial" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html"></a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Requirements</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="setup.html">Podman Desktop Setup</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">I. Podman Desktop Fundamentals</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="intro.html">Introduction to Containers</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="podman-basics.html">Podman Desktop Interface &amp; Essentials</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="building-images.html">Exercise: Building Images in Podman Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#running-containers.adoc">Running and Managing Containers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">II. Container Orchestration with Pods</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#pods.adoc">Pods: The Next Level</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#pod-networking.adoc">Networking Within Pods</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">III. Kubernetes Integration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#kubernetes-overview.adoc">Kubernetes: Orchestration Power</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#podman-kubernetes.adoc">Podman Desktop &amp; Kubernetes Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#monitoring.adoc">Monitoring Kubernetes with Podman Desktop</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Resources</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#resources.adoc">Additional Resources &amp; Documentation</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Podman Desktop Tutorial</a></li>
+    <li>I. Podman Desktop Fundamentals</li>
+    <li><a href="podman-basics.html">Podman Desktop Interface &amp; Essentials</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/podman-desktop-tutorial/edit/master/documentation/modules/ROOT/pages/podman-basics.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Podman Desktop Interface &amp; Essentials</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let&#8217;s take a look at Podman Desktop and dive into some of the features, tips &amp; tricks, and essentials. We&#8217;ll start from the top of the UI and work our way down, and don&#8217;t worry, there&#8217;s no exercises until the next section.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dashboard"><a class="anchor" href="#_dashboard"></a>Dashboard</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Dashboard section is the entry point to your container workflow, where you can easily view and manage the <a href="https://podman.io">Podman engine</a>, which is automatically started and updated via Podman Desktop.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-overview.png" alt="Podman Desktop Overview" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>In addition, you can view the status of other featured extensions, such as <a href="https://developers.redhat.com/products/openshift-local/overview">OpenShift Local</a>, <a href="https://www.docker.com/products/docker-desktop/">Docker</a>, <a href="https://kind.sigs.k8s.io/">Kind</a>, <a href="https://minikube.sigs.k8s.io/docs/">Minikube</a>, <a href="https://developers.redhat.com/developer-sandbox">Developer Sandbox</a>, and <a href="https://lima-vm.io/">Lima</a>. Each of these extensions can be crutial to the development of your applications and workflow.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_containers"><a class="anchor" href="#_containers"></a>Containers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Containers section is where you can view, manage, and create containers. You can easily start, stop, and remove containers, as well as view logs and inspect the container details.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-containers.png" alt="Podman Desktop Containers" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>After selecting a running container, you have a few tabs to view container logs, inspect details of the container (such as the environment variables, labels, and mounts), view the Kubernetes YAML to deploy it to a cluster, and an integrated terminal to SSH into the container.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-container-details.png" alt="Podman Desktop Container Details" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>In addition, you can play Kubernetes YAML directly from this top-right corner of the Containers section, and start Pods or Containers directly from Kubernetes YAML via the Podman engine or a connected Kubernetes cluster (we&#8217;ll cover this in a later section).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-pods.png" alt="Podman Desktop Containers" width="600">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pods"><a class="anchor" href="#_pods"></a>Pods</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After creating a Pod through Podman Desktop (selecting one or more containers in the Containers tab, and selecting <em>Create Pod</em>), or via the Podman CLI, you can view and manage Pods in the Pods section.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-pods-section.png" alt="Podman Desktop Pods" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>After selecting a Pod, we can view the indivual containers that make up the Pod, their logs (or combined logs), and inspect the Pod details, such as the Kubernetes YAML.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-pod-details.png" alt="Podman Desktop Pod Details" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>Similarly to the Containers section, you can play Kubernetes YAML directly from this top-right corner of the Pods section, or within a Pod, and view details before deploying it to a cluster.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-deploy-pod.gif" alt="Podman Desktop Pod Details" width="600">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_images"><a class="anchor" href="#_images"></a>Images</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Podman Desktop images section is powerful, and allows you to pull images from registries (publicily available, or authenticated from a private registry via Settings), or build images from a Dockerfile/Containerfile.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-images.png" alt="Podman Desktop Images" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>While pulling images is fairly standard, you can select target platform architectures when building images, in addition to selecting the Dockerfile/Containerfile, and the build context directory.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-build-image.png" alt="Podman Desktop Build Image" width="600">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_kubernetes"><a class="anchor" href="#_kubernetes"></a>Kubernetes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Fairly new to Podman Desktop is the Kubernetes section, which provides a more advanced UI for working with Kubernetes clusters.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You may need to enable the experimental Kubernetes UI  in <strong>Settings &gt; Kubernetes</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-kubernetes.png" alt="Podman Desktop Kubernetes" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>When working with Kubernetes clusters, either locally or remote, you can view details typically found via <code>kubectl</code> commands, such as the Deployments, Services, and Ingresses. Did we mention that <code>kubectl</code> is included in the Podman Desktop Settings? Let&#8217;s head there now.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_settings"><a class="anchor" href="#_settings"></a>Settings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Settings section is where you can configure almost everything about Podman Desktop, such as the Podman Machine (CPU, Memory, etc), Kubernetes (<a href="https://minikube.sigs.k8s.io/docs/">Minikube</a>, <a href="https://kubernetes.io/docs/reference/kubectl/"><code>kubectl</code></a> CLI, <a href="https://kind.sigs.k8s.io/">Kind</a>, <a href="https://developers.redhat.com/developer-sandbox">Developer Sandbox</a>), <a href="https://podman-desktop.io/blog/getting-started-with-compose">Compose</a>, and more.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-settings.png" alt="Podman Desktop Settings" width="600">
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+There&#8217;s enterprise features, such as the ability to connect to a private registry, as well as use a proxy configuration from behind a VPN.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>One of Podman Desktop&#8217;s biggest feature is the extensibility, thus you can view the included extensions, manage them, and also add new OCI &amp; Docker Desktop extensions to Podman Desktop.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-extensions.png" alt="Podman Desktop Extensions" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, you can edit preferences such as aesthetics, your <code>kubeconfig</code> file, terminal settings, and more via the Preferences section.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-preferences.png" alt="Podman Desktop Preferences" width="600">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We didn&#8217;t cover the Volumes section, which is fairly simple with options for creating new Volumes, collecting usage data, etc. More info can be found in the <a href="https://docs.podman.io/en/stable/volume.html">Podman documentation</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_next_steps"><a class="anchor" href="#_next_steps"></a>Next Steps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that we&#8217;ve covered the essentials of Podman Desktop, let&#8217;s start doing some hands-on exercises!</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="intro.html">Introduction to Containers</a></span>
+  <span class="next"><a href="building-images.html">Exercise: Building Images in Podman Desktop</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../_/js/vendor/clipboard.js"></script>
+<script src="../_/js/site.js"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
