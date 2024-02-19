@@ -279,7 +279,7 @@ This will allow the Python web server to connect to the Redis cache using the lo
 <h2 id="_authenticating_tagging_and_pushing_the_image"><a class="anchor" href="#_authenticating_tagging_and_pushing_the_image"></a>Authenticating, Tagging, and Pushing the Image</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>First, be sure to have an account with a free container registry, such as <a href="https://quay.io/">Quay.io</a> or <a href="https://hub.docker.com/">Docker Hub</a>, where you can afterwards authenticate from Podman Desktop in <strong>Settings &gt; Registries</strong> to push and share your container image.</p>
+<p>With the functionality looking good, let&#8217;s share the image to a registry. First, be sure to have an account with a free container registry, such as <a href="https://quay.io/">Quay.io</a> or <a href="https://hub.docker.com/">Docker Hub</a>, where you can afterwards authenticate from Podman Desktop in <strong>Settings &gt; Registries</strong> to push and share your container image.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -322,12 +322,26 @@ Here, we can also use tagging to specify versioning of images, such as <code>qua
 <img src="_images/podman-desktop-push-image-button.png" alt="Podman Desktop Push" width="600">
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+While Docker Hub will automatically make the image public, <a href="https://quay.io/">Quay.io</a> will require you to make the image public or share it with specific users or organizations, head to the web interface to manage the image&#8217;s visibility and permissions.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_next_steps"><a class="anchor" href="#_next_steps"></a>Next Steps</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Congratulations! You&#8217;ve successfully built, run, and tested a multi-container application using Podman Desktop, as well as pushed the image to a <a href="https://opencontainers.org/">OCI compliant</a> registry. In the next step, you&#8217;ll learn more about working with multi-container applications, and how to manage and deploy them in a local Kubernetes cluster.</p>
+</div>
 </div>
 </div>
 <nav class="pagination">
