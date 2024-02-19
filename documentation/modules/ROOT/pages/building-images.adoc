@@ -3,7 +3,7 @@ include::_attributes.adoc[]
 
 Fantastic, let's start the Podman Desktop tutorial with the most basic step in the inner loop development process: *building container images*. We'll also cover authenticating to registries amd pulling images.
 
-TIP: Feel free to down if you'd just like to xref:building-images#pulling.adoc[pull the container images], without downloading the application source code.
+TIP: Feel free to down if you'd just like to xref:building-images.adoc#pulling.adoc[pull the container images], without downloading the application source code.
 
 == Demo Application
 
