@@ -1,8 +1,8 @@
 = Podman Desktop Setup
 
-== Prerequisites
+== Introduction
 
-While containers are linux, Podman Desktop is designed to run on macOS, Windows, and Linux thanks to the https://docs.podman.io/en/stable/markdown/podman-machine.1.html[podman-machine]. 
+While containers are linux, Podman Desktop is designed to run on macOS and Windows thanks to the https://docs.podman.io/en/stable/markdown/podman-machine.1.html[podman-machine]. It creates a virtual machine running a minimal Linux distribution to run the containers, and Podman Desktop takes care of the setup for you.
 
 == Installing Podman Desktop
 
@@ -18,9 +18,9 @@ Visit the official https://podman-desktop.io/downloads[Podman Desktop download p
 
 Run the Installer:
 
-    * **macOS:** Double-click the downloaded .dmg file and follow the on-screen instructions.
-    * **Windows:** Double-click the downloaded .exe file and follow the installer wizard. The guide will walk you through enabling WSL2 if needed.
-    * **Linux:** Follow the flatpak instructions for your specific distribution.
+* **macOS:** Double-click the downloaded .dmg file and follow the on-screen instructions.
+* **Windows:** Double-click the downloaded .exe file and follow the installer wizard. The guide will walk you through enabling WSL2 if needed.
+* **Linux:** Follow the flatpak instructions for your specific distribution.
 
 image::podman-desktop-overview.png[Podman Desktop Overview, 600]
 

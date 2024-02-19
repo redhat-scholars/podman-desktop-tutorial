@@ -1,0 +1,60 @@
+= Exercise: Building Images in Podman Desktop
+
+Fantastic, let's start the Podman Desktop tutorial with the most basic step in the inner loop development process: building container images.
+
+== Demo Application
+
+For this exercise, we'll be using a basic Python web server application, which uses a Redis cache to store the number of times we've visited the webpage. This is a simple microservice, but it's a good example of a multi-container application.
+
+image::podman-desktop-demo-app.png[Podman Desktop Demo App, 600]
+
+== Getting Started with the Source Code
+
+TIP: Feel free to skip this section if you'd just like to pull the container images directly in the next step, without downloading the application source code.
+
+Let's start off with downloading the source code for the demo application, found https://github.com/redhat-developer/podman-desktop-demo[here on GitHub]. This repository contains a variety of different Podman related demo's you can try later, including Minikube, WASM, Compose, and more!
+
+image::podman-desktop-demo-repo.png[Podman Desktop Demo Repo, 600]
+
+I've cloned the repository to my local machine using https://desktop.github.com/[GitHub Desktop], but feel free to use the CLI as well:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+git clone https://github.com/redhat-developer/podman-desktop-demo
+----
+
+Now, let's open up the project in our IDE and take a look at the source code of the demo application, found in the `podman-desktop-demo/primary-podify-demo/front` directory.
+
+image::podman-desktop-demo-source-code.png[Podman Desktop Demo Source Code, 600]
+
+We're using Flask as a Python framework to serve the web application, as you can see from the `app.py` file. However, more important is the `Dockerfile` in the project directory, which is used to build the container image for the web application, like a recipe:
+
+* *Base Image:*
+** `FROM registry.access.redhat.com/ubi9/ubi:9.2-755 AS ubi-builder` (Starts with Red Hat's UBI image)
+
+* *Build Stage:*
+** `RUN ...` (Installs tools like Python)
+** `COPY ./entrypoint.sh ...` (Copies entrypoint script for when the container starts, for Redis)
+
+* *App Preparation:*
+** `FROM scratch as python-builder` (Starts fresh, minimal image)
+** `COPY --from=ubi-builder ...` (Copies only built essentials)
+** `RUN ...` (Creates non-root user)
+** `COPY requirements.txt ...` (Copies Python dependencies)
+** `RUN pip install ...` (Installs dependencies)
+** `COPY app.py ...` (Copies app source code)
+
+* *Final Image:*
+** `FROM scratch` (Starts with minimal scratch image)
+** `COPY --from=python-builder ...` (Copies prepared application)
+** `EXPOSE 5000` (Opens port for access)
+** `USER 1000` (Switches to non-root user)
+** `ENV ...` (Sets Flask environment variables)
+** `ENTRYPOINT ["/entrypoint.sh"]` (Defines container startup command) 
+
+NOTE: While this isn't a basic Dockerfile, it's a good example of a multi-stage build with security best practices, and allows for a smaller final image.
+
+== Building the Container Image
+
+Now that we've taken a look at the source code and Dockerfile, let's build the container image from directly within Podman Desktop. From the *Images* section, click the *Build* button in the top right corner.

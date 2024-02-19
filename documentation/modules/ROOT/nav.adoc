@@ -4,7 +4,7 @@
 * I. Podman Desktop Fundamentals
 ** xref:intro.adoc[Introduction to Containers]
 ** xref:podman-basics.adoc[Podman Desktop Interface & Essentials] 
-** xref:building-images.adoc[Building Images in Podman Desktop]
+** xref:building-images.adoc[Exercise: Building Images in Podman Desktop]
 ** xref:running-containers.adoc[Running and Managing Containers]
 
 * II. Container Orchestration with Pods

@@ -1,0 +1,81 @@
+= Podman Desktop Interface & Essentials
+
+Let's take a look at Podman Desktop and dive into some of the features, tips & tricks, and essentials. We'll start from the top of the UI and work our way down, and don't worry, there's no exercises until the next section.
+
+== Dashboard
+
+The Dashboard section is the entry point to your container workflow, where you can easily view and manage the https://podman.io[Podman engine], which is automatically started and updated via Podman Desktop.
+
+image::podman-desktop-overview.png[Podman Desktop Overview, 600]
+
+In addition, you can view the status of other featured extensions, such as https://developers.redhat.com/products/openshift-local/overview[OpenShift Local], https://www.docker.com/products/docker-desktop/[Docker], https://kind.sigs.k8s.io/[Kind], https://minikube.sigs.k8s.io/docs/[Minikube], https://developers.redhat.com/developer-sandbox[Developer Sandbox], and https://lima-vm.io/[Lima]. Each of these extensions can be crutial to the development of your applications and workflow.
+
+== Containers
+
+The Containers section is where you can view, manage, and create containers. You can easily start, stop, and remove containers, as well as view logs and inspect the container details.
+
+image::podman-desktop-containers.png[Podman Desktop Containers, 600]
+
+After selecting a running container, you have a few tabs to view container logs, inspect details of the container (such as the environment variables, labels, and mounts), view the Kubernetes YAML to deploy it to a cluster, and an integrated terminal to SSH into the container.
+
+image::podman-desktop-container-details.png[Podman Desktop Container Details, 600]
+
+In addition, you can play Kubernetes YAML directly from this top-right corner of the Containers section, and start Pods or Containers directly from Kubernetes YAML via the Podman engine or a connected Kubernetes cluster (we'll cover this in a later section).
+
+image::podman-desktop-pods.png[Podman Desktop Containers, 600]
+
+== Pods
+
+After creating a Pod through Podman Desktop (selecting one or more containers in the Containers tab, and selecting _Create Pod_), or via the Podman CLI, you can view and manage Pods in the Pods section.
+
+image::podman-desktop-pods-section.png[Podman Desktop Pods, 600]
+
+After selecting a Pod, we can view the indivual containers that make up the Pod, their logs (or combined logs), and inspect the Pod details, such as the Kubernetes YAML.
+
+image::podman-desktop-pod-details.png[Podman Desktop Pod Details, 600]
+
+Similarly to the Containers section, you can play Kubernetes YAML directly from this top-right corner of the Pods section, or within a Pod, and view details before deploying it to a cluster.
+
+image::podman-deploy-pod.gif[Podman Desktop Pod Details, 600]
+
+== Images
+
+The Podman Desktop images section is powerful, and allows you to pull images from registries (publicily available, or authenticated from a private registry via Settings), or build images from a Dockerfile/Containerfile.
+
+image::podman-desktop-images.png[Podman Desktop Images, 600]
+
+While pulling images is fairly standard, you can select target platform architectures when building images, in addition to selecting the Dockerfile/Containerfile, and the build context directory.
+
+image::podman-desktop-build-image.png[Podman Desktop Build Image, 600]
+
+== Kubernetes
+
+Fairly new to Podman Desktop is the Kubernetes section, which provides a more advanced UI for working with Kubernetes clusters. 
+
+TIP: You may need to enable the experimental Kubernetes UI  in *Settings > Kubernetes*.
+
+image::podman-desktop-kubernetes.png[Podman Desktop Kubernetes, 600]
+
+When working with Kubernetes clusters, either locally or remote, you can view details typically found via `kubectl` commands, such as the Deployments, Services, and Ingresses. Did we mention that `kubectl` is included in the Podman Desktop Settings? Let's head there now.
+
+== Settings
+
+The Settings section is where you can configure almost everything about Podman Desktop, such as the Podman Machine (CPU, Memory, etc), Kubernetes (https://minikube.sigs.k8s.io/docs/[Minikube], https://kubernetes.io/docs/reference/kubectl/[`kubectl`] CLI, https://kind.sigs.k8s.io/[Kind], https://developers.redhat.com/developer-sandbox[Developer Sandbox]), https://podman-desktop.io/blog/getting-started-with-compose[Compose], and more. 
+
+image::podman-desktop-settings.png[Podman Desktop Settings, 600]
+
+TIP: There's enterprise features, such as the ability to connect to a private registry, as well as use a proxy configuration from behind a VPN.
+
+One of Podman Desktop's biggest feature is the extensibility, thus you can view the included extensions, manage them, and also add new OCI & Docker Desktop extensions to Podman Desktop.
+
+image::podman-desktop-extensions.png[Podman Desktop Extensions, 600]
+
+Finally, you can edit preferences such as aesthetics, your `kubeconfig` file, terminal settings, and more via the Preferences section.
+
+image::podman-desktop-preferences.png[Podman Desktop Preferences, 600]
+
+NOTE: We didn't cover the Volumes section, which is fairly simple with options for creating new Volumes, collecting usage data, etc. More info can be found in the https://docs.podman.io/en/stable/volume.html[Podman documentation].
+
+== Next Steps
+
+Now that we've covered the essentials of Podman Desktop, let's start doing some hands-on exercises!

@@ -1,0 +1,37 @@
+= Introduction to Containers
+
+As https://podman-desktop.io[Podman Desktop] is an open source graphical tool for working with containers, let's quickly overview the concept of containers and their benefits.
+
+NOTE: As a developer, you've likely heard about containers and their benefits, so feel free to skip this section.
+
+== Understanding Containers
+
+Containers provide OS-level virtualization but https://www.redhat.com/en/topics/containers[package up only the application and its dependencies], not a full operating system. This results in:
+
+* Faster startup times
+* Reduced resource footprint
+* Higher portability
+
+Containers are important for building independent microservices, and fit perfectly into the https://www.redhat.com/en/topics/containers/what-is-container-orchestration[Kubernetes ecosystem for scaling and managing applications].
+
+== Container Terminology:
+
+Through this tutorial, you'll get hands on experience working with the following:
+
+[options="header"]
+|===
+|**Image**|**Container**|**Registry**
+| A read-only template containing the application, its dependencies, and basic instructions for running
+| A running instance created from an image. Containers are isolated from each other and the host system.
+| A storage and distribution service for container images (e.g., https://hub.docker.io[Docker Hub], https://quay.io/[Quay.io]).
+|===
+
+|===
+|**Container Runtime**|**Image Layers**
+| Software responsible for running containers (e.g., https://podman.io/[Podman], https://containerd.io/[containerd], https://www.docker.com/products/docker-desktop/[Docker]).
+|  Each change made to a container image creates a new layer, optimizing image storage and distribution.
+|===
+
+== Next Steps
+
+Let's proceed to the next page to learn how the Podman Desktop interface works.
