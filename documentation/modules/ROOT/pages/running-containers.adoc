@@ -63,7 +63,7 @@ image::podman-desktop-python-app-container-details.png[Podman Desktop Container 
 
 == Authenticating, Tagging, and Pushing the Image
 
-First, be sure to have an account with a free container registry, such as https://quay.io/[Quay.io] or https://hub.docker.com/[Docker Hub], where you can afterwards authenticate from Podman Desktop in *Settings > Registries* to push and share your container image.
+With the functionality looking good, let's share the image to a registry. First, be sure to have an account with a free container registry, such as https://quay.io/[Quay.io] or https://hub.docker.com/[Docker Hub], where you can afterwards authenticate from Podman Desktop in *Settings > Registries* to push and share your container image.
 
 image::podman-desktop-registries-settings.png[Podman Desktop Registries Settings, 600]
 
@@ -81,5 +81,8 @@ Finally, we can push the image to the registry by selecting the image and clicki
 
 image::podman-desktop-push-image-button.png[Podman Desktop Push, 600]
 
+NOTE: While Docker Hub will automatically make the image public, https://quay.io/[Quay.io] will require you to make the image public or share it with specific users or organizations, head to the web interface to manage the image's visibility and permissions.
+
 == Next Steps
 
+Congratulations! You've successfully built, run, and tested a multi-container application using Podman Desktop, as well as pushed the image to a https://opencontainers.org/[OCI compliant] registry. In the next step, you'll learn more about working with multi-container applications, and how to manage and deploy them in a local Kubernetes cluster.
