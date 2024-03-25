@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Welcome to the Podman Desktop Tutorial :: Podman Desktop Tutorial</title>
     <link rel="canonical" href="https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/index.html">
-    <link rel="next" href="setup.html">
+    <link rel="next" href="intro.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -51,32 +51,32 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="setup.html">Installing Podman Desktop</a>
-  </li>
-  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">I. Podman Desktop Fundamentals</span>
+    <span class="nav-text">1. Podman Desktop Fundamentals</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="intro.html">Introduction to Containers</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="setup.html">Installing Podman Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="podman-basics.html">Podman Desktop Interface &amp; Essentials</a>
   </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">2. Working with Podman Desktop</span>
+<ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="building-images.html">Exercise: Building Images in Podman Desktop</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="running-containers.html">Exercise: Running and Managing Containers</a>
   </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">II. Container Orchestration with Pods</span>
-<ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#pods.adoc">Pods: The Next Level</a>
+    <a class="nav-link" href="#pods.adoc">Exercise: Pods, The Next Level</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="#pod-networking.adoc">Networking Within Pods</a>
@@ -85,7 +85,7 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">III. Kubernetes Integration</span>
+    <span class="nav-text">3. Targeting Kubernetes</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="#kubernetes-overview.adoc">Kubernetes: Orchestration Power</a>
@@ -95,6 +95,36 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="#monitoring.adoc">Monitoring Kubernetes with Podman Desktop</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">4. Inner Loop Development</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#development-workflows.adoc">Container-Based Development Workflows</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#iteration-speed.adoc">Testing Applications in Podman Desktop</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">5. Extensions</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#kind.adoc">Running Kubernetes with Kind</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#minikube.adoc">Local Kubernetes with Minikube</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#openshift-local.adoc">OpenShift Local Development with Podman Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#docker.adoc">Using Docker with Podman Desktop</a>
   </li>
 </ul>
   </li>
@@ -141,12 +171,12 @@
 </div>
 </div>
 <div class="paragraph">
-<p>This is a guide and hands-on tutorial with three sections, where you will:</p>
+<p>This is a guide and hands-on tutorial with three sections, where you will develop and navigate from containers, to pods, and finally to Kubernetes, using Podman Desktop:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#x.adoc" class="xref unresolved">Setup and learn how to use Podman Desktop</a></p>
+<p><a href="#x.adoc" class="xref unresolved">Podman Desktop Fundamentals: Setup and learn how to use Podman Desktop</a></p>
 </li>
 <li>
 <p><a href="#x.adoc" class="xref unresolved">Build images, run containers, and create Pods</a></p>
@@ -179,6 +209,9 @@
 <p><strong>Multi-Engine Support:</strong> Manage not only containers with Podman, but <a href="https://podman-desktop.io/extend">Docker, OpenShift, and Kind environments as well</a>.</p>
 </li>
 <li>
+<p><strong>Kubernetes Development:</strong> Efficiently target Kubernetes from your local workstation with built-in Kubernetes support, as well as local Kubernetes development with <a href="https://kind.sigs.k8s.io/">Kind</a> and <a href="https://minikube.sigs.k8s.io/">Minikube</a> integrations.</p>
+</li>
+<li>
 <p><strong>Docker Compatibility:</strong> Leverage <a href="https://podman-desktop.io/blog/5-things-to-know-for-a-docker-user">familiar Docker concepts</a> and commands for easy transitions.</p>
 </li>
 </ul>
@@ -198,78 +231,8 @@
 </div>
 </div>
 </div>
-<div class="sect1 text-center strong tiles browse">
-<h2>Tutorial Steps</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><a href="setup.html" class="xref page">Installing Podman Desktop</a></p>
-</li>
-<li>
-<p>I. Podman Desktop Fundamentals</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="intro.html" class="xref page">Introduction to Containers</a></p>
-</li>
-<li>
-<p><a href="podman-basics.html" class="xref page">Podman Desktop Interface &amp; Essentials</a></p>
-</li>
-<li>
-<p><a href="building-images.html" class="xref page">Exercise: Building Images in Podman Desktop</a></p>
-</li>
-<li>
-<p><a href="running-containers.html" class="xref page">Exercise: Running and Managing Containers</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>II. Container Orchestration with Pods</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="#pods.adoc" class="xref unresolved">Pods: The Next Level</a></p>
-</li>
-<li>
-<p><a href="#pod-networking.adoc" class="xref unresolved">Networking Within Pods</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>III. Kubernetes Integration</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="#kubernetes-overview.adoc" class="xref unresolved">Kubernetes: Orchestration Power</a></p>
-</li>
-<li>
-<p><a href="#podman-kubernetes.adoc" class="xref unresolved">Podman Desktop &amp; Kubernetes Development</a></p>
-</li>
-<li>
-<p><a href="#monitoring.adoc" class="xref unresolved">Monitoring Kubernetes with Podman Desktop</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Resources</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="#resources.adoc" class="xref unresolved">Additional Resources &amp; Documentation</a></p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
 <nav class="pagination">
-  <span class="next"><a href="setup.html">Installing Podman Desktop</a></span>
+  <span class="next"><a href="intro.html">Introduction to Containers</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
