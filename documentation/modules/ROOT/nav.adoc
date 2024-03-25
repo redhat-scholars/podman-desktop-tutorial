@@ -1,19 +1,30 @@
-* xref:setup.adoc[Installing Podman Desktop]
-
-* I. Podman Desktop Fundamentals
+* 1. Podman Desktop Fundamentals
 ** xref:intro.adoc[Introduction to Containers]
+** xref:setup.adoc[Installing Podman Desktop]
 ** xref:podman-basics.adoc[Podman Desktop Interface & Essentials] 
+
+
+* 2. Working with Podman Desktop
 ** xref:building-images.adoc[Exercise: Building Images in Podman Desktop]
 ** xref:running-containers.adoc[Exercise: Running and Managing Containers]
-
-* II. Container Orchestration with Pods
-** xref:pods.adoc[Pods: The Next Level]
+** xref:pods.adoc[Exercise: Pods, The Next Level]
 ** xref:pod-networking.adoc[Networking Within Pods] 
 
-* III. Kubernetes Integration
+* 3. Targeting Kubernetes
 ** xref:kubernetes-overview.adoc[Kubernetes: Orchestration Power]
 ** xref:podman-kubernetes.adoc[Podman Desktop & Kubernetes Development]
 ** xref:monitoring.adoc[Monitoring Kubernetes with Podman Desktop]
+
+* 4. Inner Loop Development
+** xref:development-workflows.adoc[Container-Based Development Workflows]
+** xref:iteration-speed.adoc[Testing Applications in Podman Desktop]
+
+
+* 5. Extensions
+** xref:kind.adoc[Running Kubernetes with Kind]
+** xref:minikube.adoc[Local Kubernetes with Minikube]
+** xref:openshift-local.adoc[OpenShift Local Development with Podman Desktop]
+** xref:docker.adoc[Using Docker with Podman Desktop]
 
 * Resources
 ** xref:resources.adoc[Additional Resources & Documentation] 
