@@ -15,16 +15,15 @@
 ** xref:podman-kubernetes.adoc[Podman Desktop & Kubernetes Development]
 ** xref:monitoring.adoc[Monitoring Kubernetes with Podman Desktop]
 
-* 4. Inner Loop Development
-** xref:development-workflows.adoc[Container-Based Development Workflows]
-** xref:iteration-speed.adoc[Testing Applications in Podman Desktop]
-
-
-* 5. Extensions
-** xref:kind.adoc[Running Kubernetes with Kind]
-** xref:minikube.adoc[Local Kubernetes with Minikube]
-** xref:openshift-local.adoc[OpenShift Local Development with Podman Desktop]
-** xref:docker.adoc[Using Docker with Podman Desktop]
+* More Tutorials
+** Inner Loop Development
+*** xref:development-workflows.adoc[Container-Based Development Workflows]
+*** xref:iteration-speed.adoc[Testing Applications in Podman Desktop]
+** Extensions
+*** xref:kind.adoc[Running Kubernetes with Kind]
+*** xref:minikube.adoc[Local Kubernetes with Minikube]
+*** xref:openshift-local.adoc[OpenShift Local Development with Podman Desktop]
+*** xref:docker.adoc[Using Docker with Podman Desktop]
 
 * Resources
 ** xref:resources.adoc[Additional Resources & Documentation] 

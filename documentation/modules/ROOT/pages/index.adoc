@@ -6,11 +6,11 @@ Explore the features and benefits of https://podman-desktop.io[Podman Desktop] f
 
 image::podman-desktop-feature.png[Podman Desktop Feature Image, 600]
 
-This is a guide and hands-on tutorial with three sections, where you will develop and navigate from containers, to pods, and finally to Kubernetes, using Podman Desktop:
+This is a guide and hands-on tutorial with three main sections, where you will develop and navigate from containers, to pods, and finally to Kubernetes, using Podman Desktop:
 
-* xref:x.adoc[Podman Desktop Fundamentals: Setup and learn how to use Podman Desktop]
-* xref:x.adoc[Build images, run containers, and create Pods]
-* xref:x.adoc[Setup and deploy to a local & remote Kubernetes environment]
+* xref:intro.adoc[Podman Desktop Fundamentals: Setup and learn how to use Podman Desktop]
+* xref:building-images.adoc[Working with Podman Desktop: Build images, run containers, and create Pods]
+* xref:x.adoc[Targeting Kubernetes: Setup and deploy to a local & remote Kubernetes environment]
 
 Before we begin, also feel free to check out the accompanying slide deck for a quick overview of Podman & Podman Desktop: https://red.ht/podman-desktop-slides[Simplifying containers and Kubernetes on your laptop with Podman Desktop].
 
