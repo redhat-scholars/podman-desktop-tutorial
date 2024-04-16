@@ -5,3 +5,10 @@ nav:
   - modules/ROOT/nav.adoc
 
 start_page: ROOT:index.adoc
+
+asciidoc:
+  attributes:
+    experimental: true
+    icons: font
+    page-pagination: true
+    lab_name: Podman Desktop Tutorial

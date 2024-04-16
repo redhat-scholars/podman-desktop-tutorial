@@ -6,6 +6,7 @@ audit.log
 
 docs/
 gh-pages/
+www/
 dependency-reduced-pom.xml
 svm.jar
 
