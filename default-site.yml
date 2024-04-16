@@ -1,7 +1,6 @@
 ---
 site:
-  title: Showroom Template Demo
-  url: https://redhat-scholars.github.io/course-template
+  title: Podman Desktop Tutorial
   start_page: modules::index.adoc
 
 content:
