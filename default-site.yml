@@ -1,7 +1,7 @@
 ---
 site:
   title: Podman Desktop Tutorial
-  start_page: modules::index.adoc
+  start_page: podman-desktop-tutorial::index.adoc
 
 content:
   sources:
