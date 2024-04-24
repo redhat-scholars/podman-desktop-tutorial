@@ -220,7 +220,7 @@ There&#8217;s settings for the container&#8217;s volumes, environment variables,
 </div>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s view some of the details from this container, as we&#8217;ll need to find the internal IP address for Redis to configure our Python web server as a hostname. Head to the <strong>Inspect</strong> tab and <strong>Ctrl-F</strong> to search for <code>IPAddress</code>, which will be under the <code>NetworkSettings</code> section and will look something like this:</p>
+<p>In order to connect these two containers, we need to docker some networking. Let&#8217;s view some of the details from this container, as we&#8217;ll need to find the internal IP address for Redis to configure our Python web server as a hostname. Head to the <strong>Inspect</strong> tab and <strong>Ctrl-F</strong> to search for <code>IPAddress</code>, which will be under the <code>NetworkSettings</code> section and will look something like this:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -229,7 +229,7 @@ There&#8217;s settings for the container&#8217;s volumes, environment variables,
 </div>
 <div class="listingblock console-output">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">"IPAddress": "10.88.0.7"</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">"IPAddress": "10.88.0.3"</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -286,7 +286,7 @@ This will allow the Python web server to connect to the Redis cache using the lo
 <h2 id="_testing_the_multi_container_application"><a class="anchor" href="#_testing_the_multi_container_application"></a>Testing the multi-container application</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>With the Python container started, let&#8217;s test the basic functionality by selecting the <strong>Open Browser</strong> button from the top right corner menu. This will open a new browser window with the Python web server&#8217;s IP address and port, such as <code><a href="http://localhost:8080/" class="bare">http://localhost:8080/</a></code>.</p>
+<p>With the Python container started, let&#8217;s test the basic functionality by selecting the <strong>Open Browser</strong> button from the top right corner menu. This will open a new browser window with the Python web server&#8217;s IP address and port, such as <code><a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a></code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">

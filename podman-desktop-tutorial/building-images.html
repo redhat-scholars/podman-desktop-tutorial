@@ -371,7 +371,7 @@ The build context is the directory where the source code and Dockerfile are loca
 </div>
 </div>
 <div class="paragraph">
-<p>Once the build is complete, you should see the new <code>python-app</code> image in the <strong>Images</strong> section of Podman Desktop. You&#8217;ll see the default image <a href="https://www.redhat.com/sysadmin/container-image-short-names">short name</a> here, which we&#8217;ll retag for our registry in another step.</p>
+<p>Once the build is complete, you should see the new <code>python-app</code> image in the <strong>Images</strong> section of Podman Desktop. You&#8217;ll see the default image <a href="https://www.redhat.com/sysadmin/container-image-short-names">short name</a> here, which we&#8217;ll retag for our registry in the next section.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -431,6 +431,18 @@ Due to it&#8217;s popularity, Podman uses the Docker Hub registry to pull images
 <div class="content">
 <img src="_images/podman-desktop-redis-image-layers.png" alt="Podman Desktop Redis Image" width="600">
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The Containerfile used to build the Redis image is available in the <code>podman-desktop-demo/primary-podify-demo/back</code> directory, but can also be found here. <a href="https://github.com/redhat-developer/podman-desktop-demo/blob/main/primary-podify-demo/backend/Dockerfile" target="_blank" rel="noopener">here</a>.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
