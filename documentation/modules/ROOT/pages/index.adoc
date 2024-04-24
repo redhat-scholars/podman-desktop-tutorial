@@ -1,8 +1,8 @@
-= Welcome to the Podman Desktop Tutorial
+= Welcome to the Podman Desktop Workshop
 :page-layout: home
 :!sectids:
 
-Welcome to the *Podman Desktop* workshop. We're glad to have you here with us at https://www.redhat.com/en/summit[*Red Hat Summit*] 2024! Today, we'll explore the features and benefits of https://podman-desktop.io[Podman Desktop] for streamlining your container workflows. Build, manage, and even deploy to local/remote Kubernetes environments – all from your desktop.
+Welcome to the https://www.redhat.com/en/summit[Red Hat Summit] workshop where you'll *Learn how to elevate your container development work with Podman Desktop*. We're glad to have you here with us! Today, we'll explore the features and benefits of https://podman-desktop.io[Podman Desktop] for streamlining your container workflows. Build, manage, and even deploy to local/remote Kubernetes environments – all from your desktop.
 
 image::podman-desktop-feature.png[Podman Desktop Feature Image, 700]
 

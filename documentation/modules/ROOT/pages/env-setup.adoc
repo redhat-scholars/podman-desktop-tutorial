@@ -1,0 +1,45 @@
+= Taking a Look at the Workshop Environment
+
+Again, welcome to the Podman Desktop workshop! Uou'll learn how to use link:https://podman-desktop.io[Podman Desktop] to build, run, and manage containers on your local machine. Podman Desktop provides a user-friendly graphical interface for working with link:https://podman.io/[Podman], a powerful container engine that is compatible with Docker. The workshop environment is a virtual machine that has been pre-configured with Podman Desktop and all the tools you need to complete the lab exercises.
+
+== Accessing the Lab Environment
+
+To access the lab environment, you'll need to connect to the virtual machine using a web-based desktop environment. The virtual machine is running in the cloud and is accessible via a web browser. To connect to the virtual machine, first access the noVNC link from the workshop landing page:
+
+image::podman-desktop-novnc-access.png[noVNC Access]
+
+Click the noVNC link to open the web-based desktop environment in a new browser tab. You'll see a login screen where you can enter the username and password provided by the landing page. After logging in, you'll see the desktop environment, which includes a GNOME desktop environment on RHEL 9, including Podman Desktop, Firefox, and VSCode. Everything a developer needs!
+
+image::podman-desktop-desktop-environment.png[Desktop Environment]
+
+## Using the Desktop
+
+The desktop environment is similar to what you might find on a typical Linux desktop. You can use the mouse and keyboard to interact with the desktop, open applications, and access the terminal. First, select *Activities* from the top-left corner of the screen to view the applications menu:
+
+image::podman-desktop-activities-menu.png[Activities Menu]
+
+From the applications menu, you can select the last icon to open Podman Desktop, launch Firefox, or access VSCode.
+
+image::podman-desktop-applications-menu.png[Applications Menu]
+
+On the left-hand menu, you'll be able to pull out the noVNC menu, which provides access to the following options:
+
+* **Extra Keys**: Provides access to additional keys that may not be available on your keyboard.
+* **Clipboard**: Allows you to copy and paste text between the virtual machine and your local machine.
+* **Full Screen**: Expands the noVNC session to full screen.
+* **Settings**: Provides access to additional settings for the virtual machine.
+* **Disconnect**: Disconnects the noVNC session.
+
+image::podman-desktop-novnc-menu.png[noVNC Menu]
+
+## Onboarding with Podman Desktop
+
+For now, let's open up Podman Desktop and take a look at the interface, where you should be greeted with a welcome screen:
+
+image::podman-desktop-interface-rhel.png[Terminal Window]
+
+// Cedric fill this in later
+
+## Next Steps
+
+Now that you're familiar with the workshop environment, you're ready to start working with Podman Desktop.
