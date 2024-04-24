@@ -212,11 +212,16 @@ Feel free skip and simply <a href="#pulling.adoc">pull the container images</a> 
 </div>
 </div>
 <div class="paragraph">
-<p>I&#8217;ve cloned the repository to my local machine using <a href="https://desktop.github.com/">GitHub Desktop</a>, but feel free to use the CLI as well:</p>
+<p>I&#8217;ve cloned the repository to my local machine using <a href="https://desktop.github.com/">GitHub Desktop</a>, but today let&#8217;s use the command line to clone the repository. Open up the terminal, and use the noNVC menu to copy these next two commands to your clipboard, and paste/execute them.</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git clone <a href="https://github.com/redhat-developer/podman-desktop-demo" class="bare">https://github.com/redhat-developer/podman-desktop-demo</a></code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-demo-cloned.png" alt="Podman Desktop Demo Cloned" width="600">
 </div>
 </div>
 <div class="paragraph">
@@ -376,11 +381,11 @@ The build context is the directory where the source code and Dockerfile are loca
 <div class="sect2">
 <h3 id="pulling"><a class="anchor" href="#pulling"></a>Optional: Pulling the Python App Image</h3>
 <div class="paragraph">
-<p>If you&#8217;d like to skip the build process from above, you can pull the <code>quay.io/cclyburn/python-app</code> image from a public registry. This is the same image we just built, but it&#8217;s already available for use. Head to the <strong>Images</strong> section, and click the <strong>Pull</strong> button in the top right corner.</p>
+<p>If you&#8217;d like to skip the build process from above, you can pull the <code>quay.io/podman-desktop-demo/podify-demo-frontend:v1</code> image from a public registry. This is the same image we just built, but it&#8217;s already available for use. Head to the <strong>Images</strong> section, and click the <strong>Pull</strong> button in the top right corner.</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quay.io/cclyburn/python-app</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quay.io/podman-desktop-demo/podify-demo-frontend:v1</code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -415,11 +420,11 @@ Due to it&#8217;s popularity, Podman uses the Docker Hub registry to pull images
 </div>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s go ahead and pull the Redis image from Docker Hub by clicking the <strong>Pull</strong> button from the top right corner menu. We&#8217;ll be pulling the official <code>redis</code> image, which is a popular choice for caching in containerized applications.</p>
+<p>Let&#8217;s go ahead and pull a pre-build Redis image from Quay.io by clicking the <strong>Pull</strong> button from the top right corner menu. We&#8217;ll be pulling an image of redis that has been build with the Red Hat UBI, with redis installed on top, which is a popular choice for caching in containerized applications.</p>
 </div>
 <div class="listingblock console-input][ console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">redis</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quay.io/podman-desktop-demo/podify-demo-backend:v1</code></pre>
 </div>
 </div>
 <div class="imageblock">
