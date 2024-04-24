@@ -49,7 +49,7 @@ NOTE: This will allow the Python web server to connect to the Redis cache using 
 
 == Testing the multi-container application
 
-With the Python container started, let's test the basic functionality by selecting the *Open Browser* button from the top right corner menu. This will open a new browser window with the Python web server's IP address and port, such as `http://localhost:8080/[http://localhost:8080/, window="_blank"]`.
+With the Python container started, let's test the basic functionality by selecting the *Open Browser* button from the top right corner menu. This will open a new browser window with the Python web server's IP address and port, such as `http://localhost:5000/[http://localhost:5000/, window="_blank"]`.
 
 image::podman-desktop-open-browser-button.png[Podman Desktop Open Browser, 600]
 
@@ -61,7 +61,7 @@ Back in the *Container Details* page for the Python web server container, we see
 
 image::podman-desktop-python-app-container-details.png[Podman Desktop Container Details, 600]
 
-== Authenticating, Tagging, and Pushing the Image
+== Optional: Tagging and Pushing the Image
 
 With the functionality looking good, let's share the image to a registry. First, be sure to have an account with a free container registry, such as https://quay.io/[Quay.io] or https://hub.docker.com/[Docker Hub], where you can afterwards authenticate from Podman Desktop in *Settings > Registries* to push and share your container image.
 
