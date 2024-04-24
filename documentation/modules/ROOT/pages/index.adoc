@@ -2,9 +2,9 @@
 :page-layout: home
 :!sectids:
 
-Explore the features and benefits of https://podman-desktop.io[Podman Desktop] for streamlining your container workflows. Build, manage, and even deploy to local/remote Kubernetes environments – all from your desktop.
+Welcome to the *Podman Desktop* workshop. We're glad to have you here with us at https://www.redhat.com/en/summit[*Red Hat Summit*] 2024! Today, we'll explore the features and benefits of https://podman-desktop.io[Podman Desktop] for streamlining your container workflows. Build, manage, and even deploy to local/remote Kubernetes environments – all from your desktop.
 
-image::podman-desktop-feature.png[Podman Desktop Feature Image, 600]
+image::podman-desktop-feature.png[Podman Desktop Feature Image, 700]
 
 This is a guide and hands-on tutorial with three main sections, where you will develop and navigate from containers, to pods, and finally to Kubernetes, using Podman Desktop:
 
@@ -31,6 +31,10 @@ Podman Desktop is a powerful open-source tool designed to simplify container man
 Podman Desktop focuses on the issue of the https://s3.us-east-2.amazonaws.com/d2iq.com/resources/report/kubernetes-in-the-enterprise-survey.pdf[complexity between local development and production environments]. It provides a consistent and secure environment for building, managing, and deploying containers, pods, and Kubernetes-like environments. With extensions for https://minikube.sigs.k8s.io/docs/[Minikube], https://kind.sigs.k8s.io/[Kind], https://developers.redhat.com/products/openshift-local/overview[OpenShift Local], and more, Podman Desktop is a powerful tool for developers and operators alike!
 
 image::podman-desktop-pod-deploy.png[Podman Desktop Logo, 600]
+
+## Next Steps
+
+Ready to get started with the workshop? Let's begin, firstly, exploring the Linux environment you'll be using today with Podman Desktop.
 
 [.text-center.strong]
 
