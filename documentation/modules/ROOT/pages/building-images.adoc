@@ -80,7 +80,7 @@ After clicking *Build*, Podman Desktop will start building the container image, 
 
 image::podman-desktop-build-image-logs.png[Podman Desktop Build Image Logs, 600]
 
-Once the build is complete, you should see the new `python-app` image in the *Images* section of Podman Desktop. You'll see the default image https://www.redhat.com/sysadmin/container-image-short-names[short name] here, which we'll retag for our registry in another step.
+Once the build is complete, you should see the new `python-app` image in the *Images* section of Podman Desktop. You'll see the default image https://www.redhat.com/sysadmin/container-image-short-names[short name] here, which we'll retag for our registry in the next section.
 
 image::podman-desktop-built-image.png[Podman Desktop Built Image, 600]
 
@@ -115,6 +115,8 @@ quay.io/podman-desktop-demo/podify-demo-backend:v1
 ----
 
 image::podman-desktop-redis-image-layers.png[Podman Desktop Redis Image, 600]
+
+TIP: The Containerfile used to build the Redis image is available in the `podman-desktop-demo/primary-podify-demo/back` directory, but can also be found here. https://github.com/redhat-developer/podman-desktop-demo/blob/main/primary-podify-demo/backend/Dockerfile[here, window="_blank"].
 
 == Next Steps
 
