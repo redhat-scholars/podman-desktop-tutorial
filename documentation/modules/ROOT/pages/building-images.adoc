@@ -3,7 +3,7 @@ include::_attributes.adoc[]
 
 Fantastic, let's start the Podman Desktop tutorial with the most basic step in the inner loop development process: *building container images*. We'll also cover authenticating to registries amd pulling images.
 
-TIP: Feel free to down if you'd just like to xref:building-images.adoc#pulling.adoc[pull the container images], without downloading the application source code.
+TIP: Feel free skip and simply xref:building-images.adoc#pulling.adoc[pull the container images] without downloading the application source code.
 
 == Demo Application
 
@@ -26,6 +26,12 @@ git clone https://github.com/redhat-developer/podman-desktop-demo
 ----
 
 Now, let's open up the project in our IDE and take a look at the source code of the demo application, found in the `podman-desktop-demo/primary-podify-demo/front` directory.
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+cd podman-desktop-demo/primary-podify-demo/front && code .
+----
 
 image::podman-desktop-demo-source-code.png[Podman Desktop Demo Source Code, 600]
 
@@ -78,7 +84,7 @@ image::podman-desktop-built-image.png[Podman Desktop Built Image, 600]
 
 
 [#pulling]
-== Optional: Pulling the Python App Image
+=== Optional: Pulling the Python App Image
 
 If you'd like to skip the build process from above, you can pull the `quay.io/cclyburn/python-app` image from a public registry. This is the same image we just built, but it's already available for use. Head to the *Images* section, and click the *Pull* button in the top right corner.
 

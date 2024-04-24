@@ -1,10 +1,10 @@
 = Taking a Look at the Workshop Environment
 
-Again, welcome to the Podman Desktop workshop! Uou'll learn how to use link:https://podman-desktop.io[Podman Desktop] to build, run, and manage containers on your local machine. Podman Desktop provides a user-friendly graphical interface for working with link:https://podman.io/[Podman], a powerful container engine that is compatible with Docker. The workshop environment is a virtual machine that has been pre-configured with Podman Desktop and all the tools you need to complete the lab exercises.
+Again, welcome to the Podman Desktop workshop! Uou'll learn how to use link:https://podman-desktop.io[Podman Desktop] to build, run, and manage containers on your local machine. Podman Desktop provides a user-friendly graphical interface for working with link:https://podman.io/[Podman], a powerful container engine that is compatible with Docker. The workshop environment is a virtual machine that has been pre-configured with Podman Desktop and all the tools you need to complete the exercises.
 
-== Accessing the Lab Environment
+== Accessing the Workshop Environment
 
-To access the lab environment, you'll need to connect to the virtual machine using a web-based desktop environment. The virtual machine is running in the cloud and is accessible via a web browser. To connect to the virtual machine, first access the noVNC link from the workshop landing page:
+To access the workshop environment, you'll need to connect to the virtual machine using a web-based desktop environment. The virtual machine is running in the cloud and is accessible via a web browser. To connect to the virtual machine, first access the noVNC link from the workshop landing page:
 
 image::podman-desktop-novnc-access.png[noVNC Access]
 
@@ -34,11 +34,23 @@ image::podman-desktop-novnc-menu.png[noVNC Menu]
 
 ## Onboarding with Podman Desktop
 
-For now, let's open up Podman Desktop and take a look at the interface, where you should be greeted with a welcome screen:
+For now, let's open up Podman Desktop and take a look at the interface, where you should be greeted with a welcome screen, were you can select *Start onboarding* to get started.
 
 image::podman-desktop-interface-rhel.png[Terminal Window]
 
-// Cedric fill this in later
+The onboarding process will guide you through the steps to get started with Podman Desktop, including:
+
+* **Compose**: Create and manage multi-container applications using Compose specification.
+* **`kubectl`**: Connect to a Kubernetes cluster and manage resources using the Kubernetes CLI.
+* **Podman**: Setup and keep the Podman engine up-to-date.
+
+TIP: You will be requested to enter the Administrator password for some parts of the onboarding, which is the same as your login for the virtual machine. Simply pull out the noVNC menu, select *Clipboard*, and copy the password to paste it into the pop up.
+
+image::podman-desktop-onboarding-password.png[Podman Desktop Onboarding]
+
+After completing the onboarding process, you'll be ready to start working with Podman Desktop.
+
+image::podman-desktop-interface-ready.png[Podman Desktop Interface]
 
 ## Next Steps
 

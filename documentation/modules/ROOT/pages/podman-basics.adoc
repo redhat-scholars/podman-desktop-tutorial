@@ -11,6 +11,8 @@ image::podman-desktop-overview.png[Podman Desktop Overview, 600]
 
 In addition, you can view the status of other featured extensions, such as https://developers.redhat.com/products/openshift-local/overview[OpenShift Local], https://www.docker.com/products/docker-desktop/[Docker], https://kind.sigs.k8s.io/[Kind], https://minikube.sigs.k8s.io/docs/[Minikube], https://developers.redhat.com/developer-sandbox[Developer Sandbox], and https://lima-vm.io/[Lima]. Each of these extensions can be crutial to the development of your applications and workflow.
 
+NOTE: Because of the workshop environment, not all of these entensions may be available, but feel free to try them on your own machine afterwards!
+
 == Containers
 
 The Containers section is where you can view, manage, and create containers. You can easily start, stop, and remove containers, as well as view logs and inspect the container details.
