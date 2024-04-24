@@ -17,13 +17,15 @@ Let's start off with downloading the source code for the demo application, found
 
 image::podman-desktop-demo-repo.png[Podman Desktop Demo Repo, 600]
 
-I've cloned the repository to my local machine using https://desktop.github.com/[GitHub Desktop], but feel free to use the CLI as well:
+I've cloned the repository to my local machine using https://desktop.github.com/[GitHub Desktop], but today let's use the command line to clone the repository. Open up the terminal, and use the noNVC menu to copy these next two commands to your clipboard, and paste/execute them.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
 git clone https://github.com/redhat-developer/podman-desktop-demo
 ----
+
+image::podman-desktop-demo-cloned.png[Podman Desktop Demo Cloned, 600]
 
 Now, let's open up the project in our IDE and take a look at the source code of the demo application, found in the `podman-desktop-demo/primary-podify-demo/front` directory.
 
@@ -86,12 +88,12 @@ image::podman-desktop-built-image.png[Podman Desktop Built Image, 600]
 [#pulling]
 === Optional: Pulling the Python App Image
 
-If you'd like to skip the build process from above, you can pull the `quay.io/cclyburn/python-app` image from a public registry. This is the same image we just built, but it's already available for use. Head to the *Images* section, and click the *Pull* button in the top right corner.
+If you'd like to skip the build process from above, you can pull the `quay.io/podman-desktop-demo/podify-demo-frontend:v1` image from a public registry. This is the same image we just built, but it's already available for use. Head to the *Images* section, and click the *Pull* button in the top right corner.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
-quay.io/cclyburn/python-app
+quay.io/podman-desktop-demo/podify-demo-frontend:v1
 ----
 
 image::podman-desktop-built-image-layers.png[Podman Desktop Built Image, 600]
@@ -104,12 +106,12 @@ As you may have seen from the Python web application source code, we're using a 
 
 image::podman-desktop-redis-image-start.png[Podman Desktop Redis Image, 600]
 
-Let's go ahead and pull the Redis image from Docker Hub by clicking the *Pull* button from the top right corner menu. We'll be pulling the official `redis` image, which is a popular choice for caching in containerized applications.
+Let's go ahead and pull a pre-build Redis image from Quay.io by clicking the *Pull* button from the top right corner menu. We'll be pulling an image of redis that has been build with the Red Hat UBI, with redis installed on top, which is a popular choice for caching in containerized applications.
 
 [.console-input][.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
-redis
+quay.io/podman-desktop-demo/podify-demo-backend:v1
 ----
 
 image::podman-desktop-redis-image-layers.png[Podman Desktop Redis Image, 600]

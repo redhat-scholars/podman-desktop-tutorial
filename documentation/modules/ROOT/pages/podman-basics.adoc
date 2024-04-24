@@ -53,9 +53,9 @@ image::podman-desktop-build-image.png[Podman Desktop Build Image, 600]
 
 == Kubernetes
 
-Fairly new to Podman Desktop is the Kubernetes section, which provides a more advanced UI for working with Kubernetes clusters. 
+Fairly new to Podman Desktop is the Kubernetes section, which provides a more advanced UI for working with Kubernetes clusters. We won't be taking a look at it in this workshop, but there are several other sessions and lightning talks about it at Summit!
 
-TIP: You may need to enable the experimental Kubernetes UI  in *Settings > Kubernetes*.
+TIP: On Linux, there isn't yet support for this feature, but soon! On older versions of Podman Desktop, you may need to enable the experimental Kubernetes UI  in *Settings > Kubernetes*.
 
 image::podman-desktop-kubernetes.png[Podman Desktop Kubernetes, 600]
 
