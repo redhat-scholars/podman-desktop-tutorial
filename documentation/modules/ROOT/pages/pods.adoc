@@ -1,0 +1,54 @@
+= Exercise: Working with Pods
+include::_attributes.adoc[]
+
+In the previous step, we successfully built, ran, and tested a multi-container application using Podman Desktop. While running containers individually suffices for development and testing, production environments sometimes benefit from grouping related containers into a cohesive unit called a "pod". Podman Desktop streamlines the process of creating a pod from existing containers, offering a seamless transition from development to Kubernetes, where Pods are the most basic deployable units.
+
+== A Bit about Pods
+
+https://developers.redhat.com/blog/2019/01/15/podman-managing-containers-pods[Pods] are a fundamental concept in container orchestration systems like Kubernetes and OpenShift. They provide an abstraction layer that encapsulates one or more containers, treating them as a single entity.
+
+image::podman-pod-architecture.png[Podman Desktop Overview, 600]
+
+Pods offer several key advantages over running containers individually, including:
+
+1. *Simplified management and scalability*: Pods allow you to manage related containers as a single entity, simplifying deployment, scaling, and monitoring processes. By grouping containers that need to work together, you can easily scale your application by adding or removing pod replicas. However, pods are designed to be the smallest deployable unit, and you should avoid running unrelated containers within the same pod.
+
+2. *Efficient resource sharing*: Containers within a pod share the same network namespace, enabling them to communicate with each other using `localhost`. This eliminates the need for complex networking configurations and allows for efficient inter-container communication. Additionally, pods can share volumes, ensuring data persistence and enabling containers to access the same data simultaneously.
+
+3. *Enhanced security and isolation*: Pods provide a level of isolation and security by default. Each pod has its own unique IP address and can define its own network policies, limiting access to and from other pods. Moreover, resource limits and security policies can be applied at the pod level, ensuring better control over the containers' runtime environment.
+
+## Creating Pods from Podman Desktop
+
+Podman Desktop's _Podify_ feature takes advantage of these pod benefits by simplifying the process of creating a pod from existing containers. Let's walk through the steps to create a pod from the Python web server and Redis containers.
+
+In the *Containers* section of Podman Desktop, select both the `python-app` and `redis` containers using the checkboxes. Now, click on the *Podify* button from the top right corner menu to initiate the pod creation process.
+
+image::podman-desktop-podify-button.png[Podman Desktop Podify, 600]
+
+A new window will appear, allowing you to configure basic pod parameters. Provide a meaningful name for the pod, such as `summit-pod`. Once satisfied, click the *Create Pod* button.
+
+image::podman-desktop-podify-window.png[Podman Desktop Podify, 600]
+
+TIP: You'll notice that here, you only have the option to expose the port of the Python web server container. Due to the pod's internal networking, it's not necessary to expose the Redis port externally for this application, as they can communicate using `localhost`.
+
+3. Podman Desktop will now stop the existing containers and create a new pod that encapsulates the selected containers. To view the pod's details and manage its lifecycle, navigate to the *Pods* section in the Podman Desktop interface.
+
+image::podman-desktop-pods-created.png[Podman Desktop Pods, 600]
+
+Once selected, you can view the individual container logs within the pod, it's Kubernetes manifest, view the application's exposed port in the browser, or directly deploy it to a local or remote Kubernetes cluster.
+
+image::podman-desktop-pod-details-deploy.png[Podman Desktop Pod Details, 600]
+
+////
+== Preparing for Production Deployments
+
+With the pod created using Podman Desktop's "Podify" feature, you're now well-positioned to deploy your application to a production environment. The next step is to explore how to deploy this pod to a local Kubernetes cluster and leverage advanced features of Podman Desktop for containerized application management.
+
+Podman Desktop seamlessly integrates with Kubernetes and OpenShift, allowing you to deploy pods and manage them within a robust container orchestration framework. You can take advantage of features such as automatic scaling, load balancing, rolling updates, and self-healing to ensure the reliability and scalability of your application.
+
+By mastering the "Podify" feature and understanding the power of pods, you'll be equipped with the knowledge and tools to build, test, and deploy containerized applications effectively. Embrace the benefits of pod-based deployments and unlock the full potential of Podman Desktop in your development workflow.
+////
+
+== Next Steps
+
+Congratulations! You've gained an understanding of Podman Desktop's "Podify" feature and its role in creating efficient and manageable pods. In the next step, we'll dive into deploying this pod to a Kubernetes cluster and explore advanced features of Podman Desktop that empower you to streamline your containerized application development process.

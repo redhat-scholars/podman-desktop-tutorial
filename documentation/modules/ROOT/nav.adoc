@@ -8,13 +8,11 @@
 * Working with Podman Desktop
 ** xref:building-images.adoc[Exercise: Building Images in Podman Desktop]
 ** xref:running-containers.adoc[Exercise: Running and Managing Containers]
-** xref:pods.adoc[Exercise: Pods, The Next Level]
-** xref:pod-networking.adoc[Networking Within Pods] 
+** xref:pods.adoc[Exercise: Working with Pods] 
 
 * Targeting Kubernetes
 ** xref:kubernetes-overview.adoc[Kubernetes: Orchestration Power]
-** xref:podman-kubernetes.adoc[Podman Desktop & Kubernetes Development]
-** xref:monitoring.adoc[Monitoring Kubernetes with Podman Desktop]
+** xref:kubernetes.adoc[Deploying to Kubernetes]
 
 * More Tutorials
 ** Inner Loop Development
