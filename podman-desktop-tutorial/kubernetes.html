@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Podman Desktop Setup :: Podman Desktop Tutorial</title>
-    <link rel="canonical" href="https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/setup.html">
+    <title>Untitled :: Podman Desktop Tutorial</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/kubernetes.html">
+    <link rel="prev" href="kubernetes-overview.html">
+    <link rel="next" href="#development-workflows.adoc">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -86,7 +88,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="kubernetes-overview.html">Kubernetes Overview</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="kubernetes.html">Deploying to Kubernetes</a>
   </li>
 </ul>
@@ -151,91 +153,19 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Podman Desktop Tutorial</a></li>
-    <li><a href="setup.html">Podman Desktop Setup</a></li>
+    <li>Targeting Kubernetes</li>
+    <li><a href="kubernetes.html">Deploying to Kubernetes</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/podman-desktop-tutorial/edit/master/documentation/modules/ROOT/pages/setup.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/podman-desktop-tutorial/edit/master/documentation/modules/ROOT/pages/kubernetes.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Podman Desktop Setup</h1>
-<div class="sect1">
-<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>Introduction</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>While containers are linux, Podman Desktop is designed to run on macOS and Windows thanks to the <a href="https://docs.podman.io/en/stable/markdown/podman-machine.1.html">podman-machine</a>. It creates a virtual machine running a minimal Linux distribution to run the containers, and Podman Desktop takes care of the setup for you.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_installing_podman_desktop"><a class="anchor" href="#_installing_podman_desktop"></a>Installing Podman Desktop</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Visit the official <a href="https://podman-desktop.io/downloads">Podman Desktop download page</a> to get the right installer for your operating system:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"><strong>macOS</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Windows</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Linux</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://podman-desktop.io/downloads/macos/" target="_blank" rel="noopener">Podman Desktop for Mac</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://podman-desktop.io/downloads/windows" target="_blank" rel="noopener">Podman Desktop for Windows</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://podman-desktop.io/downloads/linux" target="_blank" rel="noopener">Podman Desktop for Linux</a></p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Run the Installer:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>macOS:</strong> Double-click the downloaded .dmg file and follow the on-screen instructions.</p>
-</li>
-<li>
-<p><strong>Windows:</strong> Double-click the downloaded .exe file and follow the installer wizard. The guide will walk you through enabling WSL2 if needed.</p>
-</li>
-<li>
-<p><strong>Linux:</strong> Follow the flatpak instructions for your specific distribution.</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/podman-desktop-overview.png" alt="Podman Desktop Overview" width="600">
-</div>
-</div>
-<div class="sect2">
-<h3 id="_installing_podman_cli"><a class="anchor" href="#_installing_podman_cli"></a>Installing Podman CLI</h3>
-<div class="paragraph">
-<p>Looking to install the Podman CLI itself? Check out the official Podman page to download the right installer: <a href="https://podman.io/" target="_blank" rel="noopener">podman.io</a></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/podman-cli.png" alt="Podman CLI" width="600">
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_ready_to_go"><a class="anchor" href="#_ready_to_go"></a>Ready to Go!</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Proceed to the next section to begin your Podman Desktop journey.</p>
-</div>
-</div>
-</div>
+
+<nav class="pagination">
+  <span class="prev"><a href="kubernetes-overview.html">Kubernetes Overview</a></span>
+  <span class="next"><a href="#development-workflows.adoc">Container-Based Development Workflows</a></span>
+</nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
