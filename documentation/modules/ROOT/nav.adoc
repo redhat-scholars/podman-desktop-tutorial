@@ -27,4 +27,4 @@
 ////
 
 * Resources
-** xref:resources.adoc[Additional Resources & Documentation] 
+** xref:resources.adoc[Conclusion & Resources] 
