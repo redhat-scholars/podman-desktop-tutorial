@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: Podman Desktop Tutorial</title>
+    <title>Deploying Pods to Kubernetes :: Podman Desktop Tutorial</title>
     <link rel="canonical" href="https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/kubernetes-deploying.html">
     <link rel="prev" href="kubernetes.html">
-    <link rel="next" href="#development-workflows.adoc">
+    <link rel="next" href="resources.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -93,48 +93,16 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">More Tutorials</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">Inner Loop Development</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="#development-workflows.adoc">Container-Based Development Workflows</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="#iteration-speed.adoc">Testing Applications in Podman Desktop</a>
-  </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="2">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">Extensions</span>
+  <li class="nav-item" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="#kind.adoc">Running Kubernetes with Kind</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="#minikube.adoc">Local Kubernetes with Minikube</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="#openshift-local.adoc">OpenShift Local Development with Podman Desktop</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="#docker.adoc">Using Docker with Podman Desktop</a>
-  </li>
-</ul>
-  </li>
-</ul>
-  </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Resources</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#resources.adoc">Additional Resources &amp; Documentation</a>
+    <a class="nav-link" href="resources.html">Additional Resources &amp; Documentation</a>
   </li>
 </ul>
   </li>
@@ -161,35 +129,123 @@
   </div>
   <div class="content">
 <article class="doc">
+<h1 class="page">Deploying Pods to Kubernetes</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>Deploying Pods to Kubernetes
-With the local Kubernetes cluster running, you can easily deploy pods created using Podman Desktop’s "Podify" feature to Kubernetes. Podman Desktop provides intuitive options to generate Kubernetes manifests and deploy pods to the cluster.</p>
+<p>With the new connection to our Developer Sandbox cluster, you can easily deploy pods and containers directly from Podman Desktop to Kubernetes. Podman Desktop provides intuitive options to generate Kubernetes manifests and deploy pods to the cluster.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_deploying_a_pod_to_kubernetes"><a class="anchor" href="#_deploying_a_pod_to_kubernetes"></a>Deploying a Pod to Kubernetes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let&#8217;s begin by deploying the Flask &amp; Redis container pod to the Developer Sandbox. In the <strong>Pods</strong> section of Podman Desktop, select the <code>summit-pod</code> you created earlier. Click on the <strong>Deploy to Kubernetes</strong> button from the top right corner menu.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-deploy-to-kubernetes-button.png" alt="Podman Desktop Deploy to Kubernetes" width="600">
+</div>
 </div>
 <div class="paragraph">
-<p>To deploy a pod to Kubernetes:</p>
+<p>Podman Desktop will generate the necessary Kubernetes manifests for the pod and its associated resources. Review the generated manifests and make any necessary adjustments, which for us will include <strong>Creating OpenShift routes</strong> to access our exposted ports. Now, hit the <strong>Deploy</strong> button to deploy the pod to the selected Kubernetes cluster.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-deploy-to-kubernetes-manifests.png" alt="Podman Desktop Deploy to Kubernetes Manifests" width="600">
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can specify the Kubernetes context where you want to deploy the pod by selecting the desired context from the dropdown menu in the top left corner.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>In the Pods section of Podman Desktop, select the pod you want to deploy.</p>
+<p>Podman Desktop will communicate with the Kubernetes API server and create the required resources in the cluster. You can monitor the deployment status, and when ready, access the deployed application using the provided URL.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-kubernetes-pod-details.png" alt="Podman Desktop Kubernetes Pod Details" width="600">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_accessing_the_deployed_application"><a class="anchor" href="#_accessing_the_deployed_application"></a>Accessing the Deployed Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once the pod is successfully deployed to Kubernetes, you can access the Flask application&#8217;s endpoint directly from Podman Desktop.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-kubernetes-pod-exposed.png" alt="Podman Desktop Kubernetes Pod Details" width="600">
+</div>
 </div>
 <div class="paragraph">
-<p>Click on the Deploy to Kubernetes button from the top right corner menu.</p>
+<p>You should see the familiar Flask application with the Redis-backed counter, now running on the Developer Sandbox.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_scaling_and_managing_the_deployment"><a class="anchor" href="#_scaling_and_managing_the_deployment"></a>Scaling and Managing the Deployment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kubernetes allows you to easily scale and manage your deployments. Back in Podman Desktop, select <strong>Open in OpenShift console</strong> from the right hand side to access the OpenShift console for the deployed pod.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-kubernetes-pod-openshift-console.png" alt="Podman Desktop Kubernetes Pod OpenShift Console" width="600">
+</div>
 </div>
 <div class="paragraph">
-<p>Podman Desktop Deploy to Kubernetes
-Podman Desktop will generate the necessary Kubernetes manifests for the pod and its associated resources.</p>
+<p>Now in the OpenShift console, you can view the details of the deployed pod, including its status, events, and logs.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-kubernetes-pod-openshift-console-details.png" alt="Podman Desktop Kubernetes Pod OpenShift Console Details" width="600">
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+In the <strong>Topology</strong> view, you can also scale the deployment by adjusting the number of replicas and manage the pod&#8217;s lifecycle.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Review the generated manifests and make any necessary adjustments.</p>
+<p>Additionally, Podman Desktop provides insights into the resource utilization and performance of your pods. You can view metrics such as CPU, filesystem, and memory usage.</p>
 </div>
-<div class="paragraph">
-<p>Click the Deploy button to deploy the pod to the local Kubernetes cluster.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-kubernetes-pod-metrics.png" alt="Podman Desktop Kubernetes Pod Metrics" width="600">
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_next_steps"><a class="anchor" href="#_next_steps"></a>Next Steps</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Podman Desktop will communicate with the Kubernetes API server and create the required resources in the cluster. You can monitor the deployment status and access the deployed application using the provided URL or port forwarding options.</p>
+<p>Congratulations! You have successfully deployed a Flask + Redis application to Kubernetes using Podman Desktop. You have learned how to generate Kubernetes manifests, deploy pods, and manage your application in the Developer Sandbox.</p>
+</div>
+</div>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="kubernetes.html">Kubernetes Overview</a></span>
-  <span class="next"><a href="#development-workflows.adoc">Container-Based Development Workflows</a></span>
+  <span class="next"><a href="resources.html">Additional Resources &amp; Documentation</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">

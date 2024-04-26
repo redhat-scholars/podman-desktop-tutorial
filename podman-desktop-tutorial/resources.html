@@ -3,10 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Introduction to Containers :: Podman Desktop Tutorial</title>
-    <link rel="canonical" href="https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/intro.html">
-    <link rel="prev" href="index.html">
-    <link rel="next" href="env-setup.html">
+    <title>Workshop Summary and Resources :: Podman Desktop Tutorial</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/resources.html">
+    <link rel="prev" href="kubernetes-deploying.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -55,7 +54,7 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Podman Desktop Fundamentals</span>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="intro.html">Introduction to Containers</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -101,7 +100,7 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Resources</span>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="resources.html">Additional Resources &amp; Documentation</a>
   </li>
 </ul>
@@ -121,114 +120,70 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Podman Desktop Tutorial</a></li>
-    <li>Podman Desktop Fundamentals</li>
-    <li><a href="intro.html">Introduction to Containers</a></li>
+    <li>Resources</li>
+    <li><a href="resources.html">Additional Resources &amp; Documentation</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/podman-desktop-tutorial/edit/master/documentation/modules/ROOT/pages/intro.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/podman-desktop-tutorial/edit/master/documentation/modules/ROOT/pages/resources.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Introduction to Containers</h1>
+<h1 class="page">Workshop Summary and Resources</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>As <a href="https://podman-desktop.io">Podman Desktop</a> is an open source graphical tool for working with containers, let&#8217;s quickly overview the concept of containers and their benefits.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-As a developer, you&#8217;ve likely heard about containers and their benefits, so feel free to skip this section.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_understanding_containers"><a class="anchor" href="#_understanding_containers"></a>Understanding Containers</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Containers provide OS-level virtualization but <a href="https://www.redhat.com/en/topics/containers">package up only the application and its dependencies</a>, not a full operating system. This results in:</p>
+<p>Congratulations on completing the Podman Desktop workshop! In this workshop, you learned how to:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Faster startup times</p>
+<p>Build and manage container images using Podman Desktop</p>
 </li>
 <li>
-<p>Reduced resource footprint</p>
+<p>Run and manage containers using Podman Desktop</p>
 </li>
 <li>
-<p>Higher portability</p>
+<p>Create pods from containers using the "Podify" feature</p>
+</li>
+<li>
+<p>Deploy pods to Kubernetes using Podman Desktop</p>
+</li>
+<li>
+<p>Scale and manage deployments in Kubernetes</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Containers are important for building independent microservices, and fit perfectly into the <a href="https://www.redhat.com/en/topics/containers/what-is-container-orchestration">Kubernetes ecosystem for scaling and managing applications</a>.</p>
+<p>You now have a solid foundation in using Podman Desktop for containerized application development and deployment, and we encourage you to attend the more technical Podman Desktop sessions during Summit to learn more!</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_container_terminology"><a class="anchor" href="#_container_terminology"></a>Container Terminology:</h2>
+<h2 id="_handy_links"><a class="anchor" href="#_handy_links"></a>Handy Links</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Through this tutorial, you&#8217;ll get hands on experience working with the following:</p>
+<p>Here are a few handy links for further exploration:</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"><strong>Image</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Container</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Registry</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A read-only template containing the application, its dependencies, and basic instructions for running</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A running instance created from an image. Containers are isolated from each other and the host system.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A storage and distribution service for container images (e.g., <a href="https://hub.docker.io">Docker Hub</a>, <a href="https://quay.io/">Quay.io</a>).</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Container Runtime</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Image Layers</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Software responsible for running containers (e.g., <a href="https://podman.io/">Podman</a>, <a href="https://containerd.io/">containerd</a>, <a href="https://www.docker.com/products/docker-desktop/">Docker</a>).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Each change made to a container image creates a new layer, optimizing image storage and distribution.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_next_steps"><a class="anchor" href="#_next_steps"></a>Next Steps</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Let&#8217;s proceed to the next page to learn how the Podman Desktop interface works.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://podman-desktop.io">Podman Desktop Homepage</a></p>
+</li>
+<li>
+<p><a href="https://github.com/containers/podman-desktop">Podman Desktop GitHub Repository</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=6LzKwyYl2-c">Podman Desktop Whiteboard Video</a></p>
+</li>
+<li>
+<p><a href="https://developers.redhat.com/products/podman-desktop/overview">Podman Desktop Red Hat Developer Blog</a></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="index.html">Podman Desktop Tutorial</a></span>
-  <span class="next"><a href="env-setup.html">Environment Setup</a></span>
+  <span class="prev"><a href="kubernetes-deploying.html">Deploying to Kubernetes</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
