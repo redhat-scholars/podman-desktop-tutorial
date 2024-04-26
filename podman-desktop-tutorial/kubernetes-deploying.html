@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Welcome to the Podman Desktop Workshop :: Podman Desktop Tutorial</title>
-    <link rel="canonical" href="https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/index.html">
-    <link rel="next" href="intro.html">
+    <title>Untitled :: Podman Desktop Tutorial</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/kubernetes-deploying.html">
+    <link rel="prev" href="kubernetes.html">
+    <link rel="next" href="#development-workflows.adoc">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -87,7 +88,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="kubernetes.html">Kubernetes Overview</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="kubernetes-deploying.html">Deploying to Kubernetes</a>
   </li>
 </ul>
@@ -148,99 +149,22 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link is-current"></a>
+  <a href="index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Podman Desktop Tutorial</a></li>
-    <li><a href="index.html">Welcome to the Podman Desktop Workshop</a></li>
+    <li>Targeting Kubernetes</li>
+    <li><a href="kubernetes-deploying.html">Deploying to Kubernetes</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/podman-desktop-tutorial/edit/master/documentation/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/podman-desktop-tutorial/edit/master/documentation/modules/ROOT/pages/kubernetes-deploying.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Welcome to the Podman Desktop Workshop</h1>
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>Welcome to the <a href="https://www.redhat.com/en/summit">Red Hat Summit</a> workshop where you&#8217;ll <strong>Learn how to elevate your container development work with Podman Desktop</strong>. We&#8217;re glad to have you here with us! Today, we&#8217;ll explore the features and benefits of <a href="https://podman-desktop.io">Podman Desktop</a> for streamlining your container workflows. Build, manage, and even deploy to local/remote Kubernetes environments – all from your desktop.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/podman-desktop-feature.png" alt="Podman Desktop Feature Image" width="700">
-</div>
-</div>
-<div class="paragraph">
-<p>This is a guide and hands-on tutorial with three main sections, where you will develop and navigate from containers, to pods, and finally to Kubernetes, using Podman Desktop:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="intro.html" class="xref page">Podman Desktop Fundamentals: Setup and learn how to use Podman Desktop</a></p>
-</li>
-<li>
-<p><a href="building-images.html" class="xref page">Working with Podman Desktop: Build images, run containers, and create Pods</a></p>
-</li>
-<li>
-<p><a href="#x.adoc" class="xref unresolved">Targeting Kubernetes: Setup and deploy to a local &amp; remote Kubernetes environment</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Before we begin, also feel free to check out the accompanying slide deck for a quick overview of Podman &amp; Podman Desktop: <a href="https://red.ht/podman-desktop-slides">Simplifying containers and Kubernetes on your laptop with Podman Desktop</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1 text-center strong">
-<h2>What is Podman Desktop?</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Podman Desktop is a powerful open-source tool designed to simplify container management on Windows, macOS, and Linux. Key strengths include:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Security:</strong>  Rootless design and <a href="https://blog.podman.io/2023/12/interaction-between-user-namespaces-and-capabilities/">strong isolation</a> for safer containerized applications.</p>
-</li>
-<li>
-<p><strong>Emphasis on Pods</strong> for <a href="https://podman.io/features">simplified grouping and resource sharing</a> of containers.</p>
-</li>
-<li>
-<p><strong>Multi-Engine Support:</strong> Manage not only containers with Podman, but <a href="https://podman-desktop.io/extend">Docker, OpenShift, and Kind environments as well</a>.</p>
-</li>
-<li>
-<p><strong>Kubernetes Development:</strong> Efficiently target Kubernetes from your local workstation with built-in Kubernetes support, as well as local Kubernetes development with <a href="https://kind.sigs.k8s.io/">Kind</a> and <a href="https://minikube.sigs.k8s.io/">Minikube</a> integrations.</p>
-</li>
-<li>
-<p><strong>Docker Compatibility:</strong> Leverage <a href="https://podman-desktop.io/blog/5-things-to-know-for-a-docker-user">familiar Docker concepts</a> and commands for easy transitions.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1 text-center strong">
-<h2>Why Use Podman Desktop?</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Podman Desktop focuses on the issue of the <a href="https://s3.us-east-2.amazonaws.com/d2iq.com/resources/report/kubernetes-in-the-enterprise-survey.pdf">complexity between local development and production environments</a>. It provides a consistent and secure environment for building, managing, and deploying containers, pods, and Kubernetes-like environments. With extensions for <a href="https://minikube.sigs.k8s.io/docs/">Minikube</a>, <a href="https://kind.sigs.k8s.io/">Kind</a>, <a href="https://developers.redhat.com/products/openshift-local/overview">OpenShift Local</a>, and more, Podman Desktop is a powerful tool for developers and operators alike!</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/podman-desktop-pod-deploy.png" alt="Podman Desktop Logo" width="600">
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2>Next Steps</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Ready to get started with the workshop? Let&#8217;s begin, firstly, exploring the Linux environment you&#8217;ll be using today with Podman Desktop.</p>
-</div>
-</div>
-</div>
+
 <nav class="pagination">
-  <span class="next"><a href="intro.html">Introduction to Containers</a></span>
+  <span class="prev"><a href="kubernetes.html">Kubernetes Overview</a></span>
+  <span class="next"><a href="#development-workflows.adoc">Container-Based Development Workflows</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">

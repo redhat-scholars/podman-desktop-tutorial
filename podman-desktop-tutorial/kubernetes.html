@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: Podman Desktop Tutorial</title>
+    <title>Kubernetes &amp; Podman Desktop :: Podman Desktop Tutorial</title>
     <link rel="canonical" href="https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/kubernetes.html">
-    <link rel="prev" href="kubernetes-overview.html">
-    <link rel="next" href="#development-workflows.adoc">
+    <link rel="prev" href="pods.html">
+    <link rel="next" href="kubernetes-deploying.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -85,11 +85,11 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Targeting Kubernetes</span>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="kubernetes-overview.html">Kubernetes Overview</a>
-  </li>
   <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="kubernetes.html">Deploying to Kubernetes</a>
+    <a class="nav-link" href="kubernetes.html">Kubernetes Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="kubernetes-deploying.html">Deploying to Kubernetes</a>
   </li>
 </ul>
   </li>
@@ -154,17 +154,150 @@
   <ul>
     <li><a href="index.html">Podman Desktop Tutorial</a></li>
     <li>Targeting Kubernetes</li>
-    <li><a href="kubernetes.html">Deploying to Kubernetes</a></li>
+    <li><a href="kubernetes.html">Kubernetes Overview</a></li>
   </ul>
 </nav>
   <div class="edit-this-page"><a href="https://github.com/redhat-scholars/podman-desktop-tutorial/edit/master/documentation/modules/ROOT/pages/kubernetes.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-
+<h1 class="page">Kubernetes &amp; Podman Desktop</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kubernetes has emerged as the de facto standard for container orchestration, providing a robust and scalable platform for deploying and managing containerized applications. Podman Desktop seamlessly integrates with Kubernetes, enabling developers to leverage the power of Kubernetes while benefiting from the user-friendly interface and features of Podman Desktop.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_understanding_kubernetes"><a class="anchor" href="#_understanding_kubernetes"></a>Understanding Kubernetes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://www.redhat.com/en/topics/containers/what-is-kubernetes">Kubernetes</a> is an open-source container orchestration system that automates the deployment, scaling, and management of containerized applications. It provides a declarative approach to defining and managing application components, ensuring high availability, scalability, and fault tolerance. Key concepts in Kubernetes include:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Pods</strong>: The smallest deployable unit in Kubernetes, consisting of one or more containers that share network and storage resources.</p>
+</li>
+<li>
+<p><strong>Services</strong>: An abstraction layer that provides a stable network endpoint for accessing pods, enabling load balancing and service discovery.</p>
+</li>
+<li>
+<p><strong>Deployments</strong>: A higher-level abstraction that manages the deployment and scaling of pods, ensuring the desired state of the application is maintained.</p>
+</li>
+<li>
+<p><strong>ConfigMaps and Secrets</strong>: Objects used to store configuration data and sensitive information, respectively, which can be injected into pods as environment variables or mounted as files.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kubernetes-diagram-concepts.png" alt="Podman Desktop Registries Settings" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>Kubernetes follows a declarative model, where users define the desired state of their application using YAML or JSON manifests. The Kubernetes control plane, consisting of components like the API server, scheduler, and controller manager, continuously works to ensure the actual state matches the desired state.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/kubernetes-diagram.png" alt="Podman Desktop Registries Settings" width="600">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_integrating_kubernetes_with_podman_desktop"><a class="anchor" href="#_integrating_kubernetes_with_podman_desktop"></a>Integrating Kubernetes with Podman Desktop</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As mentioned, Podman Desktop provides a seamless integration with Kubernetes, starting from the setup of a local Kubernetes cluster to deploying and managing applications on Kubernetes. Let&#8217;s take a look at how easy it is to spin up, and connect, to a Kubernetes cluster using Podman Desktop.</p>
+</div>
+<div class="sect2">
+<h3 id="_provisioning_a_kubernetes_cluster"><a class="anchor" href="#_provisioning_a_kubernetes_cluster"></a>Provisioning a Kubernetes Cluster</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+During this workshop, we&#8217;ll be directly connecting to a remote Kubernetes cluster. This information is just as a reference for later use.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Podman Desktop includes extensions to manage local Kubernetes clusters, enabling developers to deploy and test their applications in a Kubernetes environment without the need for external setup. The local cluster is powered by <a href="https://kind.sigs.k8s.io/">KinD (Kubernetes in Docker)</a> or <a href="https://minikube.sigs.k8s.io/">Minikube</a>, providing a lightweight and isolated Kubernetes environment. To start a local KinD cluster in Podman Desktop:</p>
+</div>
+<div class="paragraph">
+<p>Navigate to the <strong>Settings</strong> section in Podman Desktop and select <strong>Create new Kind cluster</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-settings-kind.png" alt="Podman Desktop Settings" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>You&#8217;ll view Kind cluster settings here such as a name, port assignment (for forwarding your applications), and Kubernetes version. Choose the desired container engine provider (Podman or Docker) and click the <strong>Create</strong> button.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-kubernetes-settings.png" alt="Podman Desktop Kubernetes Settings" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>Podman Desktop will spin up the local Kubernetes cluster, and you can verify your connection from the <strong>Pods</strong> section of the interface, or at the bottom-left of the screen, where you can switch between different Kubernetes contexts.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-kubernetes-cluster.png" alt="Podman Desktop Kubernetes Cluster" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>You can also follow a similar path in order to provision and connect to a Minikube cluster. In order to work with your local container images, simply load them into the cluster using through the kebab menu in the <strong>Images</strong> section.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-images-load-into-cluster.png" alt="Podman Desktop Load Images into Cluster" width="600">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_connecting_to_a_remote_kubernetes_cluster"><a class="anchor" href="#_connecting_to_a_remote_kubernetes_cluster"></a>Connecting to a Remote Kubernetes Cluster</h3>
+<div class="paragraph">
+<p>Let&#8217;s take a look, however, at how to connect to a remote Kubernetes cluster.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_managing_kubernetes_resources"><a class="anchor" href="#_managing_kubernetes_resources"></a>Managing Kubernetes Resources</h3>
+<div class="paragraph">
+<p>Podman Desktop provides a centralized interface for managing Kubernetes resources, including pods, services, deployments, and more. You can view and interact with Kubernetes objects directly from the Podman Desktop interface.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>Kubernetes</strong> section in Podman Desktop displays an overview of the cluster, including the number of nodes, pods, and services. You can drill down into specific namespaces and view the details of individual resources.</p>
+</div>
+<div class="imageblock unresolved">
+<div class="content">
+<img src="podman-desktop-kubernetes-overview.png" alt="Podman Desktop Kubernetes Overview" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>Podman Desktop also integrates with the Kubernetes CLI (<code>kubectl</code>), allowing you to run commands and perform advanced operations directly from the terminal within the Podman Desktop interface.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_next_steps"><a class="anchor" href="#_next_steps"></a>Next Steps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that you have a solid understanding of Kubernetes and its integration with Podman Desktop, you&#8217;re ready to dive deeper into deploying and managing applications on Kubernetes. In the next section, we&#8217;ll explore advanced topics such as configuring services, scaling deployments, and monitoring application health using Podman Desktop&#8217;s Kubernetes features.</p>
+</div>
+</div>
+</div>
 <nav class="pagination">
-  <span class="prev"><a href="kubernetes-overview.html">Kubernetes Overview</a></span>
-  <span class="next"><a href="#development-workflows.adoc">Container-Based Development Workflows</a></span>
+  <span class="prev"><a href="pods.html">Working with Pods</a></span>
+  <span class="next"><a href="kubernetes-deploying.html">Deploying to Kubernetes</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
