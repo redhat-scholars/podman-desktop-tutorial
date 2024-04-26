@@ -19,7 +19,7 @@ Podman Desktop will communicate with the Kubernetes API server and create the re
 
 image::podman-desktop-kubernetes-pod-details.png[Podman Desktop Kubernetes Pod Details, 600]
 
-== Accessing the Deployed Application
+=== Accessing the Deployed Application
 
 Once the pod is successfully deployed to Kubernetes, you can access the Flask application's endpoint directly from Podman Desktop.
 
@@ -27,7 +27,7 @@ image::podman-desktop-kubernetes-pod-exposed.png[Podman Desktop Kubernetes Pod D
 
 You should see the familiar Flask application with the Redis-backed counter, now running on the Developer Sandbox.
 
-== Scaling and Managing the Deployment
+=== Scaling and Managing the Deployment
 
 Kubernetes allows you to easily scale and manage your deployments. Back in Podman Desktop, select *Open in OpenShift console* from the right hand side to access the OpenShift console for the deployed pod.
 
