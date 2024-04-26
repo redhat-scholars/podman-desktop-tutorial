@@ -97,19 +97,48 @@ image::podman-desktop-images-load-into-cluster.png[Podman Desktop Load Images in
 
 === Connecting to a Remote Kubernetes Cluster
 
-Let's take a look, however, at how to connect to a remote Kubernetes cluster. 
+Let's take a look, however, at how to connect to a remote Kubernetes cluster. In this workshop, we'll be using the https://developers.redhat.com/developer-sandbox[*Developer Sandbox*] extension, which allows us to provision and connect to a remote Kubernetes cluster in the cloud, with 14GB of RAM and 40GB of storage. To get started, let's install it from the *Dashboard*, or from the *Settings -> Extensions* section in Podman Desktop.
+
+image::podman-desktop-extensions-devsandbox.png[Podman Desktop Extensions, 600]
+
+Once installed, you can provision a new cluster from the *Developer Sandbox* section in the *Settings -> Resources*. 
+
+image::podman-desktop-devsandbox-provision.png[Podman Desktop Provision Developer Sandbox, 600]
+
+You'll firstly prompted to log into the Developer Sandbox with your Red Hat account. Once logged in, you can access the free Red Hat OpenShift cluster when you'll recieve the authentication token.
+
+image::podman-desktop-devsandbox-login.png[Podman Desktop Login Developer Sandbox, 600]
+
+From the OpenShift Web Console, click the top-right user icon and select *Copy Login Command*.
+
+image::podman-desktop-devsandbox-login-command-copy.png[Podman Desktop Copy Login Command, 600]
+
+After this, you'll need to also select *Display Token* and copy the token.
+
+image::podman-desktop-devsandbox-login-token-copied.png[Podman Desktop Copy Login Token, 600]
+
+Back in Podman Desktop, paste the copied command into the *Developer Sandbox* section and click *Create*.
+
+image::podman-desktop-devsandbox-login-command-pasted.png[Podman Desktop Paste Login Command, 600]
+
+Fantastic! You are now connected to a remote Developer Sandbox Kubernetes cluster. You can verify your connection from the *Resources* section of the interface.
+
+image::podman-desktop-devsandbox-cluster.png[Podman Desktop Developer Sandbox Cluster, 600]
 
 === Managing Kubernetes Resources
 
-Podman Desktop provides a centralized interface for managing Kubernetes resources, including pods, services, deployments, and more. You can view and interact with Kubernetes objects directly from the Podman Desktop interface.
+NOTE: Because of the desktop environment, you won't be able to see the Kubernetes resources inferface. This information is just as a reference for later use.
 
-The *Kubernetes* section in Podman Desktop displays an overview of the cluster, including the number of nodes, pods, and services. You can drill down into specific namespaces and view the details of individual resources.
+Podman Desktop provides a centralized interface for managing Kubernetes resources, including pods, services, deployments, and more. You can view and interact with Kubernetes objects directly from the Podman Desktop interface, although it's only visible once you have a connection to a Kubernetes cluster.
 
-image::podman-desktop-kubernetes-overview.png[Podman Desktop Kubernetes Overview, 600]
+The *Kubernetes* inferface in Podman Desktop displays an overview of the cluster, including the number of nodes, pods, and services. You can drill down into specific namespaces and view the details of individual resources.
 
-Podman Desktop also integrates with the Kubernetes CLI (`kubectl`), allowing you to run commands and perform advanced operations directly from the terminal within the Podman Desktop interface.
+image::podman-desktop-kubernetes-overview-dashboard.png[Podman Desktop Kubernetes Overview, 600]
 
+Podman Desktop integrates with the Kubernetes CLI (`kubectl`), allowing you to directly modify applied YAML and perform advanced operations directly from the terminal within the Podman Desktop interface.
+
+image::podman-desktop-kubernetes-cli.png[Podman Desktop Kubernetes CLI, 600]
 
 == Next Steps
 
-Now that you have a solid understanding of Kubernetes and its integration with Podman Desktop, you're ready to dive deeper into deploying and managing applications on Kubernetes. In the next section, we'll explore advanced topics such as configuring services, scaling deployments, and monitoring application health using Podman Desktop's Kubernetes features.
+In this section, we've explored the integration of Kubernetes with Podman Desktop, including provisioning a local or remote Kubernetes cluster and managing Kubernetes resources. In the next section, we'll deploy our existing Pod to the Developer Sandbox cluster to share with the world!
