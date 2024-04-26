@@ -11,8 +11,8 @@
 ** xref:pods.adoc[Working with Pods] 
 
 * Targeting Kubernetes
-** xref:kubernetes-overview.adoc[Kubernetes Overview]
-** xref:kubernetes.adoc[Deploying to Kubernetes]
+** xref:kubernetes.adoc[Kubernetes Overview]
+** xref:kubernetes-deploying.adoc[Deploying to Kubernetes]
 
 * More Tutorials
 ** Inner Loop Development
