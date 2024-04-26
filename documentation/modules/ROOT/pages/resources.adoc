@@ -1,0 +1,21 @@
+= Workshop Summary and Resources
+include::_attributes.adoc[]
+
+Congratulations on completing the Podman Desktop workshop! In this workshop, you learned how to:
+
+- Build and manage container images using Podman Desktop
+- Run and manage containers using Podman Desktop
+- Create pods from containers using the "Podify" feature
+- Deploy pods to Kubernetes using Podman Desktop
+- Scale and manage deployments in Kubernetes
+
+You now have a solid foundation in using Podman Desktop for containerized application development and deployment, and we encourage you to attend the more technical Podman Desktop sessions during Summit to learn more!
+
+== Handy Links
+
+Here are a few handy links for further exploration:
+
+- link:https://podman-desktop.io[Podman Desktop Homepage]
+- link:https://github.com/containers/podman-desktop[Podman Desktop GitHub Repository]
+- link:https://www.youtube.com/watch?v=6LzKwyYl2-c[Podman Desktop Whiteboard Video]
+- link:https://developers.redhat.com/products/podman-desktop/overview[Podman Desktop Red Hat Developer Blog]

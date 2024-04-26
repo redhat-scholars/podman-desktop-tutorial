@@ -31,7 +31,7 @@ image::podman-desktop-podify-window.png[Podman Desktop Podify, 600]
 
 TIP: You'll notice that here, you only have the option to expose the port of the Python web server container. Due to the pod's internal networking, it's not necessary to expose the Redis port externally for this application, as they can communicate using `localhost`.
 
-3. Podman Desktop will now stop the existing containers and create a new pod that encapsulates the selected containers. To view the pod's details and manage its lifecycle, navigate to the *Pods* section in the Podman Desktop interface.
+Podman Desktop will now stop the existing containers and create a new pod that encapsulates the selected containers. To view the pod's details and manage its lifecycle, navigate to the *Pods* section in the Podman Desktop interface.
 
 image::podman-desktop-pods-created.png[Podman Desktop Pods, 600]
 

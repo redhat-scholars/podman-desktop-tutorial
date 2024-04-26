@@ -1,18 +1,68 @@
-Deploying Pods to Kubernetes
-With the local Kubernetes cluster running, you can easily deploy pods created using Podman Desktop’s "Podify" feature to Kubernetes. Podman Desktop provides intuitive options to generate Kubernetes manifests and deploy pods to the cluster.
+= Deploying Pods to Kubernetes
+include::_attributes.adoc[]
 
-To deploy a pod to Kubernetes:
+With the new connection to our Developer Sandbox cluster, you can easily deploy pods and containers directly from Podman Desktop to Kubernetes. Podman Desktop provides intuitive options to generate Kubernetes manifests and deploy pods to the cluster.
 
-In the Pods section of Podman Desktop, select the pod you want to deploy.
+== Deploying a Pod to Kubernetes
 
-Click on the Deploy to Kubernetes button from the top right corner menu.
+Let's begin by deploying the Flask & Redis container pod to the Developer Sandbox. In the *Pods* section of Podman Desktop, select the `summit-pod` you created earlier. Click on the *Deploy to Kubernetes* button from the top right corner menu.
 
-Podman Desktop Deploy to Kubernetes
-Podman Desktop will generate the necessary Kubernetes manifests for the pod and its associated resources.
+image::podman-desktop-deploy-to-kubernetes-button.png[Podman Desktop Deploy to Kubernetes, 600]
 
-Review the generated manifests and make any necessary adjustments.
+Podman Desktop will generate the necessary Kubernetes manifests for the pod and its associated resources. Review the generated manifests and make any necessary adjustments, which for us will include *Creating OpenShift routes* to access our exposted ports. Now, hit the *Deploy* button to deploy the pod to the selected Kubernetes cluster.
 
-Click the Deploy button to deploy the pod to the local Kubernetes cluster.
+image::podman-desktop-deploy-to-kubernetes-manifests.png[Podman Desktop Deploy to Kubernetes Manifests, 600]
 
-Podman Desktop will communicate with the Kubernetes API server and create the required resources in the cluster. You can monitor the deployment status and access the deployed application using the provided URL or port forwarding options.
+TIP: You can specify the Kubernetes context where you want to deploy the pod by selecting the desired context from the dropdown menu in the top left corner.
 
+Podman Desktop will communicate with the Kubernetes API server and create the required resources in the cluster. You can monitor the deployment status, and when ready, access the deployed application using the provided URL.
+
+image::podman-desktop-kubernetes-pod-details.png[Podman Desktop Kubernetes Pod Details, 600]
+
+== Accessing the Deployed Application
+
+Once the pod is successfully deployed to Kubernetes, you can access the Flask application's endpoint directly from Podman Desktop.
+
+image::podman-desktop-kubernetes-pod-exposed.png[Podman Desktop Kubernetes Pod Details, 600]
+
+You should see the familiar Flask application with the Redis-backed counter, now running on the Developer Sandbox.
+
+== Scaling and Managing the Deployment
+
+Kubernetes allows you to easily scale and manage your deployments. Back in Podman Desktop, select *Open in OpenShift console* from the right hand side to access the OpenShift console for the deployed pod.
+
+image::podman-desktop-kubernetes-pod-openshift-console.png[Podman Desktop Kubernetes Pod OpenShift Console, 600]
+
+Now in the OpenShift console, you can view the details of the deployed pod, including its status, events, and logs.
+
+image::podman-desktop-kubernetes-pod-openshift-console-details.png[Podman Desktop Kubernetes Pod OpenShift Console Details, 600]
+
+TIP: In the *Topology* view, you can also scale the deployment by adjusting the number of replicas and manage the pod's lifecycle.
+
+Additionally, Podman Desktop provides insights into the resource utilization and performance of your pods. You can view metrics such as CPU, filesystem, and memory usage.
+
+image::podman-desktop-kubernetes-pod-metrics.png[Podman Desktop Kubernetes Pod Metrics, 600]
+
+////
+== Updating and Rolling Back Deployments
+
+Kubernetes enables you to perform rolling updates and rollbacks of your deployments. Podman Desktop simplifies these operations, allowing you to update your application with minimal downtime.
+
+To update the Flask + Redis deployment:
+
+1. Make the necessary changes to your application code or configuration.
+2. Rebuild the container image with the updated code using Podman Desktop.
+3. In the *Kubernetes* section of Podman Desktop, navigate to the namespace where your deployment is running.
+4. Click on the deployment to view its details.
+5. In the deployment details page, click on the *Update* button and select the updated container image.
+
+image::podman-desktop-kubernetes-deployment-update.png[Podman Desktop Kubernetes Deployment Update, 600]
+
+Podman Desktop will initiate a rolling update of the deployment, gradually replacing the old pods with new ones running the updated container image. You can monitor the progress of the update and ensure that the application remains available during the process.
+
+If necessary, you can also perform a rollback to a previous version of the deployment. Podman Desktop allows you to select a previous revision and restore the deployment to that state.
+////
+
+== Next Steps
+
+Congratulations! You have successfully deployed a Flask + Redis application to Kubernetes using Podman Desktop. You have learned how to generate Kubernetes manifests, deploy pods, and manage your application in the Developer Sandbox.

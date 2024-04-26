@@ -14,6 +14,7 @@
 ** xref:kubernetes.adoc[Kubernetes Overview]
 ** xref:kubernetes-deploying.adoc[Deploying to Kubernetes]
 
+////
 * More Tutorials
 ** Inner Loop Development
 *** xref:development-workflows.adoc[Container-Based Development Workflows]
@@ -23,6 +24,7 @@
 *** xref:minikube.adoc[Local Kubernetes with Minikube]
 *** xref:openshift-local.adoc[OpenShift Local Development with Podman Desktop]
 *** xref:docker.adoc[Using Docker with Podman Desktop]
+////
 
 * Resources
 ** xref:resources.adoc[Additional Resources & Documentation] 
