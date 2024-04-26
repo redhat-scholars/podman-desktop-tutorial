@@ -6,9 +6,9 @@
 
 
 * Working with Podman Desktop
-** xref:building-images.adoc[Exercise: Building Images in Podman Desktop]
-** xref:running-containers.adoc[Exercise: Running and Managing Containers]
-** xref:pods.adoc[Exercise: Working with Pods] 
+** xref:building-images.adoc[Building Images in Podman Desktop]
+** xref:running-containers.adoc[Running and Managing Containers]
+** xref:pods.adoc[Working with Pods] 
 
 * Targeting Kubernetes
 ** xref:kubernetes-overview.adoc[Kubernetes Overview]

@@ -1,4 +1,4 @@
-= Exercise: Building Images in Podman Desktop
+= Building Images in Podman Desktop
 include::_attributes.adoc[]
 
 Fantastic, let's start the Podman Desktop tutorial with the most basic step in the inner loop development process: *building container images*. We'll also cover authenticating to registries amd pulling images.

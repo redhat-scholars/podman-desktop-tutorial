@@ -1,4 +1,4 @@
-= Exercise: Working with Pods
+= Working with Pods
 include::_attributes.adoc[]
 
 In the previous step, we successfully built, ran, and tested a multi-container application using Podman Desktop. While running containers individually suffices for development and testing, production environments sometimes benefit from grouping related containers into a cohesive unit called a "pod". Podman Desktop streamlines the process of creating a pod from existing containers, offering a seamless transition from development to Kubernetes, where Pods are the most basic deployable units.

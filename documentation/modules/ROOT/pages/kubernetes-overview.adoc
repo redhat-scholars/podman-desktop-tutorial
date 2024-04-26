@@ -1,4 +1,4 @@
-= Kubernetes Overview and Integration with Podman Desktop
+= Kubernetes & Podman Desktop
 include::_attributes.adoc[]
 
 Kubernetes has emerged as the de facto standard for container orchestration, providing a robust and scalable platform for deploying and managing containerized applications. Podman Desktop seamlessly integrates with Kubernetes, enabling developers to leverage the power of Kubernetes while benefiting from the user-friendly interface and features of Podman Desktop.
@@ -21,15 +21,63 @@ Kubernetes follows a declarative model, where users define the desired state of 
 
 image::kubernetes-diagram.png[Podman Desktop Registries Settings, 600]
 
+////
+=== Running Kubernetes Objects with Podman Desktop
+
+While Kubernetes provides a powerful platform for container orchestration, it can be complex to set up and manage, especially for developers new to Kubernetes. For those looking to work and interact with Kubernetes objects, Podman Desktop allows you to directly run and manage objects such as Pods and Deployments, directly from the *Pods* section of the interface. Select *Play Kubernetes YAML* to get started.
+
+image::podman-desktop-kubernetes-objects.png[Podman Desktop Kubernetes Objects, 600]
+
+Here, we'll need to select a Kubernetes YAML file to run. For example, let's run a simple `nginx-deployment.yaml` It creates a ReplicaSet to bring up three nginx Pods. 
+
+[.console-output]
+[source,bash,subs="+macros,+attributes"]
+----
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+----
+
+Back in Podman Desktop, first, select *Browse*.
+
+image::podman-desktop-kubernetes-play-yaml.png[Podman Desktop Play Kubernetes YAML, 600]
+
+From the *Home* directory, navigate to `podman-desktop-demo/pods/nginx-deployment.yaml` and click *Select* or double click. 
+
+image::podman-desktop-kubernetes-select-yaml.png[Podman Desktop Select Kubernetes YAML, 600]
+
+Now, you can hit *Play* from Podman Desktop to create the necessary resources within the Podman engine.
+
+image::podman-desktop-kubernetes-play-yaml-button.png[Podman Desktop Play Kubernetes YAML Button, 600]
+////
+
 == Integrating Kubernetes with Podman Desktop
 
 As mentioned, Podman Desktop provides a seamless integration with Kubernetes, starting from the setup of a local Kubernetes cluster to deploying and managing applications on Kubernetes. Let's take a look at how easy it is to spin up, and connect, to a Kubernetes cluster using Podman Desktop.
 
 === Provisioning a Kubernetes Cluster
 
-Podman Desktop includes extensions to manage local Kubernetes clusters, enabling developers to deploy and test their applications in a Kubernetes environment without the need for external setup. The local cluster is powered by https://kind.sigs.k8s.io/[KinD (Kubernetes in Docker)] or https://minikube.sigs.k8s.io/[Minikube], providing a lightweight and isolated Kubernetes environment.
+NOTE: During this workshop, we'll be directly connecting to a remote Kubernetes cluster. This information is just as a reference for later use.
 
-To start a local KinD cluster in Podman Desktop:
+Podman Desktop includes extensions to manage local Kubernetes clusters, enabling developers to deploy and test their applications in a Kubernetes environment without the need for external setup. The local cluster is powered by https://kind.sigs.k8s.io/[KinD (Kubernetes in Docker)] or https://minikube.sigs.k8s.io/[Minikube], providing a lightweight and isolated Kubernetes environment. To start a local KinD cluster in Podman Desktop:
 
 Navigate to the *Settings* section in Podman Desktop and select *Create new Kind cluster*.
 
@@ -39,9 +87,17 @@ You'll view Kind cluster settings here such as a name, port assignment (for forw
 
 image::podman-desktop-kubernetes-settings.png[Podman Desktop Kubernetes Settings, 600]
 
-Podman Desktop will spin up the local Kubernetes cluster, and you can verify your connection from the *Pods* section of the interface, or at the bottom-left of the screen, where you can switch between different Kubernetes
+Podman Desktop will spin up the local Kubernetes cluster, and you can verify your connection from the *Pods* section of the interface, or at the bottom-left of the screen, where you can switch between different Kubernetes contexts.
 
 image::podman-desktop-kubernetes-cluster.png[Podman Desktop Kubernetes Cluster, 600]
+
+You can also follow a similar path in order to provision and connect to a Minikube cluster. In order to work with your local container images, simply load them into the cluster using through the kebab menu in the *Images* section.
+
+image::podman-desktop-images-load-into-cluster.png[Podman Desktop Load Images into Cluster, 600]
+
+=== Connecting to a Remote Kubernetes Cluster
+
+Let's take a look, however, at how to connect to a remote Kubernetes cluster. 
 
 === Deploying Pods to Kubernetes
 
@@ -70,20 +126,7 @@ image::podman-desktop-kubernetes-overview.png[Podman Desktop Kubernetes Overview
 
 Podman Desktop also integrates with the Kubernetes CLI (`kubectl`), allowing you to run commands and perform advanced operations directly from the terminal within the Podman Desktop interface.
 
-== Benefits of Kubernetes Integration
-
-Integrating Kubernetes with Podman Desktop offers several benefits for developers:
-
-1. *Simplified deployment*: Podman Desktop abstracts the complexities of Kubernetes, providing an intuitive interface for deploying and managing applications. Developers can focus on building their applications without needing extensive Kubernetes expertise.
-
-2. *Local development and testing*: With the built-in local Kubernetes cluster, developers can test their applications in a Kubernetes environment without the need for external setup or infrastructure. This accelerates the development and testing process and ensures application compatibility with Kubernetes.
-
-3. *Seamless transition to production*: By developing and testing applications using Kubernetes with Podman Desktop, developers can ensure a smooth transition to production environments. The same Kubernetes manifests and deployment patterns used locally can be applied to production clusters, reducing the risk of compatibility issues.
-
-4. *Centralized management*: Podman Desktop provides a unified interface for managing both containers and Kubernetes resources. Developers can streamline their workflow by using a single tool for building, testing, and deploying applications, eliminating the need to switch between multiple tools and interfaces.
 
 == Next Steps
 
 Now that you have a solid understanding of Kubernetes and its integration with Podman Desktop, you're ready to dive deeper into deploying and managing applications on Kubernetes. In the next section, we'll explore advanced topics such as configuring services, scaling deployments, and monitoring application health using Podman Desktop's Kubernetes features.
-
-Podman Desktop's seamless integration with Kubernetes empowers developers to leverage the full potential of container orchestration while benefiting from a user-friendly and efficient development workflow. Get ready to take your containerized application development to the next level with Podman Desktop and Kubernetes!

@@ -1,4 +1,4 @@
-= Exercise: Running and Managing Containers
+= Running and Managing Containers
 include::_attributes.adoc[]
 
 In the previous step, we built a container image for our Python web server and pulled a Redis image for our cache. Now it's time to bring those images to life as running containers and experience the power of Podman Desktop in action.
