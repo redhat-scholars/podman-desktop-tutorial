@@ -1,4 +1,5 @@
 = Welcome to the Podman Desktop Workshop
+include::_attributes.adoc[]
 :page-layout: home
 :!sectids:
 
