@@ -10,7 +10,7 @@ This is a guide and hands-on tutorial with three main sections, where you will d
 
 * xref:intro.adoc[Podman Desktop Fundamentals: Setup and learn how to use Podman Desktop]
 * xref:building-images.adoc[Working with Podman Desktop: Build images, run containers, and create Pods]
-* xref:x.adoc[Targeting Kubernetes: Setup and deploy to a local & remote Kubernetes environment]
+* xref:kubernetes.adoc[Targeting Kubernetes: Setup and deploy to a local & remote Kubernetes environment]
 
 Before we begin, also feel free to check out the accompanying slide deck for a quick overview of Podman & Podman Desktop: https://red.ht/podman-desktop-slides[Simplifying containers and Kubernetes on your laptop with Podman Desktop].
 
