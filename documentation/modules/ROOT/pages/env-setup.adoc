@@ -44,6 +44,8 @@ The onboarding process will guide you through the steps to get started with Podm
 * **`kubectl`**: Connect to a Kubernetes cluster and manage resources using the Kubernetes CLI.
 * **Podman**: Setup and keep the Podman engine up-to-date.
 
+Go ahead and install each one of these tools by clicking 'next' until you get to the Podman Desktop home screen.
+
 TIP: You will be requested to enter the Administrator password for some parts of the onboarding, which is the same as your login for the virtual machine. Simply pull out the noVNC menu, select *Clipboard*, and copy the password to paste it into the pop up.
 
 image::podman-desktop-onboarding-password.png[Podman Desktop Onboarding]
