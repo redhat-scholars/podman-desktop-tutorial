@@ -97,7 +97,7 @@ image::podman-desktop-images-load-into-cluster.png[Podman Desktop Load Images in
 
 === Connecting to a Remote Kubernetes Cluster
 
-Let's take a look, however, at how to connect to a remote Kubernetes cluster. In this workshop, we'll be using the https://developers.redhat.com/developer-sandbox[*Developer Sandbox*] extension, which allows us to provision and connect to a remote Kubernetes cluster in the cloud, with 14GB of RAM and 40GB of storage. To get started, let's install it from the *Dashboard*, or from the *Settings -> Extensions* section in Podman Desktop.
+While working with a local Kubernetes instance is one way to tackle the inner loop of your development cycle, it's also quite common to work with remote dev/test clusters. Let's take a look at how we can connect to a remote Kubernetes cluster. In this workshop, we'll be using the https://developers.redhat.com/developer-sandbox[*Developer Sandbox*] extension, which allows us to provision and connect to a remote Kubernetes cluster in the cloud, with 14GB of RAM and 40GB of storage. To get started, let's install it from the *Dashboard*, or from the *Settings -> Extensions* section in Podman Desktop.
 
 image::podman-desktop-extensions-devsandbox.png[Podman Desktop Extensions, 600]
 
@@ -131,7 +131,7 @@ NOTE: Because of the desktop environment, you won't be able to see the Kubernete
 
 Podman Desktop provides a centralized interface for managing Kubernetes resources, including pods, services, deployments, and more. You can view and interact with Kubernetes objects directly from the Podman Desktop interface, although it's only visible once you have a connection to a Kubernetes cluster.
 
-The *Kubernetes* inferface in Podman Desktop displays an overview of the cluster, including the number of nodes, pods, and services. You can drill down into specific namespaces and view the details of individual resources.
+The *Kubernetes* interface in Podman Desktop displays an overview of the cluster, including the number of nodes, pods, and services. You can drill down into specific namespaces and view the details of individual resources.
 
 image::podman-desktop-kubernetes-overview-dashboard.png[Podman Desktop Kubernetes Overview, 600]
 

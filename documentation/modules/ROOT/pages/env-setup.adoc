@@ -1,6 +1,6 @@
 = Taking a Look at the Workshop Environment
 
-Again, welcome to the Podman Desktop workshop! Uou'll learn how to use link:https://podman-desktop.io[Podman Desktop] to build, run, and manage containers on your local machine. Podman Desktop provides a user-friendly graphical interface for working with link:https://podman.io/[Podman], a powerful container engine that is compatible with Docker. The workshop environment is a virtual machine that has been pre-configured with Podman Desktop and all the tools you need to complete the exercises.
+Again, welcome to the Podman Desktop workshop! You'll learn how to use link:https://podman-desktop.io[Podman Desktop] to build, run, and manage containers on your local machine. Podman Desktop provides a user-friendly graphical interface for working with link:https://podman.io/[Podman], a powerful container engine that is compatible with Docker. The workshop environment is a virtual machine that has been pre-configured with Podman Desktop and all the tools you need to complete the exercises.
 
 == Accessing the Workshop Environment
 
@@ -8,7 +8,7 @@ To access the workshop environment, you'll need to connect to the virtual machin
 
 image::podman-desktop-novnc-access.png[noVNC Access]
 
-Click the noVNC link to open the web-based desktop environment in a new browser tab. You'll see a login screen where you can enter the username and password provided by the landing page. After logging in, you'll see the desktop environment, which includes a GNOME desktop environment on RHEL 9, including Podman Desktop, Firefox, and VSCode. Everything a developer needs!
+Click the noVNC link to open the web-based desktop environment in a new browser tab. You'll see a login screen where you can enter the username and password provided by the landing page. After logging in, you'll see the desktop environment, which includes a GNOME desktop environment on RHEL 9, including Podman Desktop, Firefox, and VSCode. Virtually everything a developer needs!
 
 image::podman-desktop-desktop-environment.png[Desktop Environment]
 

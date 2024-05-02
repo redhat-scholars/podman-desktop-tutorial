@@ -2,7 +2,7 @@
 
 == Introduction
 
-While containers are linux, Podman Desktop is designed to run on macOS and Windows thanks to the https://docs.podman.io/en/stable/markdown/podman-machine.1.html[podman-machine]. It creates a virtual machine running a minimal Linux distribution to run the containers, and Podman Desktop takes care of the setup for you.
+While "Containers are Linux", Podman Desktop is designed to run on macOS and Windows thanks to the https://docs.podman.io/en/stable/markdown/podman-machine.1.html[podman-machine]. It creates a virtual machine running a minimal Linux distribution to run the containers, and Podman Desktop takes care of the setup for you.
 
 == Installing Podman Desktop
 
