@@ -3,7 +3,7 @@ include::_attributes.adoc[]
 
 As https://podman-desktop.io[Podman Desktop] is an open source graphical tool for working with containers, let's quickly overview the concept of containers and their benefits.
 
-NOTE: As a developer, you've likely heard about containers and their benefits, so feel free to skip this section.
+NOTE: As a developer, you've likely heard about containers and their benefits. If you're already comfortable with this concept, feel free to skip this section.
 
 == Understanding Containers
 

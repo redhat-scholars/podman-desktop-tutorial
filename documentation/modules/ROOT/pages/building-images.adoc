@@ -13,11 +13,11 @@ image::podman-desktop-python-app-browser.png[Podman Desktop Python App, 600]
 
 == Getting Started with the Source Code
 
-Let's start off with downloading the source code for the demo application, found https://github.com/redhat-developer/podman-desktop-demo[here on GitHub]. This repository contains a variety of different Podman related demo's you can try later, including Minikube, WASM, Compose, and more!
+Let's start off with downloading the source code for the demo application, found https://github.com/redhat-developer/podman-desktop-demo[here on GitHub]. This repository contains a variety of different Podman related demos you can try later, including Minikube, WASM, Compose, and more!
 
 image::podman-desktop-demo-repo.png[Podman Desktop Demo Repo, 600]
 
-I've cloned the repository to my local machine using https://desktop.github.com/[GitHub Desktop], but today let's use the command line to clone the repository. Open up the terminal, and use the noNVC menu to copy these next two commands to your clipboard, and paste/execute them.
+While you could eg. clone the repository to a local machine using https://desktop.github.com/[GitHub Desktop], today let's use the command line to clone the repository. Open up the terminal, and use the noNVC menu to copy these next two commands to your clipboard, and paste/execute them.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -40,7 +40,7 @@ image::podman-desktop-demo-source-code.png[Podman Desktop Demo Source Code, 600]
 We're using Flask as a Python framework to serve the web application, as you can see from the `app.py` file. However, more important is the `Dockerfile` in the project directory, which is used to build the container image for the web application, like a recipe:
 
 * *Base Image:*
-** `FROM registry.access.redhat.com/ubi9/ubi:9.2-755 AS ubi-builder` (Starts with Red Hat's UBI image)
+** `FROM registry.access.redhat.com/ubi9/ubi:9.2-755 AS ubi-builder` (Starts with Red Hat's https://catalog.redhat.com/software/base-images[UBI] image)
 
 * *Build Stage:*
 ** `RUN ...` (Installs tools like Python)
@@ -66,11 +66,11 @@ NOTE: While this isn't a basic Dockerfile, it's a good example of a multi-stage 
 
 == Building the Container Image
 
-Now that we've taken a look at the source code and Dockerfile, let's build the container image from directly within Podman Desktop. From the *Images* section, click the *Build* button in the top right corner.
+Now that we've taken a look at the source code and Dockerfile, let's build the container image from within Podman Desktop. From the *Images* section, click the *Build* button in the top right corner.
 
 image::podman-desktop-build-image-button.png[Podman Desktop Build Image, 600]
 
-This will open up a new window where we can specify the Dockerfile/Containerfile, the build context, and image name. Let's select the `Dockerfile`, the build directory as `primary-podify-demo/front`, and `python-app` for the image name. 
+This will open up a new window where we can specify the Dockerfile (=Containerfile), the build context, and image name. Let's select the `Dockerfile`, the build directory as `primary-podify-demo/front`, and `python-app` for the image name. 
 
 NOTE: The build context is the directory where the source code and Dockerfile are located, and the Dockerfile is the recipe for building the container image. We can use Podman Desktop to easily rename/retag the image later, so don't worry too much about the image name for now.
 
@@ -98,15 +98,15 @@ quay.io/podman-desktop-demo/podify-demo-frontend:v1
 
 image::podman-desktop-built-image-layers.png[Podman Desktop Built Image, 600]
 
-TIP: Due to it's popularity, Podman uses the Docker Hub registry to pull images by default. However, you can authenticate other registries in the Podman Desktop *Settings > Registries*, or set defaults via the https://www.redhat.com/sysadmin/manage-container-registries[Podman registry configuration file].
+TIP: Due to its popularity, Podman uses the Docker Hub registry to pull images by default. However, you can authenticate other registries in the Podman Desktop *Settings > Registries*, or set defaults via the https://www.redhat.com/sysadmin/manage-container-registries[Podman registry configuration file].
 
 == Pulling the Redis Image
 
-As you may have seen from the Python web application source code, we're using a Redis cache to store the number of times we've visited the webpage. Thus, if you were to start the Python web application without the Redis cache, it would crash.
+As you may have seen from the Python web application source code, we're using a Redis cache to store the number of times we've visited the webpage. Redis is a popular choice for caching in containerized applications. The Python web application actually has a hard dependency on the Redis service, so if the Redis service is not available, the container would crash.
 
 image::podman-desktop-redis-image-start.png[Podman Desktop Redis Image, 600]
 
-Let's go ahead and pull a pre-build Redis image from Quay.io by clicking the *Pull* button from the top right corner menu. We'll be pulling an image of redis that has been build with the Red Hat UBI, with redis installed on top, which is a popular choice for caching in containerized applications.
+Fortunately we can also run a Redis container next to our Python application. Let's go ahead and pull a pre-built Redis image from Quay.io by clicking the *Pull* button from the top right corner menu. We'll be pulling an image of Redis that has been built with the Red Hat https://catalog.redhat.com/software/base-images[UBI] and Redis installed on top.
 
 [.console-input][.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -116,7 +116,7 @@ quay.io/podman-desktop-demo/podify-demo-backend:v1
 
 image::podman-desktop-redis-image-layers.png[Podman Desktop Redis Image, 600]
 
-TIP: The Containerfile used to build the Redis image is available in the `podman-desktop-demo/primary-podify-demo/back` directory, but can also be found here. https://github.com/redhat-developer/podman-desktop-demo/blob/main/primary-podify-demo/backend/Dockerfile[here, window="_blank"].
+TIP: The Dockerfile used to build the Redis image is available in the `podman-desktop-demo/primary-podify-demo/back` directory, but can also be found here. https://github.com/redhat-developer/podman-desktop-demo/blob/main/primary-podify-demo/backend/Dockerfile[here, window="_blank"].
 
 == Next Steps
 
