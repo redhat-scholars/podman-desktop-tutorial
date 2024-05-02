@@ -158,7 +158,7 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Because of the workshop environment, not all of these entensions may be available, but feel free to try them on your own machine afterwards!
+Because of the workshop environment, not all of these extensions may be available, but feel free to try them on your own machine afterwards!
 </td>
 </tr>
 </table>
@@ -206,7 +206,7 @@ Because of the workshop environment, not all of these entensions may be availabl
 </div>
 </div>
 <div class="paragraph">
-<p>After selecting a Pod, we can view the indivual containers that make up the Pod, their logs (or combined logs), and inspect the Pod details, such as the Kubernetes YAML.</p>
+<p>After selecting a Pod, we can view the individual containers that make up the Pod, their logs (or combined logs), and inspect the Pod details, such as the Kubernetes YAML.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -227,7 +227,19 @@ Because of the workshop environment, not all of these entensions may be availabl
 <h2 id="_images"><a class="anchor" href="#_images"></a>Images</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Podman Desktop images section is powerful, and allows you to pull images from registries (publicily available, or authenticated from a private registry via Settings), or build images from a Dockerfile/Containerfile.</p>
+<p>The Podman Desktop images section is powerful, and allows you to pull images from registries (publicly available, or authenticated from a private registry via Settings), or build images from a Containerfile.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>Containerfile</code> is the vendor-agnostic way to refer to the commonly known <code>Dockerfile</code>. You can use them interchangeably with Podman, and in fact you&#8217;ll see both naming conventions pop up throughout this tutorial.
+</td>
+</tr>
+</table>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -235,7 +247,7 @@ Because of the workshop environment, not all of these entensions may be availabl
 </div>
 </div>
 <div class="paragraph">
-<p>While pulling images is fairly standard, you can select target platform architectures when building images, in addition to selecting the Dockerfile/Containerfile, and the build context directory.</p>
+<p>While pulling images is fairly standard, you can select target platform architectures when building images, in addition to selecting the Containerfile, and the build context directory.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -257,7 +269,7 @@ Because of the workshop environment, not all of these entensions may be availabl
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-On Linux, there isn&#8217;t yet support for this feature, but soon! On older versions of Podman Desktop, you may need to enable the experimental Kubernetes UI  in <strong>Settings &gt; Kubernetes</strong>.
+On older versions of Podman Desktop, you may need to enable the experimental Kubernetes UI in <strong>Settings &gt; Kubernetes</strong>.
 </td>
 </tr>
 </table>
@@ -290,13 +302,13 @@ On Linux, there isn&#8217;t yet support for this feature, but soon! On older ver
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-There&#8217;s enterprise features, such as the ability to connect to a private registry, as well as use a proxy configuration from behind a VPN.
+There are enterprise features, such as proxy configuration and the ability to connect to a private registry.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>One of Podman Desktop&#8217;s biggest feature is the extensibility, thus you can view the included extensions, manage them, and also add new OCI &amp; Docker Desktop extensions to Podman Desktop.</p>
+<p>One of Podman Desktop&#8217;s biggest feature is the extensibility through the use of (OCI) Extensions. In fact, Podman Desktop even supports Docker Desktop extensions. With Podman Dekstop add, view and manage OCI &amp; Docker Desktop Extensions on the fly.</p>
 </div>
 <div class="imageblock">
 <div class="content">

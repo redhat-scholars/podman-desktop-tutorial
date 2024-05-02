@@ -166,7 +166,7 @@ Feel free skip and simply <a href="#pulling.adoc">pull the container images</a> 
 <h2 id="_getting_started_with_the_source_code"><a class="anchor" href="#_getting_started_with_the_source_code"></a>Getting Started with the Source Code</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Let&#8217;s start off with downloading the source code for the demo application, found <a href="https://github.com/redhat-developer/podman-desktop-demo">here on GitHub</a>. This repository contains a variety of different Podman related demo&#8217;s you can try later, including Minikube, WASM, Compose, and more!</p>
+<p>Let&#8217;s start off with downloading the source code for the demo application, found <a href="https://github.com/redhat-developer/podman-desktop-demo">here on GitHub</a>. This repository contains a variety of different Podman related demos you can try later, including Minikube, WASM, Compose, and more!</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -174,7 +174,7 @@ Feel free skip and simply <a href="#pulling.adoc">pull the container images</a> 
 </div>
 </div>
 <div class="paragraph">
-<p>I&#8217;ve cloned the repository to my local machine using <a href="https://desktop.github.com/">GitHub Desktop</a>, but today let&#8217;s use the command line to clone the repository. Open up the terminal, and use the noNVC menu to copy these next two commands to your clipboard, and paste/execute them.</p>
+<p>While you could eg. clone the repository to a local machine using <a href="https://desktop.github.com/">GitHub Desktop</a>, today let&#8217;s use the command line to clone the repository. Open up the terminal, and use the noNVC menu to copy these next two commands to your clipboard, and paste/execute them.</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
@@ -209,7 +209,7 @@ Feel free skip and simply <a href="#pulling.adoc">pull the container images</a> 
 <div class="ulist">
 <ul>
 <li>
-<p><code>FROM registry.access.redhat.com/ubi9/ubi:9.2-755 AS ubi-builder</code> (Starts with Red Hat&#8217;s UBI image)</p>
+<p><code>FROM registry.access.redhat.com/ubi9/ubi:9.2-755 AS ubi-builder</code> (Starts with Red Hat&#8217;s <a href="https://catalog.redhat.com/software/base-images">UBI</a> image)</p>
 </li>
 </ul>
 </div>
@@ -297,7 +297,7 @@ While this isn&#8217;t a basic Dockerfile, it&#8217;s a good example of a multi-
 <h2 id="_building_the_container_image"><a class="anchor" href="#_building_the_container_image"></a>Building the Container Image</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Now that we&#8217;ve taken a look at the source code and Dockerfile, let&#8217;s build the container image from directly within Podman Desktop. From the <strong>Images</strong> section, click the <strong>Build</strong> button in the top right corner.</p>
+<p>Now that we&#8217;ve taken a look at the source code and Dockerfile, let&#8217;s build the container image from within Podman Desktop. From the <strong>Images</strong> section, click the <strong>Build</strong> button in the top right corner.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -305,7 +305,7 @@ While this isn&#8217;t a basic Dockerfile, it&#8217;s a good example of a multi-
 </div>
 </div>
 <div class="paragraph">
-<p>This will open up a new window where we can specify the Dockerfile/Containerfile, the build context, and image name. Let&#8217;s select the <code>Dockerfile</code>, the build directory as <code>primary-podify-demo/front</code>, and <code>python-app</code> for the image name.</p>
+<p>This will open up a new window where we can specify the Dockerfile (=Containerfile), the build context, and image name. Let&#8217;s select the <code>Dockerfile</code>, the build directory as <code>primary-podify-demo/front</code>, and <code>python-app</code> for the image name.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -362,7 +362,7 @@ The build context is the directory where the source code and Dockerfile are loca
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Due to it&#8217;s popularity, Podman uses the Docker Hub registry to pull images by default. However, you can authenticate other registries in the Podman Desktop <strong>Settings &gt; Registries</strong>, or set defaults via the <a href="https://www.redhat.com/sysadmin/manage-container-registries">Podman registry configuration file</a>.
+Due to its popularity, Podman uses the Docker Hub registry to pull images by default. However, you can authenticate other registries in the Podman Desktop <strong>Settings &gt; Registries</strong>, or set defaults via the <a href="https://www.redhat.com/sysadmin/manage-container-registries">Podman registry configuration file</a>.
 </td>
 </tr>
 </table>
@@ -374,7 +374,7 @@ Due to it&#8217;s popularity, Podman uses the Docker Hub registry to pull images
 <h2 id="_pulling_the_redis_image"><a class="anchor" href="#_pulling_the_redis_image"></a>Pulling the Redis Image</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>As you may have seen from the Python web application source code, we&#8217;re using a Redis cache to store the number of times we&#8217;ve visited the webpage. Thus, if you were to start the Python web application without the Redis cache, it would crash.</p>
+<p>As you may have seen from the Python web application source code, we&#8217;re using a Redis cache to store the number of times we&#8217;ve visited the webpage. Redis is a popular choice for caching in containerized applications. The Python web application actually has a hard dependency on the Redis service, so if the Redis service is not available, the container would crash.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -382,7 +382,7 @@ Due to it&#8217;s popularity, Podman uses the Docker Hub registry to pull images
 </div>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s go ahead and pull a pre-build Redis image from Quay.io by clicking the <strong>Pull</strong> button from the top right corner menu. We&#8217;ll be pulling an image of redis that has been build with the Red Hat UBI, with redis installed on top, which is a popular choice for caching in containerized applications.</p>
+<p>Fortunately we can also run a Redis container next to our Python application. Let&#8217;s go ahead and pull a pre-built Redis image from Quay.io by clicking the <strong>Pull</strong> button from the top right corner menu. We&#8217;ll be pulling an image of Redis that has been built with the Red Hat <a href="https://catalog.redhat.com/software/base-images">UBI</a> and Redis installed on top.</p>
 </div>
 <div class="listingblock console-input][ console-input">
 <div class="content">
@@ -401,7 +401,7 @@ Due to it&#8217;s popularity, Podman uses the Docker Hub registry to pull images
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The Containerfile used to build the Redis image is available in the <code>podman-desktop-demo/primary-podify-demo/back</code> directory, but can also be found here. <a href="https://github.com/redhat-developer/podman-desktop-demo/blob/main/primary-podify-demo/backend/Dockerfile" target="_blank" rel="noopener">here</a>.
+The Dockerfile used to build the Redis image is available in the <code>podman-desktop-demo/primary-podify-demo/back</code> directory, but can also be found here. <a href="https://github.com/redhat-developer/podman-desktop-demo/blob/main/primary-podify-demo/backend/Dockerfile" target="_blank" rel="noopener">here</a>.
 </td>
 </tr>
 </table>
