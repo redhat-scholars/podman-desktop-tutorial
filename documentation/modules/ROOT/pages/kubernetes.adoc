@@ -127,7 +127,7 @@ image::podman-desktop-devsandbox-cluster.png[Podman Desktop Developer Sandbox Cl
 
 === Managing Kubernetes Resources
 
-NOTE: Because of the desktop environment, you won't be able to see the Kubernetes resources inferface. This information is just as a reference for later use.
+NOTE: You may have to restart Podman Desktop after logging in to the Developer Sandbox before you can see the Kubernetes context and resources.
 
 Podman Desktop provides a centralized interface for managing Kubernetes resources, including pods, services, deployments, and more. You can view and interact with Kubernetes objects directly from the Podman Desktop interface, although it's only visible once you have a connection to a Kubernetes cluster.
 

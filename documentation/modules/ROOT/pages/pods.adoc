@@ -35,6 +35,10 @@ Pods offer several key advantages over running containers individually, includin
 
 Podman Desktop's _Podify_ feature takes advantage of these pod benefits by simplifying the process of creating a pod from existing containers. Let's walk through the steps to create a pod from the Quarkus app and Redis containers.
 
+You will need to change the environment variable `redis` to point to `localhost` instead of the hard coded IP we set earlier. In order to do so, delete the existing quarkus-app container and create a new one from the images tab.  
+
+TIP: the Quarkus application is by default configured to look for a Redis instance on `localhost` already, so you don't actually need to set the environment variable this time. Just create a new container with name `quarkus-app`, and continue with the instructions below.
+
 In the *Containers* section of Podman Desktop, select both the `quarkus-app` and `redis` containers using the checkboxes. Now, click on the *Podify* button from the top right corner menu to initiate the pod creation process.
 
 image::podman-desktop-podify-button2.png[Podman Desktop Podify, 600]
