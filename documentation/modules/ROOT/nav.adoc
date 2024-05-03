@@ -1,6 +1,6 @@
 * Podman Desktop Fundamentals
-** xref:intro.adoc[Introduction to Containers]
 ** xref:env-setup.adoc[Environment Setup]
+** xref:intro.adoc[Introduction to Containers]
 // ** xref:setup.adoc[Installing Podman Desktop]
 ** xref:podman-basics.adoc[Podman Desktop Interface & Essentials] 
 

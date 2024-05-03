@@ -56,4 +56,4 @@ image::podman-desktop-interface-ready.png[Podman Desktop Interface]
 
 ## Next Steps
 
-Now that you're familiar with the workshop environment, you're ready to start working with Podman Desktop.
+Now that you're familiar with the workshop environment, you're ready to start working with Containers, Podman, and Podman Desktop.

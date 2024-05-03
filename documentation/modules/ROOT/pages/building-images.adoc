@@ -3,13 +3,13 @@ include::_attributes.adoc[]
 
 Fantastic, let's start the Podman Desktop tutorial with the most basic step in the inner loop development process: *building container images*. We'll also cover authenticating to registries amd pulling images.
 
-TIP: Feel free skip and simply xref:building-images.adoc#pulling.adoc[pull the container images] without downloading the application source code.
+// TIP: Feel free skip and simply xref:building-images.adoc#pulling.adoc[pull the container images] without downloading the application source code.
 
 == Demo Application
 
-For this exercise, we'll be using a basic Python web server application, which uses a Redis cache to store the number of times we've visited the webpage. This is a simple microservice, but it's a good example of a multi-container application.
+For this exercise, we'll be using a basic Java web application based on the https://quarkus.io[SuperSonic, Subatomic Quarkus] stack. The application uses a Redis cache to store the number of times we've visited the webpage. This is a simple microservice, but it's a good example of a multi-container application.
 
-image::podman-desktop-python-app-browser.png[Podman Desktop Python App, 600]
+image::podman-desktop-quarkus-app-browser.png[Podman Desktop Python App, 600]
 
 == Getting Started with the Source Code
 

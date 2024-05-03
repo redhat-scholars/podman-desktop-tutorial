@@ -69,7 +69,7 @@ The Settings section is where you can configure almost everything about Podman D
 
 image::podman-desktop-settings.png[Podman Desktop Settings, 600]
 
-TIP: There are enterprise features, such as proxy configuration and the ability to connect to a private registry.
+TIP: There are also enterprise features, such as proxy configuration and the ability to connect to a private registry.
 
 One of Podman Desktop's biggest feature is the extensibility through the use of (OCI) Extensions. In fact, Podman Desktop even supports Docker Desktop extensions. With Podman Dekstop add, view and manage OCI & Docker Desktop Extensions on the fly.  
 
