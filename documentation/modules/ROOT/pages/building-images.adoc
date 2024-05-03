@@ -11,102 +11,164 @@ For this exercise, we'll be using a basic Java web application based on the http
 
 image::podman-desktop-quarkus-app-browser.png[Podman Desktop Python App, 600]
 
-== Getting Started with the Source Code
+== Getting Started with Local Development
 
-Let's start off with downloading the source code for the demo application, found https://github.com/redhat-developer/podman-desktop-demo[here on GitHub]. This repository contains a variety of different Podman related demos you can try later, including Minikube, WASM, Compose, and more!
+Let's start off with downloading the source code for the demo application, found https://github.com/redhat-developer-demos/podify-quarkus-redis[here on GitHub]. 
+//This repository contains a variety of different Podman related demos you can try later, including Minikube, WASM, Compose, and more!
 
-image::podman-desktop-demo-repo.png[Podman Desktop Demo Repo, 600]
+// image::podman-desktop-demo-repo.png[Podman Desktop Demo Repo, 600]
 
-While you could eg. clone the repository to a local machine using https://desktop.github.com/[GitHub Desktop], today let's use the command line to clone the repository. Open up the terminal, and use the noNVC menu to copy these next two commands to your clipboard, and paste/execute them.
-
-[.console-input]
-[source,bash,subs="+macros,+attributes"]
-----
-git clone https://github.com/redhat-developer/podman-desktop-demo
-----
-
-image::podman-desktop-demo-cloned.png[Podman Desktop Demo Cloned, 600]
-
-Now, let's open up the project in our IDE and take a look at the source code of the demo application, found in the `podman-desktop-demo/primary-podify-demo/front` directory.
+While you could eg. clone the repository to a local machine using https://desktop.github.com/[GitHub Desktop], today let's use the command line to clone the repository. Open up the terminal (click on activities in the top left, then type 'terminal'), and then use the noNVC menu to copy these next two commands to your clipboard, and paste/execute them in a terminal.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
-cd podman-desktop-demo/primary-podify-demo/front && code .
+git clone https://github.com/redhat-developer-demos/podify-quarkus-redis
 ----
 
-image::podman-desktop-demo-source-code.png[Podman Desktop Demo Source Code, 600]
+image::podman-desktop-demo-cloned2.png[Podman Desktop Demo Cloned, 600]
 
-We're using Flask as a Python framework to serve the web application, as you can see from the `app.py` file. However, more important is the `Dockerfile` in the project directory, which is used to build the container image for the web application, like a recipe:
+Since this is a Java application, we'll need to install a Java OpenJDK version. Copy and paste the following commands to install https://sdkman.io/[SDKMAN!] and then the https://adoptium.net/[Eclipse Adoptium Temurin build of OpenJDK 21], for which Red Hat provides Enterprise Support. In case you're interested in reading more about Red Hat's involvement in Java, https://developers.redhat.com/java/runtimes-and-frameworks[there is a wealth of resources on developers.redhat.com/java].
+
+Let's install SDKMAN and OpenJDK. Copy & paste the following set of commands and let them run their course. 
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+sudo dnf install -y zip unzip && curl -s "https://get.sdkman.io" | bash && source "/home/student/.sdkman/bin/sdkman-init.sh" && sdk install java 21.0.3-tem
+----
+
+If everything went well you will see a message saying "Done installing!" and that your installed version of Java is set as the default.
+Now, let's open up the project in our VS Code instance and take a look at the source code of the demo application, found in the `podify-quarkus-redis` directory.
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+cd podify-quarkus-redis && code .
+----
+
+NOTE: If VS Code asks to trust the authors of the files, go ahead and click "Yes, I trust the authors". If it then asks to create a keyring password, use the same password you used to log in to your environment.
+
+NOTE: VS Code will ask you to install the Extension Pack for Java. This is optional but it will greatly help the readability and usability of Java in VS Code so feel free to install it.
+
+Once you're ready, go to the file explorer (top option in the left menu). If you know a little bit of Java and Maven, you'll see a familiar file structure (src/main/java) and a pom.xml. Optionally feel free to poke around if you want to get yourself familiar with the code.
+You'll see the back-end logic in the src/main/java/ folder. You can find the front-end resources in the src/main/resources/templates and src/main/resources/META-INF/resources folders.  
+
+image::podman-desktop-quarkus-source-code.png[Podman Desktop Quarkus Source Code, 600]
+
+The usual developer workflow starts by testing the application locally, so let's start there. With Quarkus, Java development with rapid feedback loops becomes much easier. It allows you start the application in "Dev Mode", allowing you to test the application without having to compile, package and deploy the app. 
+
+NOTE: Quarkus Dev Mode looks for a DOCKER_HOST environment variable that points to a container daemon process to enable Dev Services (more about this below). Before we can proceed, run the following command to set the "DOCKER_HOST":
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+systemctl --user enable podman.socket --now && export DOCKER_HOST=unix://$(podman info --format '{{.Host.RemoteSocket.Path}}')
+
+----
+
+Let's go ahead and start Dev Mode. In the same terminal we were using previously, type (or copy) the following command:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+~/podify-quarkus-redis/mvnw quarkus:dev
+----
+
+Wait a few moments for the application to start up. You'll see logs scroll on the screen and eventually a log message that says something like "Live Coding activated" and "Listening on: http://localhost:8080".
+
+NOTE: you might be prompted to accept to contribute anonymous build time data with the Quarkus community. The answer is up to you :).
+
+image::quarkus-startup.png[Quarkus Startup, 600]
+
+Open up a Firefox instance and navigate to http://localhost:8080. Fantastic! Our app is already running :). Feel free to modify the code and refresh the browser, and you'll see the changes being picked up on the fly without recompilation, thanks to the Quarkus Dev Mode. 
+
+If you paid close attention to the logs when Quarkus Dev Mode started, you might also have seen that Quarkus started up a Redis "Dev Service". https://quarkus.io/guides/dev-services[Dev Services] is a very cool feature in Quarkus that starts up external services the app relies on such as databases, messaging systems, etc in a container. It then automatically wires these container based services up to the application. In this case since our application relies on Redis for caching the counter, Quarkus started up a Redis container without us having to do anything. 
+
+We can verify that this really happened. Let's open the Podman Desktop application and go to the `containers` view. Do you see the Redis container? It will have a randomly assigned container name, but you should see 'docker.io/library/redis:7' in the images column. 
+
+NOTE: You might also notice a 'testcontainers' instance. This is part of the Quarkus Dev Services (which leverages the TestContainers project) which will automatically stop and remove Dev Services when they're not needed anymore.
+
+image::podman-desktop-redis-devservice.png[Podman Desktop Redis Dev Service Startup, 600]
+
+Great! We're done developing our application, so let's stop the Dev Mode and proceed with containerizing our application. In order to do so, go back to your terminal and run CTRL+C to stop the process. 
+
+IMPORTANT: Make sure the application is stopped, otherwise you might run into port conflicts later on.
+
+Let's build our application first with Maven: 
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+~/podify-quarkus-redis/mvnw package
+----
+
+Meanwhile, go back to Podman Desktop. You'll notice that the Dev Services containers have disappeared. As expected, the Quarkus Dev Services / TestContainers functionality cleans up after itself when the containers aren't needed anymore. 
+
+## Containerfile (aka Dockerfile)
+
+Quarkus projects by default come with a few opinionated Dockerfiles. You can find them in the src/main/docker folder. 
+
+image::quarkus-dockerfiles.png[Quarkus Dockerfiles, 200]
+
+Go ahead and open `Dockerfile.jvm` and scroll down past the commented out initial section. Let's examine the Dockerfile.jvm instructions:
 
 * *Base Image:*
-** `FROM registry.access.redhat.com/ubi9/ubi:9.2-755 AS ubi-builder` (Starts with Red Hat's https://catalog.redhat.com/software/base-images[UBI] image)
+** `FROM registry.access.redhat.com/ubi8/openjdk-21:1.18` (Starts with an OpenJDK base image supplied, built and verified by Red Hat)
 
-* *Build Stage:*
-** `RUN ...` (Installs tools like Python)
-** `COPY ./entrypoint.sh ...` (Copies entrypoint script for when the container starts, for Redis)
+* *App Configuration, Source and Startup commands:*
+** `ENV LANGUAGE='en_US:en'` (Set environment variable "LANGUAGE")
+** `COPY --chown=185 ...` (Copies build artifacts into the image and sets the ownership of the files)
+** `EXPOSE 8080` (Advertise what port the application runs on)
+** `USER 185` (Switches to non-root user)
+** `ENV ...` (Sets more environment variables)
+** `ENTRYPOINT [ "/opt/jboss/container/java/run/run-java.sh" ]` (Defines container startup command) 
 
-* *App Preparation:*
-** `FROM scratch as python-builder` (Starts fresh, minimal image)
-** `COPY --from=ubi-builder ...` (Copies only built essentials)
-** `RUN ...` (Creates non-root user)
-** `COPY requirements.txt ...` (Copies Python dependencies)
-** `RUN pip install ...` (Installs dependencies)
-** `COPY app.py ...` (Copies app source code)
-
-* *Final Image:*
-** `FROM scratch` (Starts with minimal scratch image)
-** `COPY --from=python-builder ...` (Copies prepared application)
-** `EXPOSE 5000` (Opens port for access)
-** `USER 1000` (Switches to non-root user)
-** `ENV ...` (Sets Flask environment variables)
-** `ENTRYPOINT ["/entrypoint.sh"]` (Defines container startup command) 
-
-NOTE: While this isn't a basic Dockerfile, it's a good example of a multi-stage build with security best practices, and allows for a smaller final image.
+NOTE: the Dockerfile.jvm is used for a 'classic' Java build with the application packaged as a .jar archive. You can also compile the Quarkus application to a native binary, in which case you could use the Dockerfile.native or Dockerfile.native-micro images which are much smaller since they don't have a Java Virtual Machine (JVM) built in. https://quarkus.io/guides/building-native-image[More info can be found here].
 
 == Building the Container Image
 
-Now that we've taken a look at the source code and Dockerfile, let's build the container image from within Podman Desktop. From the *Images* section, click the *Build* button in the top right corner.
+Now that we've taken a look at the source code and the Containerfile, in our case called `Dockerfile.jvm`, let's build the container image from within Podman Desktop. From the *Images* section, click the *Build* button in the top right corner.
 
-image::podman-desktop-build-image-button.png[Podman Desktop Build Image, 600]
+image::podman-desktop-build-image-button2.png[Podman Desktop Build Image, 600]
 
-This will open up a new window where we can specify the Dockerfile (=Containerfile), the build context, and image name. Let's select the `Dockerfile`, the build directory as `primary-podify-demo/front`, and `python-app` for the image name. 
+This will open up a new window where we can specify the Containerfile, the build context, and image name. For the Containerfile Path, browse to the Dockerfile.jvm (`home/student/podify-quarkus-redis/src/main/docker/Dockerfile.jvm`) and select it. Set the build directory to the path of the podify-quarkus-redis directory: `/home/student/podify-quarkus-redis`, and set `quarkus-app` for the image name. 
 
-NOTE: The build context is the directory where the source code and Dockerfile are located, and the Dockerfile is the recipe for building the container image. We can use Podman Desktop to easily rename/retag the image later, so don't worry too much about the image name for now.
+NOTE: The build context is the directory where the source code is located, and the Dockerfile is the recipe for building the container image. We can use Podman Desktop to easily rename/retag the image later, so don't worry too much about the image name for now.
 
-image::podman-desktop-build-image-window.png[Podman Desktop Build Image Window, 600]
+image::podman-desktop-build-image-window2.png[Podman Desktop Build Image Window, 600]
 
 After clicking *Build*, Podman Desktop will start building the container image, and you can see the build logs in the bottom pane. This will take a few minutes, as it's downloading the base image, installing dependencies, copying the source code, etc.
 
-image::podman-desktop-build-image-logs.png[Podman Desktop Build Image Logs, 600]
+image::podman-desktop-build-image-logs2.png[Podman Desktop Build Image Logs, 600]
 
-Once the build is complete, you should see the new `python-app` image in the *Images* section of Podman Desktop. You'll see the default image https://www.redhat.com/sysadmin/container-image-short-names[short name] here, which we'll retag for our registry in the next section.
+Once the build is complete, you should see the new `quarkus-app` image in the *Images* section of Podman Desktop. You'll see the default image https://www.redhat.com/sysadmin/container-image-short-names[short name] here, which we'll retag for our registry in the next section.
 
-image::podman-desktop-built-image.png[Podman Desktop Built Image, 600]
+image::podman-desktop-built-quarkus-image.png[Podman Desktop Built Image, 600]
 
 
 [#pulling]
-=== Optional: Pulling the Python App Image
+=== Optional: Pulling the Quarkus App Image
 
-If you'd like to skip the build process from above, you can pull the `quay.io/podman-desktop-demo/podify-demo-frontend:v1` image from a public registry. This is the same image we just built, but it's already available for use. Head to the *Images* section, and click the *Pull* button in the top right corner.
+If you'd like to skip the build process from above, you can pull the `quay.io/rhdevelopers/quarkus-redis` image from a public registry. This is the same image we just built, but it's already available for use. Head to the *Images* section, and click the *Pull* button in the top right corner.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
-quay.io/podman-desktop-demo/podify-demo-frontend:v1
+quay.io/rhdevelopers/quarkus-redis
 ----
 
-image::podman-desktop-built-image-layers.png[Podman Desktop Built Image, 600]
+image::podman-desktop-pull-image.png[Podman Desktop Pull Image, 600]
 
 TIP: Due to its popularity, Podman uses the Docker Hub registry to pull images by default. However, you can authenticate other registries in the Podman Desktop *Settings > Registries*, or set defaults via the https://www.redhat.com/sysadmin/manage-container-registries[Podman registry configuration file].
 
 == Pulling the Redis Image
 
-As you may have seen from the Python web application source code, we're using a Redis cache to store the number of times we've visited the webpage. Redis is a popular choice for caching in containerized applications. The Python web application actually has a hard dependency on the Redis service, so if the Redis service is not available, the container would crash.
+As you have seen from the previous section, we're using a Redis cache to store the number of times we've visited the webpage. Redis is a popular choice for caching in containerized applications. The Quarkus application actually has a hard dependency on the Redis service, so if the Redis service is not available, the app would misbehave as you can see below in the startup logs of the app when the Redis container isn't running.
 
-image::podman-desktop-redis-image-start.png[Podman Desktop Redis Image, 600]
+image::podman-desktop-quarkus-redis-start-failure.png[Podman Desktop Quarkus Error , 600]
 
-Fortunately we can also run a Redis container next to our Python application. Let's go ahead and pull a pre-built Redis image from Quay.io by clicking the *Pull* button from the top right corner menu. We'll be pulling an image of Redis that has been built with the Red Hat https://catalog.redhat.com/software/base-images[UBI] and Redis installed on top.
+Fortunately we can also run a Redis container next to our Quarkus application. Let's go ahead and pull a pre-built Redis image from Quay.io by clicking the *Pull* button from the top right corner menu. We'll be pulling an image of Redis that has been built with the Red Hat https://catalog.redhat.com/software/base-images[UBI] and Redis installed on top.
 
 [.console-input][.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -116,8 +178,8 @@ quay.io/podman-desktop-demo/podify-demo-backend:v1
 
 image::podman-desktop-redis-image-layers.png[Podman Desktop Redis Image, 600]
 
-TIP: The Dockerfile used to build the Redis image is available in the `podman-desktop-demo/primary-podify-demo/back` directory, but can also be found here. https://github.com/redhat-developer/podman-desktop-demo/blob/main/primary-podify-demo/backend/Dockerfile[here, window="_blank"].
+TIP: The Containerfile used to build the Redis image is available in the `podman-desktop-demo/primary-podify-demo/back` directory, but can also be found here. https://github.com/redhat-developer/podman-desktop-demo/blob/main/primary-podify-demo/backend/Dockerfile[here, window="_blank"].
 
 == Next Steps
 
-Fantastic! We've built the container image for the Python web application, and pulled the Redis image for the cache. In the next tutorial, we'll start the containers and test the web application.
+Fantastic! We've built the container image for the Quarkus web application, and pulled the Redis image for the cache. In the next tutorial, we'll start the containers and test the web application.
