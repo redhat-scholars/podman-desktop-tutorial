@@ -7,9 +7,9 @@ Fantastic, let's start the Podman Desktop tutorial with the most basic step in t
 
 == Demo Application
 
-For this exercise, we'll be using a basic Java web application based on the https://quarkus.io[SuperSonic, Subatomic Quarkus] stack. The application uses a Redis cache to store the number of times we've visited the webpage. This is a simple microservice, but it's a good example of a multi-container application.
+For this exercise, we'll be using a basic Java web application based on the https://quarkus.io[SuperSonic, Subatomic Quarkus] stack. Quarkus is a Kubernetes-native Java framework designed for building high-performance and scalable microservices. The application uses a Redis cache to store the number of times we've visited the webpage. This is a simple microservice, but it's a good example of a multi-container application.
 
-image::podman-desktop-quarkus-app-browser.png[Podman Desktop Python App, 600]
+image::podman-desktop-quarkus-app-browser.png[Podman Desktop Quarkus App, 600]
 
 == Getting Started with Local Development
 
@@ -18,7 +18,7 @@ Let's start off with downloading the source code for the demo application, found
 
 // image::podman-desktop-demo-repo.png[Podman Desktop Demo Repo, 600]
 
-While you could eg. clone the repository to a local machine using https://desktop.github.com/[GitHub Desktop], today let's use the command line to clone the repository. Open up the terminal (click on activities in the top left, then type 'terminal'), and then use the noNVC menu to copy these next two commands to your clipboard, and paste/execute them in a terminal.
+While you could clone the repository to a local machine using https://desktop.github.com/[GitHub Desktop], today let's use the command line to clone the repository. Open up the terminal (click on activities in the top left, then type 'terminal'), and then use the noVNC menu to copy these commands to your clipboard, and paste/execute them in the terminal.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -28,7 +28,7 @@ git clone https://github.com/redhat-developer-demos/podify-quarkus-redis
 
 image::podman-desktop-demo-cloned2.png[Podman Desktop Demo Cloned, 600]
 
-Since this is a Java application, we'll need to install a Java OpenJDK version. Copy and paste the following commands to install https://sdkman.io/[SDKMAN!] and then the https://adoptium.net/[Eclipse Adoptium Temurin build of OpenJDK 21], for which Red Hat provides Enterprise Support. In case you're interested in reading more about Red Hat's involvement in Java, https://developers.redhat.com/java/runtimes-and-frameworks[there is a wealth of resources on developers.redhat.com/java].
+Since this is a Java application, we'll need to install a Java OpenJDK version. Copy and paste the following commands to install https://sdkman.io/[SDKMAN!] and then the https://adoptium.net/[Eclipse Adoptium Temurin build of OpenJDK 21], for which Red Hat provides Enterprise Support. If you're interested in reading more about Red Hat's involvement in Java, https://developers.redhat.com/java/runtimes-and-frameworks[there are a wealth of resources on developers.redhat.com/java].
 
 Let's install SDKMAN and OpenJDK. Copy & paste the following set of commands and let them run their course. 
 
@@ -38,7 +38,10 @@ Let's install SDKMAN and OpenJDK. Copy & paste the following set of commands and
 sudo dnf install -y zip unzip && curl -s "https://get.sdkman.io" | bash && source "/home/student/.sdkman/bin/sdkman-init.sh" && sdk install java 21.0.3-tem
 ----
 
-If everything went well you will see a message saying "Done installing!" and that your installed version of Java is set as the default.
+If everything went well, you will see a message saying "Done installing!" and your installed version of Java is set as the default.
+
+image::podman-desktop-sdkman-install.png[Podman Desktop SDK
+
 Now, let's open up the project in our VS Code instance and take a look at the source code of the demo application, found in the `podify-quarkus-redis` directory.
 
 [.console-input]
@@ -47,24 +50,22 @@ Now, let's open up the project in our VS Code instance and take a look at the so
 cd podify-quarkus-redis && code .
 ----
 
-NOTE: If VS Code asks to trust the authors of the files, go ahead and click "Yes, I trust the authors". If it then asks to create a keyring password, use the same password you used to log in to your environment.
+NOTE: If VS Code asks to trust the authors of the files, go ahead and click "Yes, I trust the authors". If it then asks to create a keyring password, use the same password you used to log in to your environment. Also, VS Code will ask you to install the Extension Pack for Java. This is optional but it will greatly help the readability and usability of Java in VS Code so feel free to install it.
 
-NOTE: VS Code will ask you to install the Extension Pack for Java. This is optional but it will greatly help the readability and usability of Java in VS Code so feel free to install it.
+image::podman-desktop-vscode.png[Podman Desktop VS Code, 600]
 
-Once you're ready, go to the file explorer (top option in the left menu). If you know a little bit of Java and Maven, you'll see a familiar file structure (src/main/java) and a pom.xml. Optionally feel free to poke around if you want to get yourself familiar with the code.
-You'll see the back-end logic in the src/main/java/ folder. You can find the front-end resources in the src/main/resources/templates and src/main/resources/META-INF/resources folders.  
+Once you're ready, go to the file explorer (top option in the left menu). If you're familiar with Java and Maven, you'll see a standard file structure (`src/main/java`) and a `pom.xml`. Feel free to explore the code to familiarize yourself with the project structure. The back-end logic can be found in the `src/main/java/` folder. The front-end resources are located in the `src/main/resources/templates` and `src/main/resources/META-INF/resources` folders. 
 
 image::podman-desktop-quarkus-source-code.png[Podman Desktop Quarkus Source Code, 600]
 
-The usual developer workflow starts by testing the application locally, so let's start there. With Quarkus, Java development with rapid feedback loops becomes much easier. It allows you start the application in "Dev Mode", allowing you to test the application without having to compile, package and deploy the app. 
+The typical developer workflow starts by testing the application locally, so let's start there. With Quarkus, Java development with rapid feedback loops becomes much easier. It allows you to start the application in "Dev Mode", enabling testing without having to compile, package, and deploy the app.
 
-NOTE: Quarkus Dev Mode looks for a DOCKER_HOST environment variable that points to a container daemon process to enable Dev Services (more about this below). Before we can proceed, run the following command to set the "DOCKER_HOST":
+NOTE: Quarkus Dev Mode looks for a DOCKER_HOST environment variable that points to a container daemon process to enable Dev Services (more about this below). Before proceeding, run the following command to set the "DOCKER_HOST":
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
 systemctl --user enable podman.socket --now && export DOCKER_HOST=unix://$(podman info --format '{{.Host.RemoteSocket.Path}}')
-
 ----
 
 Let's go ahead and start Dev Mode. In the same terminal we were using previously, type (or copy) the following command:
@@ -77,21 +78,21 @@ Let's go ahead and start Dev Mode. In the same terminal we were using previously
 
 Wait a few moments for the application to start up. You'll see logs scroll on the screen and eventually a log message that says something like "Live Coding activated" and "Listening on: http://localhost:8080".
 
-NOTE: you might be prompted to accept to contribute anonymous build time data with the Quarkus community. The answer is up to you :).
+NOTE: You might be prompted to accept contributing anonymous build time data with the Quarkus community. The answer is up to you :)
 
 image::quarkus-startup.png[Quarkus Startup, 600]
 
-Open up a Firefox instance and navigate to http://localhost:8080. Fantastic! Our app is already running :). Feel free to modify the code and refresh the browser, and you'll see the changes being picked up on the fly without recompilation, thanks to the Quarkus Dev Mode. 
+Open up a Firefox instance and navigate to http://localhost:8080. Fantastic! Our app is already running. Feel free to modify the code and refresh the browser, and you'll see the changes being picked up on the fly without recompilation, thanks to the Quarkus Dev Mode.
 
-If you paid close attention to the logs when Quarkus Dev Mode started, you might also have seen that Quarkus started up a Redis "Dev Service". https://quarkus.io/guides/dev-services[Dev Services] is a very cool feature in Quarkus that starts up external services the app relies on such as databases, messaging systems, etc in a container. It then automatically wires these container based services up to the application. In this case since our application relies on Redis for caching the counter, Quarkus started up a Redis container without us having to do anything. 
+NOTE: If you paid close attention to the logs when Quarkus Dev Mode started, you might have noticed that Quarkus also started up a Redis "Dev Service". https://quarkus.io/guides/dev-services[Dev Services] is a powerful feature in Quarkus that automatically starts up external services the app relies on, such as databases or messaging systems, in a container. It then automatically wires these container-based services to the application. In this case, since our application relies on Redis for caching the counter, Quarkus started up a Redis container without any manual configuration required.
 
-We can verify that this really happened. Let's open the Podman Desktop application and go to the `containers` view. Do you see the Redis container? It will have a randomly assigned container name, but you should see 'docker.io/library/redis:7' in the images column. 
+We can verify that this really happened. Open the Podman Desktop application and go to the *Containers* view. You should see the Redis container with a randomly assigned container name, and 'docker.io/library/redis:7' in the Images column.
 
-NOTE: You might also notice a 'testcontainers' instance. This is part of the Quarkus Dev Services (which leverages the TestContainers project) which will automatically stop and remove Dev Services when they're not needed anymore.
+NOTE: You might also notice a 'testcontainers' instance. This is part of the Quarkus Dev Services (which leverages the TestContainers project) and will automatically stop and remove Dev Services when they're not needed anymore.
 
 image::podman-desktop-redis-devservice.png[Podman Desktop Redis Dev Service Startup, 600]
 
-Great! We're done developing our application, so let's stop the Dev Mode and proceed with containerizing our application. In order to do so, go back to your terminal and run CTRL+C to stop the process. 
+Great! We're done developing our application, so let's stop the Dev Mode and proceed with containerizing it. Go back to your terminal and press CTRL+C to stop the process.
 
 IMPORTANT: Make sure the application is stopped, otherwise you might run into port conflicts later on.
 
@@ -103,11 +104,11 @@ Let's build our application first with Maven:
 ~/podify-quarkus-redis/mvnw package
 ----
 
-Meanwhile, go back to Podman Desktop. You'll notice that the Dev Services containers have disappeared. As expected, the Quarkus Dev Services / TestContainers functionality cleans up after itself when the containers aren't needed anymore. 
+Meanwhile, go back to Podman Desktop. You'll notice that the Dev Services containers have disappeared. As expected, the Quarkus Dev Services / TestContainers functionality cleans up after itself when the containers are no longer needed.
 
-## Containerfile (aka Dockerfile)
+## Viewing the Containerfile (aka Dockerfile)
 
-Quarkus projects by default come with a few opinionated Dockerfiles. You can find them in the src/main/docker folder. 
+Quarkus projects come with a few opinionated Dockerfiles by default. You can find them in the `src/main/docker` folder.
 
 image::quarkus-dockerfiles.png[Quarkus Dockerfiles, 200]
 

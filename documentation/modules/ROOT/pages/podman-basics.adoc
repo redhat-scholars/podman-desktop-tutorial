@@ -11,7 +11,7 @@ The Dashboard section is the entry point to your container workflow, where you c
 
 image::podman-desktop-overview.png[Podman Desktop Overview, 600]
 
-In addition, you can view the status of other featured extensions, such as https://developers.redhat.com/products/openshift-local/overview[OpenShift Local], https://www.docker.com/products/docker-desktop/[Docker], https://kind.sigs.k8s.io/[Kind], https://minikube.sigs.k8s.io/docs/[Minikube], https://developers.redhat.com/developer-sandbox[Developer Sandbox], and https://lima-vm.io/[Lima]. Each of these extensions can be crutial to the development of your applications and workflow.
+In addition, you can view the status of other featured extensions, such as https://developers.redhat.com/products/openshift-local/overview[OpenShift Local], https://www.docker.com/products/docker-desktop/[Docker], https://kind.sigs.k8s.io/[Kind], https://minikube.sigs.k8s.io/docs/[Minikube], https://developers.redhat.com/developer-sandbox[Developer Sandbox], and https://lima-vm.io/[Lima]. Each of these extensions can be crucial to the development of your applications and workflow.
 
 NOTE: Because of the workshop environment, not all of these extensions may be available, but feel free to try them on your own machine afterwards!
 
@@ -71,7 +71,7 @@ The Settings section is where you can configure almost everything about Podman D
 
 image::podman-desktop-settings.png[Podman Desktop Settings, 600]
 
-TIP: There are also enterprise features, such as proxy configuration and the ability to connect to a private registry.
+TIP: On Linux, you won't happen to see any settings for the Podman Machine, as containers are Linux! There are also enterprise features, such as proxy configuration and the ability to connect to a private registry.
 
 One of Podman Desktop's biggest feature is the extensibility through the use of (OCI) Extensions. In fact, Podman Desktop even supports Docker Desktop extensions. 
 
