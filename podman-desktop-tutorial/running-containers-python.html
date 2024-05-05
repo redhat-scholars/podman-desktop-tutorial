@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Running and Managing Containers :: Podman Desktop Tutorial</title>
-    <link rel="canonical" href="https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/running-containers.html">
-    <link rel="prev" href="building-images.html">
-    <link rel="next" href="pods.html">
+    <link rel="canonical" href="https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/running-containers-python.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -73,7 +71,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="building-images.html">Building Images in Podman Desktop</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="running-containers.html">Running and Managing Containers</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -121,11 +119,10 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Podman Desktop Tutorial</a></li>
-    <li>Working with Podman Desktop</li>
-    <li><a href="running-containers.html">Running and Managing Containers</a></li>
+    <li><a href="running-containers-python.html">Running and Managing Containers</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/podman-desktop-tutorial/edit/master/documentation/modules/ROOT/pages/running-containers.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/podman-desktop-tutorial/edit/master/documentation/modules/ROOT/pages/running-containers-python.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
@@ -133,7 +130,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the previous step, we built a container image for our Quarkus application and pulled a Redis image for our cache. Now it&#8217;s time to bring those images to life as running containers and experience the power of Podman Desktop in action.</p>
+<p>In the previous step, we built a container image for our Python web server and pulled a Redis image for our cache. Now it&#8217;s time to bring those images to life as running containers and experience the power of Podman Desktop in action.</p>
 </div>
 </div>
 </div>
@@ -145,7 +142,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/podman-desktop-start-redis-container2.png" alt="Podman Desktop Start Container" width="600">
+<img src="_images/podman-desktop-start-redis-container.png" alt="Podman Desktop Start Container" width="600">
 </div>
 </div>
 <div class="paragraph">
@@ -182,7 +179,7 @@ There are settings for the container&#8217;s volumes, environment variables, por
 </div>
 </div>
 <div class="paragraph">
-<p>In order to connect these two containers, we will need to configure their network. Let&#8217;s view some of the details from this container, as we&#8217;ll need to find the internal IP address for Redis to configure our Quarkus application. Head to the <strong>Inspect</strong> tab and <strong>Ctrl-F</strong> to search for <code>IPAddress</code>, which will be under the <code>NetworkSettings</code> section and will look something like this:</p>
+<p>In order to connect these two containers, we will need to configure their network. Let&#8217;s view some of the details from this container, as we&#8217;ll need to find the internal IP address for Redis to configure our Python web server as a hostname. Head to the <strong>Inspect</strong> tab and <strong>Ctrl-F</strong> to search for <code>IPAddress</code>, which will be under the <code>NetworkSettings</code> section and will look something like this:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -212,22 +209,22 @@ The IP address will be different for your container, but it will be in the same 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_starting_the_quarkus_applications_container"><a class="anchor" href="#_starting_the_quarkus_applications_container"></a>Starting the Quarkus application&#8217;s container</h2>
+<h2 id="_starting_the_python_web_server"><a class="anchor" href="#_starting_the_python_web_server"></a>Starting the Python web server</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Now, let&#8217;s start the Quarkus container. We&#8217;ll go back to the <strong>Images</strong> section in Podman Desktop, where we can see the Quarkus image we built/pulled earlier. Let&#8217;s hit the <strong>▶</strong> button to start a new container from the image.</p>
+<p>Now, let&#8217;s start the Python web server container. We&#8217;ll go back to the <strong>Images</strong> (or <strong>Containers</strong>) section in Podman Desktop, where we can see the Python web server image we built/pulled earlier. Let&#8217;s hit the <strong>▶</strong> button to start a new container from the image.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/podman-desktop-start-quarkus-container.png" alt="Podman Desktop Start Container" width="600">
+<img src="_images/podman-desktop-start-python-container.png" alt="Podman Desktop Start Container" width="600">
 </div>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s navigate to the <strong>Environment</strong> tab and add a new environment variable with the key <code>redis</code> and the value as the IP address we copied from the Redis container earlier. You can also give the container a name, such as <code>quarkus-app</code>. Then hit the <strong>Start</strong> button.</p>
+<p>Here, let&#8217;s navigate to the <strong>Environment</strong> tab and add a new environment variable with the key <code>redis</code> and the value as the IP address we copied from the Redis container earlier. Be sure to also give the container a name, such as <code>python-app</code>, and hit the <strong>Start</strong> button.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/podman-desktop-start-quarkus-container-options.png" alt="Podman Desktop Start Container" width="600">
+<img src="_images/podman-desktop-start-python-container-options.png" alt="Podman Desktop Start Container" width="600">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -237,7 +234,7 @@ The IP address will be different for your container, but it will be in the same 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Setting the <code>redis</code> environment variable overrides the redis value set in the src/main/resources/application.properties. This property is used to configure the Redis connection host, which allows the Quarkus application to connect to the Redis cache running in our Redis container.
+This will allow the Python web server to connect to the Redis cache using the logic from the <code>entrypoint.sh</code> script in the Python web application source code.
 </td>
 </tr>
 </table>
@@ -248,11 +245,11 @@ Setting the <code>redis</code> environment variable overrides the redis value se
 <h2 id="_testing_the_multi_container_application"><a class="anchor" href="#_testing_the_multi_container_application"></a>Testing the multi-container application</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>With both containers started, let&#8217;s test the basic functionality by selecting the <strong>Open Browser</strong> button from the top right corner menu. This will open a new browser window with the application&#8217;s IP address and port, such as <code><a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a></code>.</p>
+<p>With the Python container started, let&#8217;s test the basic functionality by selecting the <strong>Open Browser</strong> button from the top right corner menu. This will open a new browser window with the Python web server&#8217;s IP address and port, such as <code><a href="http://localhost:5000/" target="_blank" rel="noopener">http://localhost:5000/</a></code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/podman-desktop-open-browser-button2.png" alt="Podman Desktop Open Browser" width="600">
+<img src="_images/podman-desktop-open-browser-button.png" alt="Podman Desktop Open Browser" width="600">
 </div>
 </div>
 <div class="paragraph">
@@ -260,15 +257,15 @@ Setting the <code>redis</code> environment variable overrides the redis value se
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/podman-desktop-quarkus-app-browser.png" alt="Podman Desktop Quarkus App" width="600">
+<img src="_images/podman-desktop-python-app-browser.png" alt="Podman Desktop Python App" width="600">
 </div>
 </div>
 <div class="paragraph">
-<p>Back in the <strong>Container Details</strong> page for the Quarkus container, we see the application&#8217;s output and logs, debug, and some other options we&#8217;ll explore later in the tutorial.</p>
+<p>Back in the <strong>Container Details</strong> page for the Python web server container, we see the application&#8217;s output and logs, debug, and some other options we&#8217;ll explore later in the tutorial.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/podman-desktop-quarkus-app-container-details.png" alt="Podman Desktop Container Details" width="600">
+<img src="_images/podman-desktop-python-app-container-details.png" alt="Podman Desktop Container Details" width="600">
 </div>
 </div>
 </div>
@@ -289,15 +286,15 @@ Setting the <code>redis</code> environment variable overrides the redis value se
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/podman-desktop-tag-image-button2.png" alt="Podman Desktop Tag" width="600">
+<img src="_images/podman-desktop-tag-image-button.png" alt="Podman Desktop Tag" width="600">
 </div>
 </div>
 <div class="paragraph">
-<p>This will open up a new window where we can specify the new image name. Let&#8217;s tag the <code>quarkus-app</code> image as <code>quay.io/&lt;your username&gt;/quarkus-app</code>, using the Quay.io registry, or as <code>docker.io/&lt;your username&gt;/quarkus-app</code>, using the Docker Hub registry.</p>
+<p>This will open up a new window where we can specify the new image name. Let&#8217;s tag the <code>python-app</code> image as <code>quay.io/&lt;your username&gt;/python-app</code>, using the Quay.io registry, or as <code>docker.io/&lt;your username&gt;/python-app</code>, using the Docker Hub registry.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/podman-desktop-tag-image-window2.png" alt="Podman Desktop Tag" width="600">
+<img src="_images/podman-desktop-tag-image-window.png" alt="Podman Desktop Tag">
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -307,7 +304,7 @@ Setting the <code>redis</code> environment variable overrides the redis value se
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Here, we can also use tagging to specify versioning of images, such as <code>quay.io/&lt;your username&gt;/quarkus-app:1.0.0</code>, and is a good practice for production use.
+Here, we can also use tagging to specify versioning of images, such as <code>quay.io/&lt;your username&gt;/python-app:1.0.0</code>, and is a good practice for production use.
 </td>
 </tr>
 </table>
@@ -317,7 +314,7 @@ Here, we can also use tagging to specify versioning of images, such as <code>qua
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/podman-desktop-push-image-button2.png" alt="Podman Desktop Push" width="600">
+<img src="_images/podman-desktop-push-image-button.png" alt="Podman Desktop Push" width="600">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -342,10 +339,6 @@ While Docker Hub will automatically make the image public, <a href="https://quay
 </div>
 </div>
 </div>
-<nav class="pagination">
-  <span class="prev"><a href="building-images.html">Building Images in Podman Desktop</a></span>
-  <span class="next"><a href="pods.html">Working with Pods</a></span>
-</nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>

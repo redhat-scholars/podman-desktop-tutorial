@@ -133,7 +133,26 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the previous step, we successfully built, ran, and tested a multi-container application using Podman Desktop. While running containers individually suffices for development and testing, production environments sometimes benefit from grouping related containers into a cohesive unit called a "pod". Podman Desktop streamlines the process of creating a pod from existing containers, offering a seamless transition from development to Kubernetes, where Pods are the most basic deployable units.</p>
+<p>In the previous step, we successfully built, ran, and tested a multi-container application using Podman Desktop. As you know, we had to do a workaround to get the IP from the Redis container and then pass that in as an environment variable to the Quarkus container, which wasn&#8217;t a very sustainable way to do our local container work. On a production environment, workloads with close affinity might actually be deployed in the same localhost network. To accomplish this same behavior, we could create a docker-compose.yml file and run it with podman (You installed docker-compose during the setup of Podman Desktop). Feel free to check out the <code>docker-compose.yml</code> file in the root directory of podify-quarkus-redis project and then run the following command:</p>
+</div>
+<div class="listingblock console-output">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cd ~/podify-quarkus-redis &amp;&amp; podman compose up</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You&#8217;ll notice that both containers are started together and you can even test the application in your browser again.</p>
+</div>
+<div class="paragraph">
+<p>The downside of using Docker Compose is that you will need expertise in creating docker-compose.yml files, and it&#8217;s a little bit of a dead-end street, since you cannot take the definitions in the compose files further to a Kubernetes environment.</p>
+</div>
+<div class="paragraph">
+<p>What if instead we could create a nice little 'pod' for our containers to live in together and share their resources? As the name of the project already implies, that&#8217;s of course exactly what Podman can do!</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Podman Desktop streamlines the process of creating a pod from existing containers, offering a seamless transition from development to Kubernetes, where Pods are the most basic deployable units.</pre>
+</div>
 </div>
 </div>
 </div>
@@ -170,14 +189,29 @@
 <h2 id="_creating_pods_from_podman_desktop"><a class="anchor" href="#_creating_pods_from_podman_desktop"></a>Creating Pods from Podman Desktop</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Podman Desktop&#8217;s <em>Podify</em> feature takes advantage of these pod benefits by simplifying the process of creating a pod from existing containers. Let&#8217;s walk through the steps to create a pod from the Python web server and Redis containers.</p>
+<p>Podman Desktop&#8217;s <em>Podify</em> feature takes advantage of these pod benefits by simplifying the process of creating a pod from existing containers. Let&#8217;s walk through the steps to create a pod from the Quarkus app and Redis containers.</p>
 </div>
 <div class="paragraph">
-<p>In the <strong>Containers</strong> section of Podman Desktop, select both the <code>python-app</code> and <code>redis</code> containers using the checkboxes. Now, click on the <strong>Podify</strong> button from the top right corner menu to initiate the pod creation process.</p>
+<p>You will need to change the environment variable <code>redis</code> to point to <code>localhost</code> instead of the hard coded IP we set earlier. In order to do so, delete the existing quarkus-app container and create a new one from the images tab.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+the Quarkus application is by default configured to look for a Redis instance on <code>localhost</code> already, so you don&#8217;t actually need to set the environment variable this time. Just create a new container with name <code>quarkus-app</code>, and continue with the instructions below.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In the <strong>Containers</strong> section of Podman Desktop, select both the <code>quarkus-app</code> and <code>redis</code> containers using the checkboxes. Now, click on the <strong>Podify</strong> button from the top right corner menu to initiate the pod creation process.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/podman-desktop-podify-button.png" alt="Podman Desktop Podify" width="600">
+<img src="_images/podman-desktop-podify-button2.png" alt="Podman Desktop Podify" width="600">
 </div>
 </div>
 <div class="paragraph">
@@ -185,7 +219,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/podman-desktop-podify-window.png" alt="Podman Desktop Podify" width="600">
+<img src="_images/podman-desktop-podify-window2.png" alt="Podman Desktop Podify" width="600">
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -195,7 +229,7 @@
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-You&#8217;ll notice that you only have the option to expose the port of the Python web server container. Due to the pod&#8217;s internal networking, it&#8217;s not necessary to expose the Redis port externally for this application, as they can communicate using <code>localhost</code>.
+You&#8217;ll notice that you only have the option to expose the port of the Quarkus container. Due to the pod&#8217;s internal networking, it&#8217;s not necessary to expose the Redis port externally for this application, as they can communicate using <code>localhost</code>.
 </td>
 </tr>
 </table>
