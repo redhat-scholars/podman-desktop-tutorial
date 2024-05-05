@@ -2,9 +2,19 @@
 
 Again, welcome to the Podman Desktop workshop! You'll learn how to use link:https://podman-desktop.io[Podman Desktop] to build, run, and manage containers on your local machine. Podman Desktop provides a user-friendly graphical interface for working with link:https://podman.io/[Podman], a powerful container engine that is compatible with Docker. The workshop environment is a virtual machine that has been pre-configured with Podman Desktop and all the tools you need to complete the exercises.
 
+== Workshop Homepage
+
+To begin, let's navigate to the homepage for workshops at link:https://summit.demo.redhat.com[https://summit.demo.redhat.com/]. From the homepage, you can access the Podman Desktop workshop by selecting the *Access this lab* button.
+
+image::podman-desktop-workshop-homepage.png[Workshop Homepage]
+
+You'll also need to enter an email and password `openshift` to access the workshop environment. The email you use will provision you a user account in the workshop environment and be used to save your work.
+
+image::podman-desktop-workshop-login.png[Workshop Login]
+
 == Accessing the Workshop Environment
 
-To access the workshop environment, you'll need to connect to the virtual machine using a web-based desktop environment. The virtual machine is running in the cloud and is accessible via a web browser. To connect to the virtual machine, first access the noVNC link from the workshop landing page:
+Now, to access the workshop environment, you'll need to connect to the virtual machine using a web-based desktop environment. The virtual machine is running in the cloud and is accessible via a web browser. To connect to the virtual machine, first access the noVNC link from the workshop landing page:
 
 image::podman-desktop-novnc-access.png[noVNC Access]
 

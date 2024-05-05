@@ -3,7 +3,7 @@ include::_attributes.adoc[]
 :page-layout: home
 :!sectids:
 
-Welcome to the https://www.redhat.com/en/summit[Red Hat Summit] workshop where you'll *Learn how to elevate your container development work with Podman Desktop*. We're glad to have you here with us! Today, we'll explore the features and benefits of https://podman-desktop.io[Podman Desktop] for streamlining your container workflows. Build, manage, and even deploy to local/remote Kubernetes environments – all from your desktop.
+Welcome to the https://www.redhat.com/en/summit[Red Hat Summit] workshop where you'll *learn how to elevate your container development work with Podman Desktop*. We're glad to have you here with us! Today, we'll explore the features and benefits of https://podman-desktop.io[Podman Desktop] for streamlining your container workflows. Build, manage, and even deploy to local/remote Kubernetes environments – all from your desktop.
 
 image::podman-desktop-feature.png[Podman Desktop Feature Image, 700]
 
@@ -13,7 +13,7 @@ This is a guide and hands-on tutorial with three main sections, where you will d
 * xref:building-images.adoc[Working with Podman Desktop: Build images, run containers, and create Pods]
 * xref:kubernetes.adoc[Targeting Kubernetes: Setup and deploy to a local & remote Kubernetes environment]
 
-Before we begin, also feel free to check out the accompanying slide deck for a quick overview of Podman & Podman Desktop: https://red.ht/podman-desktop-slides[Simplifying containers and Kubernetes on your laptop with Podman Desktop].
+Before we begin, also feel free to check out the accompanying slide deck for an overview of Podman & Podman Desktop, as well as how to access the workshop: https://red.ht/podman-desktop-slides[Simplifying containers and Kubernetes on your laptop with Podman Desktop].
 
 [.text-center.strong]
 == What is Podman Desktop?
