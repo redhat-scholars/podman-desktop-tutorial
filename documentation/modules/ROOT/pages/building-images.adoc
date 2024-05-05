@@ -50,7 +50,7 @@ Now, let's open up the project in our VS Code instance and take a look at the so
 cd podify-quarkus-redis && code .
 ----
 
-NOTE: If VS Code asks to trust the authors of the files, go ahead and click "Yes, I trust the authors". If it then asks to create a keyring password, use the same password you used to log in to your environment. Also, VS Code will ask you to install the Extension Pack for Java. This is optional but it will greatly help the readability and usability of Java in VS Code so feel free to install it.
+NOTE: If VS Code asks to trust the authors of the files, go ahead and click "Yes, I trust the authors". If it then asks to create a keyring password, use the same password you used to log in to your environment (`{ssh_password]`). Also, VS Code will ask you to install the Extension Pack for Java. This is optional but it will greatly help the readability and usability of Java in VS Code so feel free to install it.
 
 image::podman-desktop-vscode.png[Podman Desktop VS Code, 600]
 
@@ -76,6 +76,8 @@ Let's go ahead and start Dev Mode. In the same terminal we were using previously
 ~/podify-quarkus-redis/mvnw quarkus:dev
 ----
 
+image::podman-desktop-quarkus-dev-mode.png[Podman Desktop Quarkus Dev Mode, 600]
+
 Wait a few moments for the application to start up. You'll see logs scroll on the screen and eventually a log message that says something like "Live Coding activated" and "Listening on: http://localhost:8080".
 
 NOTE: You might be prompted to accept contributing anonymous build time data with the Quarkus community. The answer is up to you :)
@@ -84,15 +86,17 @@ image::quarkus-startup.png[Quarkus Startup, 600]
 
 Open up a Firefox instance and navigate to http://localhost:8080. Fantastic! Our app is already running. Feel free to modify the code and refresh the browser, and you'll see the changes being picked up on the fly without recompilation, thanks to the Quarkus Dev Mode.
 
+image::podman-desktop-quarkus-app-browser-2.png[Podman Desktop Quarkus App, 600]
+
 NOTE: If you paid close attention to the logs when Quarkus Dev Mode started, you might have noticed that Quarkus also started up a Redis "Dev Service". https://quarkus.io/guides/dev-services[Dev Services] is a powerful feature in Quarkus that automatically starts up external services the app relies on, such as databases or messaging systems, in a container. It then automatically wires these container-based services to the application. In this case, since our application relies on Redis for caching the counter, Quarkus started up a Redis container without any manual configuration required.
 
-We can verify that this really happened. Open the Podman Desktop application and go to the *Containers* view. You should see the Redis container with a randomly assigned container name, and 'docker.io/library/redis:7' in the Images column.
+We can verify that this really happened. Open the Podman Desktop application and go to the *Containers* view. You should see the Redis container with a randomly assigned container name, and `docker.io/library/redis:7` in the Images column.
 
 NOTE: You might also notice a 'testcontainers' instance. This is part of the Quarkus Dev Services (which leverages the TestContainers project) and will automatically stop and remove Dev Services when they're not needed anymore.
 
 image::podman-desktop-redis-devservice.png[Podman Desktop Redis Dev Service Startup, 600]
 
-Great! We're done developing our application, so let's stop the Dev Mode and proceed with containerizing it. Go back to your terminal and press CTRL+C to stop the process.
+Great! We're done developing our application, so let's stop the Dev Mode and proceed with containerizing it. Go back to your terminal and use the shortcut kbd:[Ctrl+C] to stop the process.
 
 IMPORTANT: Make sure the application is stopped, otherwise you might run into port conflicts later on.
 
@@ -125,7 +129,7 @@ Go ahead and open `Dockerfile.jvm` and scroll down past the commented out initia
 ** `ENV ...` (Sets more environment variables)
 ** `ENTRYPOINT [ "/opt/jboss/container/java/run/run-java.sh" ]` (Defines container startup command) 
 
-NOTE: the Dockerfile.jvm is used for a 'classic' Java build with the application packaged as a .jar archive. You can also compile the Quarkus application to a native binary, in which case you could use the Dockerfile.native or Dockerfile.native-micro images which are much smaller since they don't have a Java Virtual Machine (JVM) built in. https://quarkus.io/guides/building-native-image[More info can be found here].
+NOTE: The Dockerfile.jvm is used for a 'classic' Java build with the application packaged as a .jar archive. You can also compile the Quarkus application to a native binary, in which case you could use the Dockerfile.native or Dockerfile.native-micro images which are much smaller since they don't have a Java Virtual Machine (JVM) built in. https://quarkus.io/guides/building-native-image[More info can be found here].
 
 == Building the Container Image
 
@@ -133,20 +137,19 @@ Now that we've taken a look at the source code and the Containerfile, in our cas
 
 image::podman-desktop-build-image-button2.png[Podman Desktop Build Image, 600]
 
-This will open up a new window where we can specify the Containerfile, the build context, and image name. For the Containerfile Path, browse to the Dockerfile.jvm (`home/student/podify-quarkus-redis/src/main/docker/Dockerfile.jvm`) and select it. Set the build directory to the path of the podify-quarkus-redis directory: `/home/student/podify-quarkus-redis`, and set `quarkus-app` for the image name. 
+This will open a new window where we can specify the Containerfile, the build context, and image name. For the Containerfile Path, browse to the Dockerfile.jvm (`home/student/podify-quarkus-redis/src/main/docker/Dockerfile.jvm`) and select it. Set the build directory to the path of the podify-quarkus-redis directory: `/home/student/podify-quarkus-redis`, and set `quarkus-app` for the image name. 
 
-NOTE: The build context is the directory where the source code is located, and the Dockerfile is the recipe for building the container image. We can use Podman Desktop to easily rename/retag the image later, so don't worry too much about the image name for now.
+NOTE: The build context is the directory where the source code is located, and the Containerfile (Dockerfile) is the recipe for building the container image. We can use Podman Desktop to easily rename/retag the image later, so don't worry too much about the image name for now.
 
 image::podman-desktop-build-image-window2.png[Podman Desktop Build Image Window, 600]
 
-After clicking *Build*, Podman Desktop will start building the container image, and you can see the build logs in the bottom pane. This will take a few minutes, as it's downloading the base image, installing dependencies, copying the source code, etc.
+After clicking *Build*, Podman Desktop will start building the container image, and you can view the build logs in the bottom pane. This will take a few minutes, as it's downloading the base image, installing dependencies, copying the source code, etc.
 
 image::podman-desktop-build-image-logs2.png[Podman Desktop Build Image Logs, 600]
 
 Once the build is complete, you should see the new `quarkus-app` image in the *Images* section of Podman Desktop. You'll see the default image https://www.redhat.com/sysadmin/container-image-short-names[short name] here, which we'll retag for our registry in the next section.
 
 image::podman-desktop-built-quarkus-image.png[Podman Desktop Built Image, 600]
-
 
 [#pulling]
 === Optional: Pulling the Quarkus App Image
@@ -165,11 +168,11 @@ TIP: Due to its popularity, Podman uses the Docker Hub registry to pull images b
 
 == Pulling the Redis Image
 
-As you have seen from the previous section, we're using a Redis cache to store the number of times we've visited the webpage. Redis is a popular choice for caching in containerized applications. The Quarkus application actually has a hard dependency on the Redis service, so if the Redis service is not available, the app would misbehave as you can see below in the startup logs of the app when the Redis container isn't running.
+As we've seen from the previous section, our application uses Redis for caching the visit counter. Redis is a popular choice for caching in containerized applications. The Quarkus application has a hard dependency on the Redis service, so if the Redis service isn't available, the app would misbehave as you can see in the startup logs below when the Redis container isn't running.
 
 image::podman-desktop-quarkus-redis-start-failure.png[Podman Desktop Quarkus Error , 600]
 
-Fortunately we can also run a Redis container next to our Quarkus application. Let's go ahead and pull a pre-built Redis image from Quay.io by clicking the *Pull* button from the top right corner menu. We'll be pulling an image of Redis that has been built with the Red Hat https://catalog.redhat.com/software/base-images[UBI] and Redis installed on top.
+Fortunately we can run a Redis container next to our Quarkus application. Let's pull a pre-built Redis image from Quay.io by clicking the Pull button from the top right corner menu. We'll be pulling Redis image that has been built with the Red Hat https://catalog.redhat.com/software/base-images[UBI] base image with Redis installed on top.
 
 [.console-input][.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -179,8 +182,8 @@ quay.io/podman-desktop-demo/podify-demo-backend:v1
 
 image::podman-desktop-redis-image-layers.png[Podman Desktop Redis Image, 600]
 
-TIP: The Containerfile used to build the Redis image is available in the `podman-desktop-demo/primary-podify-demo/back` directory, but can also be found here. https://github.com/redhat-developer/podman-desktop-demo/blob/main/primary-podify-demo/backend/Dockerfile[here, window="_blank"].
+TIP: The Containerfile used to build the Redis image is available in the `podman-desktop-demo/primary-podify-demo/back` directory, but can also be found  https://github.com/redhat-developer/podman-desktop-demo/blob/main/primary-podify-demo/backend/Dockerfile[here, window="_blank"].
 
 == Next Steps
 
-Fantastic! We've built the container image for the Quarkus web application, and pulled the Redis image for the cache. In the next tutorial, we'll start the containers and test the web application.
+Fantastic! We've built the container image for the Quarkus web application, and pulled the Redis image for caching. In the next tutorial, we'll start the container and test out the web application.
