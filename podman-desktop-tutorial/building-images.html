@@ -141,11 +141,11 @@
 <h2 id="_demo_application"><a class="anchor" href="#_demo_application"></a>Demo Application</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For this exercise, we&#8217;ll be using a basic Java web application based on the <a href="https://quarkus.io">SuperSonic, Subatomic Quarkus</a> stack. The application uses a Redis cache to store the number of times we&#8217;ve visited the webpage. This is a simple microservice, but it&#8217;s a good example of a multi-container application.</p>
+<p>For this exercise, we&#8217;ll be using a basic Java web application based on the <a href="https://quarkus.io">SuperSonic, Subatomic Quarkus</a> stack. Quarkus is a Kubernetes-native Java framework designed for building high-performance and scalable microservices. The application uses a Redis cache to store the number of times we&#8217;ve visited the webpage. This is a simple microservice, but it&#8217;s a good example of a multi-container application.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/podman-desktop-quarkus-app-browser.png" alt="Podman Desktop Python App" width="600">
+<img src="_images/podman-desktop-quarkus-app-browser.png" alt="Podman Desktop Quarkus App" width="600">
 </div>
 </div>
 </div>
@@ -157,7 +157,7 @@
 <p>Let&#8217;s start off with downloading the source code for the demo application, found <a href="https://github.com/redhat-developer-demos/podify-quarkus-redis">here on GitHub</a>.</p>
 </div>
 <div class="paragraph">
-<p>While you could eg. clone the repository to a local machine using <a href="https://desktop.github.com/">GitHub Desktop</a>, today let&#8217;s use the command line to clone the repository. Open up the terminal (click on activities in the top left, then type 'terminal'), and then use the noNVC menu to copy these next two commands to your clipboard, and paste/execute them in a terminal.</p>
+<p>While you could clone the repository to a local machine using <a href="https://desktop.github.com/">GitHub Desktop</a>, today let&#8217;s use the command line to clone the repository. Open up the terminal (click on activities in the top left, then type 'terminal'), and then use the noVNC menu to copy these commands to your clipboard, and paste/execute them in the terminal.</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
@@ -170,7 +170,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>Since this is a Java application, we&#8217;ll need to install a Java OpenJDK version. Copy and paste the following commands to install <a href="https://sdkman.io/">SDKMAN!</a> and then the <a href="https://adoptium.net/">Eclipse Adoptium Temurin build of OpenJDK 21</a>, for which Red Hat provides Enterprise Support. In case you&#8217;re interested in reading more about Red Hat&#8217;s involvement in Java, <a href="https://developers.redhat.com/java/runtimes-and-frameworks">there is a wealth of resources on developers.redhat.com/java</a>.</p>
+<p>Since this is a Java application, we&#8217;ll need to install a Java OpenJDK version. Copy and paste the following commands to install <a href="https://sdkman.io/">SDKMAN!</a> and then the <a href="https://adoptium.net/">Eclipse Adoptium Temurin build of OpenJDK 21</a>, for which Red Hat provides Enterprise Support. If you&#8217;re interested in reading more about Red Hat&#8217;s involvement in Java, <a href="https://developers.redhat.com/java/runtimes-and-frameworks">there are a wealth of resources on developers.redhat.com/java</a>.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s install SDKMAN and OpenJDK. Copy &amp; paste the following set of commands and let them run their course.</p>
@@ -181,8 +181,13 @@
 </div>
 </div>
 <div class="paragraph">
-<p>If everything went well you will see a message saying "Done installing!" and that your installed version of Java is set as the default.
-Now, let&#8217;s open up the project in our VS Code instance and take a look at the source code of the demo application, found in the <code>podify-quarkus-redis</code> directory.</p>
+<p>If everything went well, you will see a message saying "Done installing!" and your installed version of Java is set as the default.</p>
+</div>
+<div class="paragraph">
+<p>image::podman-desktop-sdkman-install.png[Podman Desktop SDK</p>
+</div>
+<div class="paragraph">
+<p>Now, let&#8217;s open up the project in our VS Code instance and take a look at the source code of the demo application, found in the <code>podify-quarkus-redis</code> directory.</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
@@ -196,26 +201,18 @@ Now, let&#8217;s open up the project in our VS Code instance and take a look at 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If VS Code asks to trust the authors of the files, go ahead and click "Yes, I trust the authors". If it then asks to create a keyring password, use the same password you used to log in to your environment.
+If VS Code asks to trust the authors of the files, go ahead and click "Yes, I trust the authors". If it then asks to create a keyring password, use the same password you used to log in to your environment. Also, VS Code will ask you to install the Extension Pack for Java. This is optional but it will greatly help the readability and usability of Java in VS Code so feel free to install it.
 </td>
 </tr>
 </table>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-VS Code will ask you to install the Extension Pack for Java. This is optional but it will greatly help the readability and usability of Java in VS Code so feel free to install it.
-</td>
-</tr>
-</table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-vscode.png" alt="Podman Desktop VS Code" width="600">
+</div>
 </div>
 <div class="paragraph">
-<p>Once you&#8217;re ready, go to the file explorer (top option in the left menu). If you know a little bit of Java and Maven, you&#8217;ll see a familiar file structure (src/main/java) and a pom.xml. Optionally feel free to poke around if you want to get yourself familiar with the code.
-You&#8217;ll see the back-end logic in the src/main/java/ folder. You can find the front-end resources in the src/main/resources/templates and src/main/resources/META-INF/resources folders.</p>
+<p>Once you&#8217;re ready, go to the file explorer (top option in the left menu). If you&#8217;re familiar with Java and Maven, you&#8217;ll see a standard file structure (<code>src/main/java</code>) and a <code>pom.xml</code>. Feel free to explore the code to familiarize yourself with the project structure. The back-end logic can be found in the <code>src/main/java/</code> folder. The front-end resources are located in the <code>src/main/resources/templates</code> and <code>src/main/resources/META-INF/resources</code> folders.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -223,7 +220,7 @@ You&#8217;ll see the back-end logic in the src/main/java/ folder. You can find t
 </div>
 </div>
 <div class="paragraph">
-<p>The usual developer workflow starts by testing the application locally, so let&#8217;s start there. With Quarkus, Java development with rapid feedback loops becomes much easier. It allows you start the application in "Dev Mode", allowing you to test the application without having to compile, package and deploy the app.</p>
+<p>The typical developer workflow starts by testing the application locally, so let&#8217;s start there. With Quarkus, Java development with rapid feedback loops becomes much easier. It allows you to start the application in "Dev Mode", enabling testing without having to compile, package, and deploy the app.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -232,7 +229,7 @@ You&#8217;ll see the back-end logic in the src/main/java/ folder. You can find t
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Quarkus Dev Mode looks for a DOCKER_HOST environment variable that points to a container daemon process to enable Dev Services (more about this below). Before we can proceed, run the following command to set the "DOCKER_HOST":
+Quarkus Dev Mode looks for a DOCKER_HOST environment variable that points to a container daemon process to enable Dev Services (more about this below). Before proceeding, run the following command to set the "DOCKER_HOST":
 </td>
 </tr>
 </table>
@@ -260,7 +257,7 @@ Quarkus Dev Mode looks for a DOCKER_HOST environment variable that points to a c
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-you might be prompted to accept to contribute anonymous build time data with the Quarkus community. The answer is up to you :).
+You might be prompted to accept contributing anonymous build time data with the Quarkus community. The answer is up to you :)
 </td>
 </tr>
 </table>
@@ -271,13 +268,7 @@ you might be prompted to accept to contribute anonymous build time data with the
 </div>
 </div>
 <div class="paragraph">
-<p>Open up a Firefox instance and navigate to <a href="http://localhost:8080" class="bare">http://localhost:8080</a>. Fantastic! Our app is already running :). Feel free to modify the code and refresh the browser, and you&#8217;ll see the changes being picked up on the fly without recompilation, thanks to the Quarkus Dev Mode.</p>
-</div>
-<div class="paragraph">
-<p>If you paid close attention to the logs when Quarkus Dev Mode started, you might also have seen that Quarkus started up a Redis "Dev Service". <a href="https://quarkus.io/guides/dev-services">Dev Services</a> is a very cool feature in Quarkus that starts up external services the app relies on such as databases, messaging systems, etc in a container. It then automatically wires these container based services up to the application. In this case since our application relies on Redis for caching the counter, Quarkus started up a Redis container without us having to do anything.</p>
-</div>
-<div class="paragraph">
-<p>We can verify that this really happened. Let&#8217;s open the Podman Desktop application and go to the <code>containers</code> view. Do you see the Redis container? It will have a randomly assigned container name, but you should see 'docker.io/library/redis:7' in the images column.</p>
+<p>Open up a Firefox instance and navigate to <a href="http://localhost:8080" class="bare">http://localhost:8080</a>. Fantastic! Our app is already running. Feel free to modify the code and refresh the browser, and you&#8217;ll see the changes being picked up on the fly without recompilation, thanks to the Quarkus Dev Mode.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -286,7 +277,22 @@ you might be prompted to accept to contribute anonymous build time data with the
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-You might also notice a 'testcontainers' instance. This is part of the Quarkus Dev Services (which leverages the TestContainers project) which will automatically stop and remove Dev Services when they&#8217;re not needed anymore.
+If you paid close attention to the logs when Quarkus Dev Mode started, you might have noticed that Quarkus also started up a Redis "Dev Service". <a href="https://quarkus.io/guides/dev-services">Dev Services</a> is a powerful feature in Quarkus that automatically starts up external services the app relies on, such as databases or messaging systems, in a container. It then automatically wires these container-based services to the application. In this case, since our application relies on Redis for caching the counter, Quarkus started up a Redis container without any manual configuration required.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We can verify that this really happened. Open the Podman Desktop application and go to the <strong>Containers</strong> view. You should see the Redis container with a randomly assigned container name, and 'docker.io/library/redis:7' in the Images column.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You might also notice a 'testcontainers' instance. This is part of the Quarkus Dev Services (which leverages the TestContainers project) and will automatically stop and remove Dev Services when they&#8217;re not needed anymore.
 </td>
 </tr>
 </table>
@@ -297,7 +303,7 @@ You might also notice a 'testcontainers' instance. This is part of the Quarkus D
 </div>
 </div>
 <div class="paragraph">
-<p>Great! We&#8217;re done developing our application, so let&#8217;s stop the Dev Mode and proceed with containerizing our application. In order to do so, go back to your terminal and run CTRL+C to stop the process.</p>
+<p>Great! We&#8217;re done developing our application, so let&#8217;s stop the Dev Mode and proceed with containerizing it. Go back to your terminal and press CTRL+C to stop the process.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -320,15 +326,15 @@ Make sure the application is stopped, otherwise you might run into port conflict
 </div>
 </div>
 <div class="paragraph">
-<p>Meanwhile, go back to Podman Desktop. You&#8217;ll notice that the Dev Services containers have disappeared. As expected, the Quarkus Dev Services / TestContainers functionality cleans up after itself when the containers aren&#8217;t needed anymore.</p>
+<p>Meanwhile, go back to Podman Desktop. You&#8217;ll notice that the Dev Services containers have disappeared. As expected, the Quarkus Dev Services / TestContainers functionality cleans up after itself when the containers are no longer needed.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_containerfile_aka_dockerfile"><a class="anchor" href="#_containerfile_aka_dockerfile"></a>Containerfile (aka Dockerfile)</h2>
+<h2 id="_viewing_the_containerfile_aka_dockerfile"><a class="anchor" href="#_viewing_the_containerfile_aka_dockerfile"></a>Viewing the Containerfile (aka Dockerfile)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Quarkus projects by default come with a few opinionated Dockerfiles. You can find them in the src/main/docker folder.</p>
+<p>Quarkus projects come with a few opinionated Dockerfiles by default. You can find them in the <code>src/main/docker</code> folder.</p>
 </div>
 <div class="imageblock">
 <div class="content">
