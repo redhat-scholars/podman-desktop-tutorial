@@ -8,7 +8,7 @@ To begin, let's navigate to the homepage for workshops at link:https://summit.de
 
 image::podman-desktop-workshop-homepage.png[Workshop Homepage]
 
-You'll also need to enter an email and password `openshift` to access the workshop environment. The email you use will provision you a user account in the workshop environment and be used to save your work.
+You'll also need to enter an email and password `openshift` to access the workshop environment. The email you use will provision you a user account in the workshop environment and be used to save your work. Let's hit *Access this workshop* to get started.
 
 image::podman-desktop-workshop-login.png[Workshop Login]
 
