@@ -5,7 +5,7 @@ With the new connection to our Developer Sandbox cluster, you can easily deploy 
 
 == Deploying a Pod to Kubernetes
 
-Let's begin by deploying the Flask & Redis container pod to the Developer Sandbox. In the *Pods* section of Podman Desktop, select the `summit-pod` you created earlier. Click on the *Deploy to Kubernetes* button from the top right corner menu.
+Let's begin by deploying the Quarkus & Redis container pod to the Developer Sandbox. In the *Pods* section of Podman Desktop, select the `summit-pod` you created earlier. Click on the *Deploy to Kubernetes* button from the top right corner menu.
 
 image::podman-desktop-deploy-to-kubernetes-button.png[Podman Desktop Deploy to Kubernetes, 600]
 
@@ -17,25 +17,25 @@ TIP: You can specify the Kubernetes context where you want to deploy the pod by 
 
 Podman Desktop will communicate with the Kubernetes API server and create the required resources in the cluster. You can monitor the deployment status, and when ready, access the deployed application using the provided URL.
 
-image::podman-desktop-kubernetes-pod-details.png[Podman Desktop Kubernetes Pod Details, 600]
+image::podman-desktop-kubernetes-pod-details2.png[Podman Desktop Kubernetes Pod Details, 600]
 
 === Accessing the Deployed Application
 
-Once the pod is successfully deployed to Kubernetes, you can access the Flask application's endpoint directly from Podman Desktop.
+Once the pod is successfully deployed to Kubernetes, you can access the Quarkus application's endpoint directly from Podman Desktop by clicking on the `summit-pod-8080` link.
 
 image::podman-desktop-kubernetes-pod-exposed.png[Podman Desktop Kubernetes Pod Details, 600]
 
-You should see the familiar Flask application with the Redis-backed counter, now running on the Developer Sandbox.
+You should see the familiar Quarkus application with the Redis-backed counter, now running on the Developer Sandbox.
 
 === Scaling and Managing the Deployment
 
 Kubernetes allows you to easily scale and manage your deployments. Back in Podman Desktop, select *Open in OpenShift console* from the right hand side to access the OpenShift console for the deployed pod.
 
-image::podman-desktop-kubernetes-pod-openshift-console.png[Podman Desktop Kubernetes Pod OpenShift Console, 600]
+image::podman-desktop-kubernetes-pod-openshift-console2.png[Podman Desktop Kubernetes Pod OpenShift Console, 600]
 
 Now in the OpenShift console, you can view the details of the deployed pod, including its status, events, and logs.
 
-image::podman-desktop-kubernetes-pod-openshift-console-details.png[Podman Desktop Kubernetes Pod OpenShift Console Details, 600]
+image::podman-desktop-kubernetes-pod-openshift-console-details2.png[Podman Desktop Kubernetes Pod OpenShift Console Details, 600]
 
 TIP: In the *Topology* view, you can also scale the deployment by adjusting the number of replicas and manage the pod's lifecycle.
 
@@ -65,4 +65,4 @@ If necessary, you can also perform a rollback to a previous version of the deplo
 
 == Next Steps
 
-Congratulations! You have successfully deployed a Flask + Redis application to Kubernetes using Podman Desktop. You have learned how to generate Kubernetes manifests, deploy pods, and manage your application in the Developer Sandbox.
+Congratulations! You have successfully deployed a Quarkus + Redis application to Kubernetes using Podman Desktop. You have learned how to generate Kubernetes manifests, deploy pods, and manage your application in the Developer Sandbox.
