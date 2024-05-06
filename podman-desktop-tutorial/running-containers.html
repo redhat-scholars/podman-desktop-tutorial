@@ -182,7 +182,7 @@ There are settings for the container&#8217;s volumes, environment variables, por
 </div>
 </div>
 <div class="paragraph">
-<p>In order to connect these two containers, we will need to configure their network. Let&#8217;s view some of the details from this container, as we&#8217;ll need to find the internal IP address for Redis to configure our Quarkus application. Head to the <strong>Inspect</strong> tab and <strong>Ctrl-F</strong> to search for <code>IPAddress</code>, which will be under the <code>NetworkSettings</code> section and will look something like this:</p>
+<p>In order to connect these two containers, we will need to configure their network. Let&#8217;s view some of the details from this container, as we&#8217;ll need to find the internal IP address for Redis to configure our Quarkus application. Head to the <strong>Inspect</strong> tab and find shortcut <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>F</kbd></span> for <code>IPAddress</code>, which will be under the <code>NetworkSettings</code> section and will look something like this:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -223,7 +223,7 @@ The IP address will be different for your container, but it will be in the same 
 </div>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s navigate to the <strong>Environment</strong> tab and add a new environment variable with the key <code>redis</code> and the value as the IP address we copied from the Redis container earlier. You can also give the container a name, such as <code>quarkus-app</code>. Then hit the <strong>Start</strong> button.</p>
+<p>Let&#8217;s navigate to the <strong>Environment variables</strong> section and add a new environment variable with the key <code>redis</code> and the value as the IP address we copied from the Redis container earlier. You can also give the container a name, such as <code>quarkus-app</code>. Then hit the <strong>Start</strong> button.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -248,7 +248,7 @@ Setting the <code>redis</code> environment variable overrides the redis value se
 <h2 id="_testing_the_multi_container_application"><a class="anchor" href="#_testing_the_multi_container_application"></a>Testing the multi-container application</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>With both containers started, let&#8217;s test the basic functionality by selecting the <strong>Open Browser</strong> button from the top right corner menu. This will open a new browser window with the application&#8217;s IP address and port, such as <code><a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a></code>.</p>
+<p>With both containers started, let&#8217;s test the basic functionality by selecting the <strong>Open Browser</strong> button from the top right corner menu. This will open a new browser window with the application&#8217;s IP address and port, such as <code><a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080</a></code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
