@@ -73,13 +73,11 @@ image::podman-desktop-kubernetes-play-yaml-button.png[Podman Desktop Play Kubern
 
 As mentioned, Podman Desktop provides a seamless integration with Kubernetes, starting from the setup of a local Kubernetes cluster to deploying and managing applications on Kubernetes. Let's take a look at how easy it is to spin up, and connect, to a Kubernetes cluster using Podman Desktop.
 
-=== Provisioning a Kubernetes Cluster
+=== Optional: Provisioning a Kubernetes Cluster
 
 NOTE: During this workshop, we'll be directly connecting to a remote Kubernetes cluster. This information is just as a reference for later use.
 
-Podman Desktop includes extensions to manage local Kubernetes clusters, enabling developers to deploy and test their applications in a Kubernetes environment without the need for external setup. The local cluster is powered by https://kind.sigs.k8s.io/[KinD (Kubernetes in Docker)] or https://minikube.sigs.k8s.io/[Minikube], providing a lightweight and isolated Kubernetes environment. To start a local KinD cluster in Podman Desktop:
-
-Navigate to the *Settings* section in Podman Desktop and select *Create new Kind cluster*.
+Podman Desktop includes extensions to manage local Kubernetes clusters, enabling developers to deploy and test their applications in a Kubernetes environment without the need for external setup. The local cluster is powered by https://kind.sigs.k8s.io/[KinD (Kubernetes in Docker)] or https://minikube.sigs.k8s.io/[Minikube], providing a lightweight and isolated Kubernetes environment. To start a local KinD cluster in Podman Desktop, firstly navigate to the *Settings* section in Podman Desktop and select *Create new Kind cluster*.
 
 image::podman-desktop-settings-kind.png[Podman Desktop Settings, 600]
 

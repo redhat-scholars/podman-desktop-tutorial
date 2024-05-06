@@ -1,7 +1,13 @@
 = Working with Pods
 include::_attributes.adoc[]
 
-In the previous step, we successfully built, ran, and tested a multi-container application using Podman Desktop. As you know, we had to do a workaround to get the IP from the Redis container and then pass that in as an environment variable to the Quarkus container, which wasn't a very sustainable way to do our local container work. On a production environment, workloads with close affinity might actually be deployed in the same localhost network. To accomplish this same behavior, we could create a docker-compose.yml file and run it with podman (You installed docker-compose during the setup of Podman Desktop). Feel free to check out the `docker-compose.yml` file in the root directory of podify-quarkus-redis project and then run the following command:
+In the previous step, we successfully built, ran, and tested a multi-container application using Podman Desktop. 
+
+## Optional: Working with Compose
+
+NOTE: As you already have these two containers running, you'll have to stop them before proceeding with the Compose example, and re-do the previous steps before continuing. Feel free to just view the instructions below and skip this step if you prefer.
+
+As you know, we had to do a workaround to get the IP from the Redis container and then pass that in as an environment variable to the Quarkus container, which wasn't a very sustainable way to do our local container work. On a production environment, workloads with close affinity might actually be deployed in the same localhost network. To accomplish this same behavior, we could create a docker-compose.yml file and run it with podman (You installed Compose during the setup of Podman Desktop). Feel free to check out the `docker-compose.yml` file in the root directory of podify-quarkus-redis project and then run the following command:
 
 [.console-output]
 [source,bash,subs="+macros,+attributes"]
@@ -9,17 +15,21 @@ In the previous step, we successfully built, ran, and tested a multi-container a
 cd ~/podify-quarkus-redis && podman compose up
 ----
 
+image::podman-compose-up.png[Podman Compose Up, 600]
+
 You'll notice that both containers are started together and you can even test the application in your browser again. 
+
+image::quarkus-app-redis-compose.png[Quarkus App with Redis, 600]
 
 The downside of using Docker Compose is that you will need expertise in creating docker-compose.yml files, and it's a little bit of a dead-end street, since you cannot take the definitions in the compose files further to a Kubernetes environment. 
 
-What if instead we could create a nice little 'pod' for our containers to live in together and share their resources? As the name of the project already implies, that's of course exactly what Podman can do!
+What if instead we could create a nice little _pod_ for our containers to live in together and share their resources? As the name of the project already implies, that's of course exactly what Podman can do! Podman Desktop streamlines the process of creating a pod from existing containers, offering a seamless transition from development to Kubernetes, where Pods are the most basic deployable units.
 
- Podman Desktop streamlines the process of creating a pod from existing containers, offering a seamless transition from development to Kubernetes, where Pods are the most basic deployable units.
-
-== A Bit about Pods
+== What are Pods?
 
 https://developers.redhat.com/blog/2019/01/15/podman-managing-containers-pods[Pods] are a fundamental concept in container orchestration systems like Kubernetes and OpenShift. They provide an abstraction layer that encapsulates one or more containers, treating them as a single entity.
+
+TIP: Pods are designed to be the smallest deployable unit, and you should avoid running unrelated containers within the same pod.
 
 image::podman-pod-architecture.png[Podman Desktop Overview, 600]
 
@@ -35,9 +45,11 @@ Pods offer several key advantages over running containers individually, includin
 
 Podman Desktop's _Podify_ feature takes advantage of these pod benefits by simplifying the process of creating a pod from existing containers. Let's walk through the steps to create a pod from the Quarkus app and Redis containers.
 
-You will need to change the environment variable `redis` to point to `localhost` instead of the hard coded IP we set earlier. In order to do so, delete the existing quarkus-app container and create a new one from the images tab.  
+First, you will need to change the environment variable `redis` to point to `localhost` instead of the hard coded IP we set earlier. In order to do so, *delete* the existing `quarkus-app` container and *create a new one* from the *Images* tab.  
 
-TIP: the Quarkus application is by default configured to look for a Redis instance on `localhost` already, so you don't actually need to set the environment variable this time. Just create a new container with name `quarkus-app`, and continue with the instructions below.
+image::podman-desktop-delete-container.png[Podman Desktop Delete Container, 600]
+
+TIP: The Quarkus application is by default configured to look for a Redis instance on `localhost` already, so you don't actually need to set the environment variable this time. Just create a new container with name `quarkus-app`, and continue with the instructions below.
 
 In the *Containers* section of Podman Desktop, select both the `quarkus-app` and `redis` containers using the checkboxes. Now, click on the *Podify* button from the top right corner menu to initiate the pod creation process.
 
@@ -47,7 +59,7 @@ A new window will appear, allowing you to configure basic pod parameters. Provid
 
 image::podman-desktop-podify-window2.png[Podman Desktop Podify, 600]
 
-TIP: You'll notice that you only have the option to expose the port of the Quarkus container. Due to the pod's internal networking, it's not necessary to expose the Redis port externally for this application, as they can communicate using `localhost`.
+TIP: You'll notice that you only have the option to expose the Quarkus container. Due to the pod's internal networking, it's not necessary to expose the Redis port externally for this application, as they can communicate using `localhost`.
 
 Podman Desktop will now stop the existing containers and create a new pod that encapsulates the selected containers. To view the pod's details and manage its lifecycle, navigate to the *Pods* section in the Podman Desktop interface.
 

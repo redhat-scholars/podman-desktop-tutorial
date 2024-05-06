@@ -13,7 +13,7 @@ Podman Desktop will generate the necessary Kubernetes manifests for the pod and 
 
 image::podman-desktop-deploy-to-kubernetes-manifests.png[Podman Desktop Deploy to Kubernetes Manifests, 600]
 
-TIP: You can specify the Kubernetes context where you want to deploy the pod by selecting the desired context from the dropdown menu in the top left corner.
+TIP: You can specify the Kubernetes context where you want to deploy the pod by selecting the desired context from the dropdown menu in the bottom left corner.
 
 Podman Desktop will communicate with the Kubernetes API server and create the required resources in the cluster. You can monitor the deployment status, and when ready, access the deployed application using the provided URL.
 
@@ -27,9 +27,9 @@ image::podman-desktop-kubernetes-pod-exposed.png[Podman Desktop Kubernetes Pod D
 
 You should see the familiar Quarkus application with the Redis-backed counter, now running on the Developer Sandbox.
 
-=== Scaling and Managing the Deployment
+=== Managing the Deployment
 
-Kubernetes allows you to easily scale and manage your deployments. Back in Podman Desktop, select *Open in OpenShift console* from the right hand side to access the OpenShift console for the deployed pod.
+Kubernetes allows you to easily modify and manage your deployments. Back in Podman Desktop, select *Open in OpenShift console* from the right hand side to access the OpenShift console for the deployed pod.
 
 image::podman-desktop-kubernetes-pod-openshift-console2.png[Podman Desktop Kubernetes Pod OpenShift Console, 600]
 

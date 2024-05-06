@@ -21,7 +21,7 @@ After a few seconds, the Redis container will be up and running. We'll be brough
 
 image::podman-desktop-redis-container-details.png[Podman Desktop Container Details, 600]
 
-In order to connect these two containers, we will need to configure their network. Let's view some of the details from this container, as we'll need to find the internal IP address for Redis to configure our Quarkus application. Head to the *Inspect* tab and *Ctrl-F* to search for `IPAddress`, which will be under the `NetworkSettings` section and will look something like this:
+In order to connect these two containers, we will need to configure their network. Let's view some of the details from this container, as we'll need to find the internal IP address for Redis to configure our Quarkus application. Head to the *Inspect* tab and find shortcut kbd:[Ctrl+F] for `IPAddress`, which will be under the `NetworkSettings` section and will look something like this:
 
 image::podman-desktop-redis-container-inspect.png[Podman Desktop Container Inspect, 600]
 
@@ -41,7 +41,7 @@ Now, let's start the Quarkus container. We'll go back to the *Images* section in
 
 image::podman-desktop-start-quarkus-container.png[Podman Desktop Start Container, 600]
 
-Let's navigate to the *Environment* tab and add a new environment variable with the key `redis` and the value as the IP address we copied from the Redis container earlier. You can also give the container a name, such as `quarkus-app`. Then hit the *Start* button.
+Let's navigate to the *Environment variables* section and add a new environment variable with the key `redis` and the value as the IP address we copied from the Redis container earlier. You can also give the container a name, such as `quarkus-app`. Then hit the *Start* button.
 
 image::podman-desktop-start-quarkus-container-options.png[Podman Desktop Start Container, 600]
 
@@ -49,7 +49,7 @@ NOTE: Setting the `redis` environment variable overrides the redis value set in 
 
 == Testing the multi-container application
 
-With both containers started, let's test the basic functionality by selecting the *Open Browser* button from the top right corner menu. This will open a new browser window with the application's IP address and port, such as `http://localhost:8080/[http://localhost:8080/, window="_blank"]`.
+With both containers started, let's test the basic functionality by selecting the *Open Browser* button from the top right corner menu. This will open a new browser window with the application's IP address and port, such as `http://localhost:8080/[http://localhost:8080, window="_blank"]`.
 
 image::podman-desktop-open-browser-button2.png[Podman Desktop Open Browser, 600]
 

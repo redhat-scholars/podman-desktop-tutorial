@@ -4,7 +4,7 @@ Again, welcome to the Podman Desktop workshop! You'll learn how to use link:http
 
 == Workshop Homepage
 
-To begin, let's navigate to the homepage for workshops at link:https://summit.demo.redhat.com[https://summit.demo.redhat.com/]. From the homepage, you can access the Podman Desktop workshop by selecting the *Access this lab* button.
+To begin, let's navigate to the homepage for workshops at link:https://summit.demo.redhat.com[summit.demo.redhat.com]. From the homepage, you can access the Podman Desktop workshop by selecting the *Access this lab* button.
 
 image::podman-desktop-workshop-homepage.png[Workshop Homepage]
 
