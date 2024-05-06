@@ -8,7 +8,7 @@ start_page: ROOT:index.adoc
 
 asciidoc:
   attributes:
-    experimental: false
+    experimental: true
     icons: font
     page-pagination: true
     lab_name: Podman Desktop Tutorial
