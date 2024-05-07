@@ -40,7 +40,7 @@ sudo dnf install -y zip unzip && curl -s "https://get.sdkman.io" | bash && sourc
 
 If everything went well, you will see a message saying "Done installing!" and your installed version of Java is set as the default.
 
-image::podman-desktop-sdkman-install.png[Podman Desktop SDK
+image::podman-desktop-sdkman-install.png[Podman Desktop SDK]
 
 Now, let's open up the project in our VS Code instance and take a look at the source code of the demo application, found in the `podify-quarkus-redis` directory.
 
