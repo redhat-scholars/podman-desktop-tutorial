@@ -50,7 +50,7 @@ Now, let's open up the project in our VS Code instance and take a look at the so
 cd podify-quarkus-redis && code .
 ----
 
-NOTE: If VS Code asks to trust the authors of the files, go ahead and click "Yes, I trust the authors". If it then asks to create a keyring password, use the same password you used to log in to your environment (`{ssh_password]`). Also, VS Code will ask you to install the Extension Pack for Java. This is optional but it will greatly help the readability and usability of Java in VS Code so feel free to install it.
+NOTE: If VS Code asks to trust the authors of the files, go ahead and click "Yes, I trust the authors". If it then asks to create a keyring password, use the same password you used to log in to your environment (`{ssh_password}`). Also, VS Code will ask you to install the Extension Pack for Java. This is optional but it will greatly help the readability and usability of Java in VS Code so feel free to install it.
 
 image::podman-desktop-vscode.png[Podman Desktop VS Code, 600]
 
