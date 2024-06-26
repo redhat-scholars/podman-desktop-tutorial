@@ -51,7 +51,7 @@ image::podman-desktop-delete-container.png[Podman Desktop Delete Container, 600]
 
 TIP: The Quarkus application is by default configured to look for a Redis instance on `localhost` already, so you don't actually need to set the environment variable this time. Just create a new container with name `quarkus-app`, and continue with the instructions below.
 
-In the *Containers* section of Podman Desktop, select both the `quarkus-app` and `redis` containers using the checkboxes. Now, click on the *Podify* button from the top right corner menu to initiate the pod creation process.
+In the *Containers* section of Podman Desktop, select both the `quarkus-app` and `redis` containers using the checkboxes. Now, click on the *Create pod* button from the top right corner menu to initiate the pod creation process.
 
 image::podman-desktop-podify-button2.png[Podman Desktop Podify, 600]
 
