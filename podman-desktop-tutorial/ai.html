@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Welcome to the Podman Desktop Workshop :: Podman Desktop Tutorial</title>
-    <link rel="canonical" href="https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/index.html">
-    <link rel="next" href="env-setup.html">
+    <title>Podman Desktop AI :: Podman Desktop Tutorial</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/ai.html">
+    <link rel="prev" href="kubernetes-deploying.html">
+    <link rel="next" href="kubernetes-deploying.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -96,7 +97,7 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Podman Desktop AI Lab</span>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="ai.html">Podman Desktop AI</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -128,99 +129,156 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link is-current"></a>
+  <a href="index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Podman Desktop Tutorial</a></li>
-    <li><a href="index.html">Welcome to the Podman Desktop Workshop</a></li>
+    <li>Podman Desktop AI Lab</li>
+    <li><a href="ai.html">Podman Desktop AI</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/podman-desktop-tutorial/edit/master/documentation/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/podman-desktop-tutorial/edit/master/documentation/modules/ROOT/pages/ai.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Welcome to the Podman Desktop Workshop</h1>
+<h1 class="page">Podman Desktop AI</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Welcome to the <a href="https://www.redhat.com/en/summit">Red Hat Summit</a> workshop where you&#8217;ll <strong>learn how to elevate your container development work with Podman Desktop</strong>. We&#8217;re glad to have you here with us! Today, we&#8217;ll explore the features and benefits of <a href="https://podman-desktop.io">Podman Desktop</a> for streamlining your container workflows. Build, manage, and even deploy to local/remote Kubernetes environments – all from your desktop.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/podman-desktop-feature.png" alt="Podman Desktop Feature Image" width="700">
-</div>
-</div>
-<div class="paragraph">
-<p>This is a guide and hands-on tutorial with three main sections, where you will develop and navigate from containers, to pods, and finally to Kubernetes, using Podman Desktop:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="intro.html" class="xref page">Podman Desktop Fundamentals: Setup and learn how to use Podman Desktop</a></p>
-</li>
-<li>
-<p><a href="building-images.html" class="xref page">Working with Podman Desktop: Build images, run containers, and create Pods</a></p>
-</li>
-<li>
-<p><a href="kubernetes.html" class="xref page">Targeting Kubernetes: Setup and deploy to a local &amp; remote Kubernetes environment</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Before we begin, also feel free to check out the accompanying slide deck for an overview of Podman &amp; Podman Desktop, as well as how to access the workshop: <a href="https://red.ht/podman-desktop-slides">Simplifying containers and Kubernetes on your laptop with Podman Desktop</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1 text-center strong">
-<h2>What is Podman Desktop?</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Podman Desktop is a powerful open-source tool designed to simplify container management on Windows, macOS, and Linux. Key strengths include:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Security:</strong>  Rootless design and <a href="https://blog.podman.io/2023/12/interaction-between-user-namespaces-and-capabilities/">strong isolation</a> for safer containerized applications.</p>
-</li>
-<li>
-<p><strong>Emphasis on Pods</strong> for <a href="https://podman.io/features">simplified grouping and resource sharing</a> of containers.</p>
-</li>
-<li>
-<p><strong>Multi-Engine Support:</strong> Manage not only containers with Podman, but <a href="https://podman-desktop.io/extend">Docker, OpenShift, and Kind environments as well</a>.</p>
-</li>
-<li>
-<p><strong>Kubernetes Development:</strong> Efficiently target Kubernetes from your local workstation with built-in Kubernetes support, as well as local Kubernetes development with <a href="https://kind.sigs.k8s.io/">Kind</a> and <a href="https://minikube.sigs.k8s.io/">Minikube</a> integrations.</p>
-</li>
-<li>
-<p><strong>Docker Compatibility:</strong> Leverage <a href="https://podman-desktop.io/blog/5-things-to-know-for-a-docker-user">familiar Docker concepts</a> and commands for easy transitions.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1 text-center strong">
-<h2>Why Use Podman Desktop?</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Podman Desktop focuses on the issue of the <a href="https://s3.us-east-2.amazonaws.com/d2iq.com/resources/report/kubernetes-in-the-enterprise-survey.pdf">complexity between local development and production environments</a>. It provides a consistent and secure environment for building, managing, and deploying containers, pods, and Kubernetes-like environments. With extensions for <a href="https://minikube.sigs.k8s.io/docs/">Minikube</a>, <a href="https://kind.sigs.k8s.io/">Kind</a>, <a href="https://developers.redhat.com/products/openshift-local/overview">OpenShift Local</a>, and more, Podman Desktop is a powerful tool for developers and operators alike!</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/podman-desktop-pod-deploy.png" alt="Podman Desktop Logo" width="600">
-</div>
+<p>Podman AI Lab is an open-source extension for Podman Desktop to work with LLMs (Large Language Models) in a local environment. It provides key open-source technologies to start building on AI. A curated catalog of so-called recipes helps navigate the jungle of AI use cases and AI models. AI Lab further ships playgrounds: environments to experiment with and test AI models, such as a chatbot.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2>Next Steps</h2>
+<h2 id="_installing_podman_ai_lab"><a class="anchor" href="#_installing_podman_ai_lab"></a>Installing Podman AI Lab</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Ready to get started with the workshop? Let&#8217;s begin, firstly, exploring the Linux environment you&#8217;ll be using today with Podman Desktop.</p>
+<p>To install Podman AI extension, click on extensions icon (placed at left of the screen) represented by a puzzle piece:</p>
+</div>
+<div class="imageblock unresolved">
+<div class="content">
+<img src="podman-desktop-ai-extension.png" alt="Podman Desktop Extension AI" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>If you already have the extension installed, you should see it there, if not, click on the <strong>Catalog</strong> section, search for the <strong>Podman AI Lab Extension</strong>, and push the install icon:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-ai-catalog.png" alt="Podman Desktop Extension AI Catalog" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>When the extension is installed (you might restart Podman Desktop), you can see a new option in the left menu to enter the AI Lab extension:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-ai-section.png" alt="Podman Desktop Robot Seal" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>Select <strong>Catalog</strong> option to see all the available models.</p>
+</div>
+<div class="sect2">
+<h3 id="_inferencing_a_model"><a class="anchor" href="#_inferencing_a_model"></a>Inferencing a Model</h3>
+<div class="paragraph">
+<p>In the catalog, find the <code>instructlab/granite-7b-lab-GGUF</code> model and download the model:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-ai-download.png" alt="Podman Desktop Download Model" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>When the process finishes, you can deploy the model into a container by pushing the <strong>rocket</strong> icon:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-ai-rocket.png" alt="Launch Service" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>This process creates a <em>service</em> composed of a container inferencing the model with an Open AI compatible API.</p>
+</div>
+<div class="paragraph">
+<p>The following window shows you some information about the container that will be deployed, such as the copied model or the exposed port.
+Push the <strong>Create Service</strong> button to start the container:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-ai-create.png" alt="Create Service" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>After a few seconds, the model is up and running, and the <strong>Open Service Details</strong> button is enabled.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-ai-details.png" alt="Details Service" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>The details shown are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The inferencing URL.</p>
+</li>
+<li>
+<p>A link to the Swagger API documentation for accessing the service.</p>
+</li>
+<li>
+<p>A code snippet to access the service.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>By default, it shows how to access the model using the <code>curl</code> command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-ai-info.png" alt="Details Service" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>Push the button from the right part of the <strong>Client Code</strong> section to copy the snippet, and paste the <code>curl</code> snippet to a terminal.</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl --location 'http://localhost:64803/v1/chat/completions' \
+--header 'Content-Type: application/json' \
+--data '{
+ "messages": [
+ {
+ "content": "You are a helpful assistant.",
+ "role": "system"
+ },
+ {
+ "content": "What is the capital of France?",
+ "role": "user"
+ }
+ ]
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And after a few seconds, you&#8217;ll see the response from the model:</p>
+</div>
+<div class="listingblock console-output">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{"id":"chatcmpl-7ec86649-1eb9-4736-81c3-2919576d2963","object":"chat.completion","created":1732302279,"model":"/models/granite-7b-lab-Q4_K_M.gguf","choices":[{"index":0,"message":{"content":"The capital of France is Paris.","role":"assistant"},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":66,"completion_tokens":15,"total_tokens":81}}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Don&#8217;t stop the model yet. In the following section, you&#8217;ll modify the previous Quarkus example to integrate it with this inference model.</p>
+</div>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="next"><a href="env-setup.html">Environment Setup</a></span>
+  <span class="prev"><a href="kubernetes-deploying.html">Deploying to Kubernetes</a></span>
+  <span class="next"><a href="kubernetes-deploying.html">Deploying to Kubernetes</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
