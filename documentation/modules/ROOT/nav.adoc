@@ -14,6 +14,10 @@
 ** xref:kubernetes.adoc[Kubernetes Overview]
 ** xref:kubernetes-deploying.adoc[Deploying to Kubernetes]
 
+* Podman Desktop AI Lab
+** xref:ai.adoc[Podman Desktop AI]
+** xref:kubernetes-deploying.adoc[Deploying to Kubernetes]
+
 ////
 * More Tutorials
 ** Inner Loop Development

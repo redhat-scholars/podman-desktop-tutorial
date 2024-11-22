@@ -1,0 +1,82 @@
+= Podman Desktop AI
+include::_attributes.adoc[]
+
+Podman AI Lab is an open-source extension for Podman Desktop to work with LLMs (Large Language Models) in a local environment. It provides key open-source technologies to start building on AI. A curated catalog of so-called recipes helps navigate the jungle of AI use cases and AI models. AI Lab further ships playgrounds: environments to experiment with and test AI models, such as a chatbot.
+
+== Installing Podman AI Lab
+
+To install Podman AI extension, click on extensions icon (placed at left of the screen) represented by a puzzle piece:
+
+image::podman-desktop-ai-extension.png[Podman Desktop Extension AI, 600]
+
+If you already have the extension installed, you should see it there, if not, click on the *Catalog* section, search for the *Podman AI Lab Extension*, and push the install icon:
+
+image::podman-desktop-ai-catalog.png[Podman Desktop Extension AI Catalog, 600]
+
+When the extension is installed (you might restart Podman Desktop), you can see a new option in the left menu to enter the AI Lab extension:
+
+image::podman-desktop-ai-section.png[Podman Desktop Robot Seal, 600]
+
+Select *Catalog* option to see all the available models.
+
+=== Inferencing a Model
+
+In the catalog, find the `instructlab/granite-7b-lab-GGUF` model and download the model:
+
+image::podman-desktop-ai-download.png[Podman Desktop Download Model, 600]
+
+When the process finishes, you can deploy the model into a container by pushing the *rocket* icon:
+
+image::podman-desktop-ai-rocket.png[Launch Service, 600]
+
+This process creates a _service_ composed of a container inferencing the model with an Open AI compatible API.
+
+The following window shows you some information about the container that will be deployed, such as the copied model or the exposed port.
+Push the *Create Service* button to start the container:
+
+image::podman-desktop-ai-create.png[Create Service, 600]
+
+After a few seconds, the model is up and running, and the *Open Service Details* button is enabled.
+
+image::podman-desktop-ai-details.png[Details Service, 600]
+
+The details shown are:
+
+* The inferencing URL.
+* A link to the Swagger API documentation for accessing the service.
+* A code snippet to access the service.
+
+By default, it shows how to access the model using the `curl` command:
+
+image::podman-desktop-ai-info.png[Details Service, 600]
+
+Push the button from the right part of the *Client Code* section to copy the snippet, and paste the `curl` snippet to a terminal.
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+curl --location 'http://localhost:64803/v1/chat/completions' \
+--header 'Content-Type: application/json' \
+--data '{
+ "messages": [
+ {
+ "content": "You are a helpful assistant.",
+ "role": "system"
+ },
+ {
+ "content": "What is the capital of France?",
+ "role": "user"
+ }
+ ]
+}'
+----
+
+And after a few seconds, you'll see the response from the model:
+
+[.console-output]
+[source,json,subs="+macros,+attributes"]
+----
+{"id":"chatcmpl-7ec86649-1eb9-4736-81c3-2919576d2963","object":"chat.completion","created":1732302279,"model":"/models/granite-7b-lab-Q4_K_M.gguf","choices":[{"index":0,"message":{"content":"The capital of France is Paris.","role":"assistant"},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":66,"completion_tokens":15,"total_tokens":81}}
+----
+
+Don't stop the model yet. In the following section, you'll modify the previous Quarkus example to integrate it with this inference model.
