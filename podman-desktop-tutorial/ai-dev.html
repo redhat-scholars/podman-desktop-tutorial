@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Developing apps with Podman Desktop AI :: Podman Desktop Tutorial</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/podman-desktop-tutorial/podman-desktop-tutorial/ai-dev.html">
+    <link rel="prev" href="ai.html">
+    <link rel="next" href="resources.html">
+    <meta name="generator" content="Antora 3.0.0">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img src="../_/img/RHDLogo.svg" height="40px" alt="Red Hat Developer Program"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="https://redhat-scholars.github.io/podman-desktop-tutorial">Podman Desktop Tutorial</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://developers.redhat.com/ebooks/" target="_blank">Books</a>
+        <a class="navbar-item" href="https://developers.redhat.com/cheatsheets/" target="_blank">Cheat Sheets</a>
+        <a class="navbar-item" href="https://developers.redhat.com/events/" target="_blank">Upcoming Events</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">More Tutorials</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/kubernetes-tutorial/" target="_blank">Kubernetes</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/istio-tutorial/" target="_blank">Istio</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/quarkus-tutorial/" target="_blank">Quarkus</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/knative-tutorial/" target="_blank">Knative</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/tekton-tutorial/" target="_blank">Tekton</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="podman-desktop-tutorial" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html"></a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Podman Desktop Fundamentals</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="env-setup.html">Environment Setup</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="intro.html">Introduction to Containers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="podman-basics.html">Podman Desktop Interface &amp; Essentials</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Working with Podman Desktop</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="building-images.html">Building Images in Podman Desktop</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="running-containers.html">Running and Managing Containers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="pods.html">Working with Pods</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Targeting Kubernetes</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="kubernetes.html">Kubernetes Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="kubernetes-deploying.html">Deploying to Kubernetes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Podman Desktop AI Lab</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ai.html">Podman Desktop AI</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="ai-dev.html">Interacting with the model</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Resources</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="resources.html">Conclusion &amp; Resources</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Podman Desktop Tutorial</a></li>
+    <li>Podman Desktop AI Lab</li>
+    <li><a href="ai-dev.html">Interacting with the model</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/podman-desktop-tutorial/edit/master/documentation/modules/ROOT/pages/ai-dev.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Developing apps with Podman Desktop AI</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>So far, you containerized and deployed a Quarkus application using Podman Desktop.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s change this application and add a call to the local model.</p>
+</div>
+<div class="paragraph">
+<p>As seen in the previous section, Podman Desktop AI Lab provides snippets for several languages and frameworks in addition to <code>curl</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_select_language_and_framework_to_integrate_with"><a class="anchor" href="#_select_language_and_framework_to_integrate_with"></a>Select Language and Framework to integrate with</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Click on the first dropbox and select <strong>Java</strong>, and in the second dropbox select <strong>Quarkus Langchain4J</strong>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/podman-desktop-ai-quarkus.png" alt="Podman Desktop Extension AI with Quarkus Snippets" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>As with <code>curl</code>, you see specific snippets for interacting with the model but using Java.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_develop_code"><a class="anchor" href="#_develop_code"></a>Develop Code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First of all, open the <code>pom.xml</code> file from the previous project (<code>podify-quarkus-redis</code>), and add the following dependencies:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">&lt;dependency&gt;
+  &lt;groupId&gt;io.quarkiverse.langchain4j&lt;/groupId&gt;
+  &lt;artifactId&gt;quarkus-langchain4j-core&lt;/artifactId&gt;
+  &lt;version&gt;0.21.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;io.quarkiverse.langchain4j&lt;/groupId&gt;
+  &lt;artifactId&gt;quarkus-langchain4j-openai&lt;/artifactId&gt;
+  &lt;version&gt;0.21.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then open the <code>src/main/resources/application.properties</code> file and configure Langchain4J to connect to the model deployed in Podman:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quarkus.langchain4j.openai.base-url=http://localhost:58184/v1
+quarkus.langchain4j.openai.api-key=sk-dummy</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Integrating Langchain4J with Quarkus lets developers send requests to a model quickly.
+You only need to create and annotate a Java interface with <code>@RegisterAiService</code>, and Quarkus will do the rest.</p>
+</div>
+<div class="paragraph">
+<p>Create a new class named <code>AiService.java</code> at <code>src/main/java/com/redhat/developers</code> directory with the following content:</p>
+</div>
+<div class="listingblock console-input">
+<div class="title">src/main/java/com/redhat/developers/AiService.java</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.redhat.developers; <i class="conum" data-value="1"></i><b>(1)</b>
+
+import dev.langchain4j.service.UserMessage;
+import io.quarkiverse.langchain4j.RegisterAiService;
+
+@RegisterAiService <i class="conum" data-value="2"></i><b>(2)</b>
+public interface AiService {
+
+ @UserMessage("{question}") <i class="conum" data-value="3"></i><b>(3)</b>
+    String request(String question); <i class="conum" data-value="4"></i><b>(4)</b>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Package where the class is stored</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Interface annotated</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>This is the message sent to model</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Sets the message to send</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Copy/Paste the content for this file from the <strong>Client Code</strong> section. The only thing you need to adapt is the <code>AiService</code> class package.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The last thing to create is a new endpoint to make calls to the model.</p>
+</div>
+<div class="paragraph">
+<p>Create a class named <code>AiResource</code> with the following content:</p>
+</div>
+<div class="listingblock console-input">
+<div class="title">src/main/java/com/redhat/developers/AiResource.java</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.redhat.developers;
+
+import jakarta.inject.Inject;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+
+@Path("/ai")
+public class AiResource {
+
+ @Inject <i class="conum" data-value="1"></i><b>(1)</b>
+    AiService aiService;
+
+ @POST
+ @Consumes(MediaType.TEXT_PLAIN)
+ @Produces(MediaType.TEXT_PLAIN)
+    public String chat(String message) {
+        return aiService.request(message);
+ }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Injects the interface that connects to the local model</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The version of Quarkus should be <code>&lt;quarkus.platform.version&gt;3.16.4&lt;/quarkus.platform.version&gt;</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Now, you can boot up the service and try it.</p>
+</div>
+<div class="sect2">
+<h3 id="_running_the_example"><a class="anchor" href="#_running_the_example"></a>Running the example</h3>
+<div class="paragraph">
+<p>Go to the terminal window at the root of the project and start the application by typing:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./mvnw quarkus:dev</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In another terminal window, <code>curl</code> the endpoint created in the Quarkus service:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl -X POST -H "Content-Type: text/plain" -d "What is the capital of France" localhost:8080/ai</code></pre>
+</div>
+</div>
+<div class="listingblock console-output">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">The capital of France is Paris</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Thanks to Podman Desktop AI, you can infer a model locally and get precise steps to develop an application for ingesting the model.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="ai.html">Podman Desktop AI</a></span>
+  <span class="next"><a href="resources.html">Conclusion &amp; Resources</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../_/js/vendor/clipboard.js"></script>
+<script src="../_/js/site.js"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
