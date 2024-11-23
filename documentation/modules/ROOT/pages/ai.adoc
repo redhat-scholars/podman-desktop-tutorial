@@ -7,7 +7,7 @@ Podman AI Lab is an open-source extension for Podman Desktop to work with LLMs (
 
 To install Podman AI extension, click on extensions icon (placed at left of the screen) represented by a puzzle piece:
 
-image::podman-desktop-ai-extension.png[Podman Desktop Extension AI, 600]
+image::podman-desktop-ai-extensions.png[Podman Desktop Extension AI, 600]
 
 If you already have the extension installed, you should see it there, if not, click on the *Catalog* section, search for the *Podman AI Lab Extension*, and push the install icon:
 

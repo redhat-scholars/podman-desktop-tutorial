@@ -16,7 +16,7 @@
 
 * Podman Desktop AI Lab
 ** xref:ai.adoc[Podman Desktop AI]
-** xref:kubernetes-deploying.adoc[Deploying to Kubernetes]
+** xref:ai-dev.adoc[Interacting with the model]
 
 ////
 * More Tutorials

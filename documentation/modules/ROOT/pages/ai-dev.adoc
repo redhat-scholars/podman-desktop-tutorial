@@ -1,0 +1,137 @@
+= Developing apps with Podman Desktop AI
+include::_attributes.adoc[]
+
+So far, you containerized and deployed a Quarkus application using Podman Desktop.
+
+Let's change this application and add a call to the local model.
+
+As seen in the previous section, Podman Desktop AI Lab provides snippets for several languages and frameworks in addition to `curl`.
+
+== Select Language and Framework to integrate with
+
+Click on the first dropbox and select *Java*, and in the second dropbox select *Quarkus Langchain4J*:
+
+image::podman-desktop-ai-quarkus.png[Podman Desktop Extension AI with Quarkus Snippets, 600]
+
+As with `curl`, you see specific snippets for interacting with the model but using Java.
+
+== Develop Code
+
+First of all, open the `pom.xml` file from the previous project (`podify-quarkus-redis`), and add the following dependencies:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+<dependency>
+  <groupId>io.quarkiverse.langchain4j</groupId>
+  <artifactId>quarkus-langchain4j-core</artifactId>
+  <version>0.21.0</version>
+</dependency>
+<dependency>
+  <groupId>io.quarkiverse.langchain4j</groupId>
+  <artifactId>quarkus-langchain4j-openai</artifactId>
+  <version>0.21.0</version>
+</dependency>
+----
+
+Then open the `src/main/resources/application.properties` file and configure Langchain4J to connect to the model deployed in Podman:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+quarkus.langchain4j.openai.base-url=http://localhost:58184/v1
+quarkus.langchain4j.openai.api-key=sk-dummy
+----
+
+Integrating Langchain4J with Quarkus lets developers send requests to a model quickly.
+You only need to create and annotate a Java interface with `@RegisterAiService`, and Quarkus will do the rest.
+
+Create a new class named `AiService.java` at `src/main/java/com/redhat/developers` directory with the following content:
+
+[.console-input]
+[source,java,subs="+macros,+attributes"]
+.src/main/java/com/redhat/developers/AiService.java
+----
+package com.redhat.developers; // <1>
+
+import dev.langchain4j.service.UserMessage;
+import io.quarkiverse.langchain4j.RegisterAiService;
+
+@RegisterAiService // <2>
+public interface AiService {
+
+ @UserMessage("{question}") // <3>
+    String request(String question); // <4>
+}
+----
+<1> Package where the class is stored
+<2> Interface annotated
+<3> This is the message sent to model
+<4> Sets the message to send
+
+IMPORTANT: Copy/Paste the content for this file from the *Client Code* section. The only thing you need to adapt is the `AiService` class package.
+
+The last thing to create is a new endpoint to make calls to the model.
+
+Create a class named `AiResource` with the following content:
+
+[.console-input]
+[source,java,subs="+macros,+attributes"]
+.src/main/java/com/redhat/developers/AiResource.java
+----
+package com.redhat.developers;
+
+import jakarta.inject.Inject;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+
+@Path("/ai")
+public class AiResource {
+
+ @Inject // <1>
+    AiService aiService;
+
+ @POST
+ @Consumes(MediaType.TEXT_PLAIN)
+ @Produces(MediaType.TEXT_PLAIN)
+    public String chat(String message) {
+        return aiService.request(message);
+ }
+
+}
+----
+<1> Injects the interface that connects to the local model
+
+IMPORTANT: The version of Quarkus should be `<quarkus.platform.version>3.16.4</quarkus.platform.version>`.
+
+Now, you can boot up the service and try it.
+
+=== Running the example
+
+Go to the terminal window at the root of the project and start the application by typing:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+./mvnw quarkus:dev
+----
+
+In another terminal window, `curl` the endpoint created in the Quarkus service:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+curl -X POST -H "Content-Type: text/plain" -d "What is the capital of France" localhost:8080/ai
+----
+
+
+[.console-output]
+[source,bash,subs="+macros,+attributes"]
+----
+The capital of France is Paris
+----
+
+Thanks to Podman Desktop AI, you can infer a model locally and get precise steps to develop an application for ingesting the model.
