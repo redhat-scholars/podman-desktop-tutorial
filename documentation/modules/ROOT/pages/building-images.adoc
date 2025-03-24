@@ -35,7 +35,7 @@ Let's install SDKMAN and OpenJDK. Copy & paste the following set of commands and
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
-sudo dnf install -y zip unzip && curl -s "https://get.sdkman.io" | bash && source "/home/student/.sdkman/bin/sdkman-init.sh" && sdk install java 21.0.3-tem
+sudo dnf install -y zip unzip && curl -s "https://get.sdkman.io" | bash && source "/home/student/.sdkman/bin/sdkman-init.sh" && sdk install java 21.0.6-tem
 ----
 
 If everything went well, you will see a message saying "Done installing!" and your installed version of Java is set as the default.
@@ -119,7 +119,7 @@ image::quarkus-dockerfiles.png[Quarkus Dockerfiles, 200]
 Go ahead and open `Dockerfile.jvm` and scroll down past the commented out initial section. Let's examine the Dockerfile.jvm instructions:
 
 * *Base Image:*
-** `FROM registry.access.redhat.com/ubi8/openjdk-21:1.18` (Starts with an OpenJDK base image supplied, built and verified by Red Hat)
+** `FROM registry.access.redhat.com/ubi9/openjdk-21:latest` (Starts with an OpenJDK base image supplied, built and verified by Red Hat)
 
 * *App Configuration, Source and Startup commands:*
 ** `ENV LANGUAGE='en_US:en'` (Set environment variable "LANGUAGE")
