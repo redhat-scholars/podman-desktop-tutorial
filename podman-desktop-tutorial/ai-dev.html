@@ -181,11 +181,6 @@
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">&lt;dependency&gt;
   &lt;groupId&gt;io.quarkiverse.langchain4j&lt;/groupId&gt;
-  &lt;artifactId&gt;quarkus-langchain4j-core&lt;/artifactId&gt;
-  &lt;version&gt;0.26.0&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;io.quarkiverse.langchain4j&lt;/groupId&gt;
   &lt;artifactId&gt;quarkus-langchain4j-openai&lt;/artifactId&gt;
   &lt;version&gt;0.26.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
@@ -197,7 +192,10 @@
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quarkus.langchain4j.openai.base-url=http://localhost:58184/v1
-quarkus.langchain4j.openai.api-key=sk-dummy</code></pre>
+quarkus.langchain4j.openai.api-key=sk-dummy
+quarkus.langchain4j.log-requests=true
+quarkus.langchain4j.log-responses=true
+quarkus.langchain4j.timeout=30s</code></pre>
 </div>
 </div>
 <div class="paragraph">
