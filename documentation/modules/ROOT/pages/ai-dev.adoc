@@ -25,16 +25,16 @@ First of all, open the `pom.xml` file from the previous project (`podify-quarkus
 <dependency>
   <groupId>io.quarkiverse.langchain4j</groupId>
   <artifactId>quarkus-langchain4j-core</artifactId>
-  <version>0.21.0</version>
+  <version>0.26.0</version>
 </dependency>
 <dependency>
   <groupId>io.quarkiverse.langchain4j</groupId>
   <artifactId>quarkus-langchain4j-openai</artifactId>
-  <version>0.21.0</version>
+  <version>0.26.0</version>
 </dependency>
 ----
 
-Then open the `src/main/resources/application.properties` file and configure Langchain4J to connect to the model deployed in Podman:
+Then open the `src/main/resources/application.properties` file and configure LangChain4j to connect to the model deployed in Podman:
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -43,7 +43,7 @@ quarkus.langchain4j.openai.base-url=http://localhost:58184/v1
 quarkus.langchain4j.openai.api-key=sk-dummy
 ----
 
-Integrating Langchain4J with Quarkus lets developers send requests to a model quickly.
+Integrating LangChain4j with Quarkus lets developers send requests to a model quickly.
 You only need to create and annotate a Java interface with `@RegisterAiService`, and Quarkus will do the rest.
 
 Create a new class named `AiService.java` at `src/main/java/com/redhat/developers` directory with the following content:
@@ -105,7 +105,7 @@ public class AiResource {
 ----
 <1> Injects the interface that connects to the local model
 
-IMPORTANT: The version of Quarkus should be `<quarkus.platform.version>3.16.4</quarkus.platform.version>`.
+IMPORTANT: The version of Quarkus should be > 3.16.4
 
 Now, you can boot up the service and try it.
 
